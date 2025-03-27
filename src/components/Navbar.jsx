@@ -33,7 +33,7 @@ const Navbar = () => {
                     </ul>
 
                     <button onClick={() => setIsDarkMode(!isDarkMode)} className="text-2xl p-2 rounded-full transition-colors duration-300">
-                        {isDarkMode ? <BiSun className="text-yellow-400" /> : <BiMoon className="text-orange-950 dark:text-gray-50" />}
+                        {isDarkMode ? <BiSun className="text-gray-50" /> : <BiMoon className="text-orange-950 dark:text-gray-50" />}
                     </button>
                 </div>
 

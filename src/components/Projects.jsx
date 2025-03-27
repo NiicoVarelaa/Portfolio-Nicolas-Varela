@@ -20,7 +20,7 @@ const Projects = () => {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
                 {projectData.map((project) => (
-                    <a href={project.link} key={project.id} target='_blank' className='flex flex-col rounded-xl overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-orange-800'>
+                    <a href={project.link} key={project.id} target='_blank' className='flex flex-col rounded-xl overflow-hidden cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500'>
                         <img src={project.image} className='hover:scale-105 transition-transform duration-300' alt={project.title} />
                         <div className='flex flex-col gap-3 bg-gray-900 p-5 transition-colors duration-300 hover:bg-gray-800 flex-grow'>
                             <h3 className='text-xl font-semibold'>{project.title}</h3>
