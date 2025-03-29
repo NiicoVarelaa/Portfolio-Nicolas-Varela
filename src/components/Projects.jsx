@@ -18,7 +18,7 @@ const Projects = () => {
                 transition={{ duration: 0.8 }}
                 className="text-4xl sm:text-6xl flex items-center gap-3 text-orange-950 dark:text-gray-50"
             >
-                <FontAwesomeIcon icon={faCode} /> Proyectos
+                <FontAwesomeIcon icon={faCode} className="me-2" /> Proyectos
             </motion.h1>
 
             <motion.div
@@ -40,7 +40,7 @@ const Projects = () => {
                                 alt={project.title}
                             />
                         </a>
-                        <div className="flex flex-col bg-orange-50 hover:bg-orange-100 dark:bg-gray-900 dark:hover:bg-gray-800 p-5 transition-colors duration-300 flex-grow">
+                        <div className="flex flex-col bg-orange-50 hover:bg-orange-100 dark:bg-blue-950/50 dark:hover:bg-blue-900/50 p-5 transition-colors duration-300 flex-grow">
                             <h3 className="text-xl font-semibold text-orange-500">{project.title}</h3>
                             <p className="text-sm text-orange-950 dark:text-orange-50 mb-4">{project.description}</p>
                             <div className="flex gap-3 flex-wrap mx-auto mb-4">
