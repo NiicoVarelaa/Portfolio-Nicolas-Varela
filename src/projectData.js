@@ -1,4 +1,4 @@
-import project1 from "../public/project1.png";
+import project1 from "../public/project1.webp";
 import project2 from "../public/project2.png";
 import project3 from "../public/project3.png";
 import project4 from "../public/project4.jpg";
@@ -9,11 +9,12 @@ export const projectData = [
   {
     id: 1,
     image: project1,
-    title: "E-Commerce Dashboard",
+    title: "Game Zone",
     description:
-      "A comprehensive dashboard for managing online stores with real-time analytics, inventory management, and sales tracking. Built with modern web technologies for optimal performance.",
-    link: "https://github.com/yourusername/ecommerce-dashboard",
-    technologies: ["NextJs", "TypeScript", "PostgreSQL", "Docker", "Drizzle"],
+      "Página para una tienda online de videojuegos diseñada con HTML, CSS, Bootstrap y JavaScript. Ofrece una experiencia moderna e intuitiva para explorar y comprar juegos de diferentes plataformas.",
+    link: "https://gamezoone.netlify.app/",
+    githubLink: "https://github.com/NiicoVarelaa/GameZone",
+    technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"],
   },
   {
     id: 2,

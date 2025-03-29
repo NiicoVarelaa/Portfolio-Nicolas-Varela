@@ -48,7 +48,7 @@ const Home = () => {
                     </div>
                 </motion.div>
 
-                <div className="relative w-[300px] md:w-[400px] h-[300px] md:h-[400px] rounded-full overflow-hidden border-2 dark:border-gray-50">
+                <div className="relative w-[300px] md:w-[400px] aspect-square rounded-full overflow-hidden border-2 dark:border-gray-50">
                     <img
                         src={nico}
                         className="w-full h-full object-cover hover:scale-105 transition-all duration-500"
