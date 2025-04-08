@@ -24,16 +24,16 @@ const Contact = () => {
     };
 
     return (
-        <div className="mx-auto max-w-6xl p-4 sm:p-10 text-white" id="contacto">
-            <motion.h1
+        <div className="mx-auto max-w-6xl p-4 sm:p-10" id="contacto">
+            <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="text-4xl sm:text-6xl flex items-center gap-3 text-orange-950 dark:text-gray-50 mb-10"
+                className="text-4xl sm:text-6xl flex items-center justify-center gap-3 text-orange-950 dark:text-orange-50 mb-10"
             >
-                <FaPaperPlane /> Contacto
-            </motion.h1>
+                <FaPaperPlane className='me-4' /> Contacto
+            </motion.h2>
 
             <motion.div
                 initial={{ opacity: 0 }}
@@ -48,12 +48,12 @@ const Contact = () => {
                         whileHover={{ x: 5 }}
                         className="flex items-start gap-4"
                     >
-                        <div className="text-orange-500 dark:text-orange-400 mt-1">
+                        <div className="text-orange-500 dark:text-orange-500 mt-1">
                             <FaPhone size={20} />
                         </div>
                         <div>
-                            <h3 className="text-xl font-semibold text-orange-950 dark:text-gray-100">Teléfono</h3>
-                            <p className="text-gray-700 dark:text-gray-300">+54 11 1234-5678</p>
+                            <h3 className="text-xl font-semibold text-orange-950 dark:text-orange-50">Teléfono</h3>
+                            <p className="text-orange-800 dark:text-gray-200">+54 381 3487-709</p>
                         </div>
                     </motion.div>
 
@@ -61,12 +61,12 @@ const Contact = () => {
                         whileHover={{ x: 5 }}
                         className="flex items-start gap-4"
                     >
-                        <div className="text-orange-500 dark:text-orange-400 mt-1">
+                        <div className="text-orange-500 dark:text-orange-500 mt-1">
                             <FaEnvelope size={20} />
                         </div>
                         <div>
-                            <h3 className="text-xl font-semibold text-orange-950 dark:text-gray-100">Email</h3>
-                            <p className="text-gray-700 dark:text-gray-300">niicovarelaa@gmail.com</p>
+                            <h3 className="text-xl font-semibold text-orange-950 dark:text-orange-50">Email</h3>
+                            <p className="text-orange-800 dark:text-gray-200">niicovarelaa@gmail.com</p>
                         </div>
                     </motion.div>
 
@@ -74,12 +74,12 @@ const Contact = () => {
                         whileHover={{ x: 5 }}
                         className="flex items-start gap-4"
                     >
-                        <div className="text-orange-500 dark:text-orange-400 mt-1">
+                        <div className="text-orange-500 dark:text-orange-500 mt-1">
                             <FaMapMarkerAlt size={20} />
                         </div>
                         <div>
-                            <h3 className="text-xl font-semibold text-orange-950 dark:text-gray-100">Ubicación</h3>
-                            <p className="text-gray-700 dark:text-gray-300">Buenos Aires, Argentina</p>
+                            <h3 className="text-xl font-semibold text-orange-950 dark:text-orange-50">Ubicación</h3>
+                            <p className="text-orange-800 dark:text-gray-200">Tucuman, Argentina</p>
                         </div>
                     </motion.div>
                 </div>
@@ -93,7 +93,7 @@ const Contact = () => {
                             transition={{ duration: 0.5 }}
                             className="space-y-1"
                         >
-                            <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Nombre</label>
+                            <label htmlFor="name" className="block text-md font-medium text-orange-500">Nombre</label>
                             <input
                                 type="text"
                                 id="name"
@@ -101,7 +101,7 @@ const Contact = () => {
                                 value={formData.name}
                                 onChange={handleChange}
                                 required
-                                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 dark:bg-gray-700 dark:text-white"
+                                className="w-full px-4 py-2 border bg-orange-50 border-orange-950 dark:border-orange-100 text-orange-950 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 dark:bg-blue-950/50 dark:text-orange-50"
                             />
                         </motion.div>
 
@@ -111,7 +111,7 @@ const Contact = () => {
                             transition={{ duration: 0.5, delay: 0.1 }}
                             className="space-y-1"
                         >
-                            <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
+                            <label htmlFor="email" className="block text-md font-medium text-orange-500">Email</label>
                             <input
                                 type="email"
                                 id="email"
@@ -119,7 +119,7 @@ const Contact = () => {
                                 value={formData.email}
                                 onChange={handleChange}
                                 required
-                                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 dark:bg-gray-700 dark:text-white"
+                                className="w-full px-4 py-2 border bg-orange-50 border-orange-950 dark:border-orange-100 text-orange-950 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 dark:bg-blue-950/50 dark:text-orange-50"
                             />
                         </motion.div>
 
@@ -129,7 +129,7 @@ const Contact = () => {
                             transition={{ duration: 0.5, delay: 0.2 }}
                             className="space-y-1"
                         >
-                            <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Asunto</label>
+                            <label htmlFor="subject" className="block text-md font-medium text-orange-500">Asunto</label>
                             <input
                                 type="text"
                                 id="subject"
@@ -137,7 +137,7 @@ const Contact = () => {
                                 value={formData.subject}
                                 onChange={handleChange}
                                 required
-                                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 dark:bg-gray-700 dark:text-white"
+                                className="w-full px-4 py-2 border bg-orange-50 border-orange-950 dark:border-orange-100 text-orange-950 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 dark:bg-blue-950/50 dark:text-orange-50"
                             />
                         </motion.div>
 
@@ -147,7 +147,7 @@ const Contact = () => {
                             transition={{ duration: 0.5, delay: 0.3 }}
                             className="space-y-1"
                         >
-                            <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Mensaje</label>
+                            <label htmlFor="message" className="block text-md font-medium text-orange-500">Mensaje</label>
                             <textarea
                                 id="message"
                                 name="message"
@@ -155,7 +155,7 @@ const Contact = () => {
                                 value={formData.message}
                                 onChange={handleChange}
                                 required
-                                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 dark:bg-gray-700 dark:text-white"
+                                className="w-full px-4 py-2 border bg-orange-50 border-orange-950 dark:border-orange-100 text-orange-950 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 dark:bg-blue-950/50 dark:text-orange-50"
                             ></textarea>
                         </motion.div>
 

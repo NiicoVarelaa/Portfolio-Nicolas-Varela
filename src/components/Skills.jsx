@@ -35,18 +35,18 @@ const categories = {
 const Skills = () => {
     return (
         <div
-            className="mx-auto max-w-6xl p-4 sm:p-10 text-orange-50 flex flex-col gap-10 sm:gap-8 items-center justify-center"
+            className="mx-auto max-w-6xl px-4 sm:px-10 py-4 sm:py-10 border border-blue-500 text-orange-50 flex flex-col gap-10 sm:gap-8 items-center justify-center"
             id="skills"
         >
-            <motion.h1
+            <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="text-4xl sm:text-6xl flex items-center gap-3 text-orange-950 dark:text-gray-50"
+                className="text-4xl sm:text-6xl flex items-center gap-3 text-orange-950 dark:text-orange-50"
             >
-                <FaLaptopCode className="me-2" /> Habilidades
-            </motion.h1>
+                <FaLaptopCode className="me-4" /> Habilidades
+            </motion.h2>
 
             {Object.entries(categories).map(([category, skills], i) => (
                 <motion.div
@@ -57,7 +57,7 @@ const Skills = () => {
                     transition={{ duration: 0.8, delay: 0.2 * i }}
                     className="w-full"
                 >
-                    <h2 className="text-2xl font-semibold text-orange-900 dark:text-gray-200 mb-4">{category}</h2>
+                    <h2 className="text-2xl font-semibold text-orange-900 dark:text-gray-100 mb-4">{category}</h2>
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
                         {skills.map((skill, index) => (
                             <div key={index} className="flex flex-col items-center gap-3 p-4 bg-orange-50 dark:bg-blue-950/50 dark:hover:bg-blue-900/50 rounded-xl shadow-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out">

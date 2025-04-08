@@ -1,6 +1,6 @@
 const SocialButtons = ({ href, children, ...props }) => {
     return (
-        <div className="flex flex-wrap gap-4 mt-8">
+        <div className="flex flex-wrap gap-4">
             <a
                 href={href}
                 target="_blank"

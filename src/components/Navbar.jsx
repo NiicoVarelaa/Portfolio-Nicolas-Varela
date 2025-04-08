@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BiMenu, BiSun, BiMoon } from "react-icons/bi";
+import { BiMenu, BiSun, BiMoon, BiX } from "react-icons/bi";
 import useDarkMode from "../hooks/useDarkMode";
 
 const Navbar = () => {
@@ -15,54 +15,101 @@ const Navbar = () => {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    useEffect(() => {
+        if (isMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+    }, [isMenuOpen]);
+
     return (
-        <header className={`fixed top-0 w-full backdrop-blur-md z-50 transition-shadow duration-300 ${hasShadow ? "shadow-lg" : "shadow-none"}`}>
-            <nav className="max-w-7xl mx-auto py-4 px-6 lg:px-32 flex items-center justify-between text-orange-950 dark:text-gray-50">
-                <a href="#home" className="text-xl md:text-2xl font-semibold bg-gradient-to-r from-orange-600 via-amber-500 to-orange-400 text-transparent bg-clip-text hover:scale-110 transition-all duration-300">
-                    Nicolas Varela
-                </a>
+        <>
+            {isMenuOpen && (
+                <div 
+                    className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40"
+                    onClick={() => setIsMenuOpen(false)}
+                />
+            )}
 
-                <div className="hidden md:flex items-center gap-10 ml-auto">
-                    <ul className="flex gap-10">
-                        {["Proyectos", "Skills", "Sobre mí", "Contacto"].map((item, index) => (
-                            <li key={index} className="group duration-300 relative">
-                                <a href={`#${item.toLowerCase().replace(" ", "")}`} className="hover:text-orange-500">{item}</a>
-                                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-orange-500 transition-all duration-300 group-hover:w-full"></div>
-                            </li>
-                        ))}
-                    </ul>
+            <header className={`fixed top-0 w-full border-b bg-gray backdrop-blur-md z-50 transition-shadow duration-300 ${hasShadow ? "bg-gray/50 backdrop-blur-xl md:border-gray-100 dark:md:border-gray-700" : "border-transparent"}`}>
+                <nav className="max-w-6xl mx-auto py-3 px-4 sm:px-10 flex items-center justify-between text-base font-medium text-gray-600 dark:text-gray-300">
+                    <a href="#home" className="text-xl md:text-2xl font-semibold text-orange-500 hover:scale-105 transition-all duration-300">
+                        Nicolas Varela
+                    </a>
 
-                    <button onClick={() => setIsDarkMode(!isDarkMode)} className="text-2xl p-2 rounded-full transition-colors duration-300">
-                        {isDarkMode ? <BiSun className="text-gray-50" /> : <BiMoon className="text-orange-950 dark:text-gray-50" />}
-                    </button>
-                </div>
+                    <div className="hidden md:flex items-center gap-10 ml-auto">
+                        <ul className="flex gap-10">
+                            {["Proyectos", "Skills", "Sobre mí", "Contacto"].map((item, index) => (
+                                <li key={index} className="group duration-300 relative">
+                                    <a href={`#${item.toLowerCase().replace(" ", "")}`} className="hover:text-gray-900 dark:hover:text-gray-50">{item}</a>
+                                </li>
+                            ))}
+                        </ul>
 
-                <div className="flex items-center gap-4 md:hidden">
-                    <button onClick={() => setIsDarkMode(!isDarkMode)} className="text-2xl p-2 rounded-full transition-colors duration-300">
-                        {isDarkMode ? <BiSun className="text-gray-50" /> : <BiMoon className="text-orange-950 dark:text-gray-50" />}
-                    </button>
+                        <div className="h-6 w-0.5 bg-gray-100 dark:bg-gray-700"></div>
 
-                    <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                        <BiMenu className="text-3xl" />
-                    </button>
-                </div>
+                        <button 
+                            onClick={() => setIsDarkMode(!isDarkMode)} 
+                            className="text-2xl p-2 rounded-full transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-700"
+                        >
+                            {isDarkMode ? <BiSun className="text-gray-50" /> : <BiMoon className="text-gray-600" />}
+                        </button>
+                    </div>
 
-                {isMenuOpen && (
-                    <ul className="md:hidden absolute top-16 left-0 right-0 backdrop-blur-lg bg-black/60 space-y-5 py-5 text-center text-gray-50">
-                        {["Projects", "Skills", "About", "Contact"].map((item, index) => (
-                            <li key={index} className="group px-10 opacity-80 hover:opacity-100 transition-opacity">
-                                <a href={`#${item.toLowerCase()}`} onClick={() => setIsMenuOpen(false)}>
-                                    <span className="text-lg">{item}</span>
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
-                )}
-            </nav>
-        </header>
+                    <div className="flex items-center gap-4 md:hidden">
+                        <button 
+                            onClick={() => setIsDarkMode(!isDarkMode)} 
+                            className="text-2xl p-2 rounded-full transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-700"
+                        >
+                            {isDarkMode ? <BiSun className="text-gray-50" /> : <BiMoon className="text-gray-600" />}
+                        </button>
+
+                        <button 
+                            onClick={() => setIsMenuOpen(!isMenuOpen)}
+                            className="p-2 rounded-full transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-700"
+                        >
+                            {isMenuOpen ? (
+                                <BiX className="text-3xl text-gray-600 dark:text-gray-300" />
+                            ) : (
+                                <BiMenu className="text-3xl text-gray-600 dark:text-gray-300" />
+                            )}
+                        </button>
+                    </div>
+
+                    {isMenuOpen && (
+                        <div className="md:hidden fixed top-[4.5rem] right-4 z-50 w-64 rounded-xl bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg shadow-xl overflow-hidden transition-all duration-300">
+                            <ul className="space-y-2 py-4">
+                                {["Proyectos", "Skills", "Sobre mí", "Contacto"].map((item, index) => (
+                                    <li key={index}>
+                                        <a 
+                                            href={`#${item.toLowerCase().replace(" ", "")}`} 
+                                            onClick={() => setIsMenuOpen(false)}
+                                            className="block px-6 py-3 text-gray-800 dark:text-gray-200 hover:bg-orange-500/10 hover:text-orange-500 dark:hover:text-orange-400 transition-colors duration-200"
+                                        >
+                                            <span className="text-lg font-medium">{item}</span>
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                            <div className="border-t border-gray-200 dark:border-gray-700 px-6 py-3 flex items-center justify-between">
+                                <span className="text-gray-600 dark:text-gray-400">
+                                    {isDarkMode ? "Modo claro" : "Modo oscuro"}
+                                </span>
+                                <button 
+                                    onClick={() => setIsDarkMode(!isDarkMode)} 
+                                    className="p-2 rounded-full transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-700"
+                                >
+                                    {isDarkMode ? <BiSun className="text-xl text-gray-300" /> : <BiMoon className="text-xl text-gray-600" />}
+                                </button>
+                            </div>
+                        </div>
+                    )}
+                </nav>
+            </header>
+        </>
     );
 };
 
 export default Navbar;
-
 

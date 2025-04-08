@@ -1,89 +1,78 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import nico from "../../public/nico.jpeg";
+import { FaDownload } from 'react-icons/fa';
+import nico2 from "../../public/nico2.webp";
 
 const AboutMe = () => {
     return (
-        <div className="mx-auto max-w-6xl p-4 sm:p-10 text-white" id="sobre-mi">
-            <motion.h1
+        <div className="mx-auto max-w-6xl p-4 sm:p-10" id="sobremí">
+            <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="text-4xl sm:text-6xl text-orange-950 dark:text-gray-50 mb-10"
+                className="flex justify-center items-center gap-3 text-orange-950 dark:text-orange-50 mb-10"
             >
-                Sobre Mí
-            </motion.h1>
+                <h1 className="text-4xl sm:text-6xl">Sobre Mí</h1>
+            </motion.div>
 
             <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="flex flex-col lg:flex-row gap-10 items-center"
+                className="flex flex-col lg:flex-row gap-10 lg:items-start items-center"
             >
-                {/* Texto - Izquierda (arriba en móvil) */}
-                <div className="w-full lg:w-1/2 space-y-6">
-                    <motion.p
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5 }}
-                        className="text-lg text-gray-700 dark:text-gray-300"
-                    >
-                        ¡Hola! Soy Nicolás Varela, un apasionado Desarrollador Full Stack con experiencia en la creación de aplicaciones web modernas y escalables.
-                    </motion.p>
+                <div className="w-full lg:w-1/2 flex flex-col h-full">
+                    <div className="space-y-6">
+                        <motion.p
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.5 }}
+                            className="text-lg text-orange-900 dark:text-orange-50"
+                        >
+                            Hola, soy <strong className="text-orange-800 dark:text-orange-300">Nicolás Varela</strong>, <strong className="text-orange-800 dark:text-orange-300">Desarrollador Full Stack</strong> con experiencia en la creación de <strong className="text-orange-800 dark:text-orange-300">aplicaciones web modernas</strong> y <strong className="text-orange-800 dark:text-orange-300">escalables</strong>.
+                        </motion.p>
 
-                    <motion.p
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5, delay: 0.1 }}
-                        className="text-lg text-gray-700 dark:text-gray-300"
-                    >
-                        Mi viaje en el desarrollo web comenzó hace más de X años, y desde entonces he trabajado con diversas tecnologías tanto en el frontend como en el backend, siempre buscando aprender y mejorar mis habilidades.
-                    </motion.p>
+                        <motion.p
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.5, delay: 0.1 }}
+                            className="text-lg text-orange-900 dark:text-orange-50"
+                        >
+                            Mi ingreso al mundo del <strong className="text-orange-800 dark:text-orange-300">desarrollo web</strong> comenzó hace más de <strong className="text-orange-800 dark:text-orange-300">3 años</strong>. Desde entonces, he adquirido experiencia trabajando con diversas <strong className="text-orange-800 dark:text-orange-300">tecnologías</strong> tanto en el <strong className="text-orange-800 dark:text-orange-300">frontend</strong> como en el <strong className="text-orange-800 dark:text-orange-300">backend</strong>, siempre enfocado en el <strong className="text-orange-800 dark:text-orange-300">aprendizaje continuo</strong> y la mejora de mis habilidades.
+                        </motion.p>
 
-                    <motion.p
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                        className="text-lg text-gray-700 dark:text-gray-300"
-                    >
-                        Cuando no estoy codificando, me gusta [tus hobbies/intereses]. Creo en la importancia de [tus valores o filosofía de trabajo].
-                    </motion.p>
-
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        transition={{ duration: 0.5, delay: 0.3 }}
-                        className="pt-4"
-                    >
-                        <h3 className="text-xl font-semibold text-orange-950 dark:text-gray-100 mb-3">Tecnologías que uso:</h3>
-                        <div className="flex flex-wrap gap-2">
-                            {['React', 'Node.js', 'JavaScript', 'TypeScript', 'Next.js', 'Tailwind CSS', 'MongoDB', 'Express'].map((tech, index) => (
-                                <motion.span
-                                    key={index}
-                                    initial={{ opacity: 0 }}
-                                    whileInView={{ opacity: 1 }}
-                                    transition={{ duration: 0.3, delay: 0.1 * index }}
-                                    className="px-3 py-1 bg-orange-100 dark:bg-gray-700 text-orange-800 dark:text-orange-300 rounded-full text-sm"
-                                >
-                                    {tech}
-                                </motion.span>
-                            ))}
-                        </div>
-                    </motion.div>
+                        <motion.p
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                            className="text-lg text-orange-900 dark:text-orange-50"
+                        >
+                            Mi ingreso al mundo del <strong className="text-orange-800 dark:text-orange-300">desarrollo web</strong> comenzó hace más de <strong className="text-orange-800 dark:text-orange-300">3 años</strong>.
+                        </motion.p>
+                    </div>
+                    
+                    <div className="mt-auto flex justify-center lg:justify-start pt-10"> 
+                        <a 
+                            href="/cv.pdf" 
+                            download 
+                            className="flex items-center gap-2 bg-orange-500 text-orange-50 px-6 py-3 rounded-lg shadow-lg hover:bg-orange-600 transition"
+                        >
+                            <FaDownload /> Descargar CV
+                        </a>
+                    </div>
                 </div>
 
-                {/* Imagen - Derecha (abajo en móvil) */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5 }}
-                    className="w-full lg:w-1/2 flex justify-center"
+                    className="w-full lg:w-1/2 flex flex-col items-center"
                 >
-                    <div className="relative w-full max-w-md aspect-square rounded-xl overflow-hidden border-4 border-orange-500 dark:border-orange-400 shadow-lg">
+                    <div className="relative w-full max-w-md aspect-square rounded-xl overflow-hidden border-4 border-orange-300 dark:border-orange-300 shadow-lg">
                         <img
-                            src={nico}
+                            src={nico2}
                             alt="Nicolás Varela - Desarrollador Full Stack"
                             className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                         />

@@ -10,25 +10,42 @@ const Footer = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
-            className="bg-gray-100 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 py-6"
+            className="bg-orange-50 dark:bg-blue-950/50 border-t border-gray-200 dark:border-gray-700 py-6"
         >
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex flex-col md:flex-row items-center justify-between">
-                    {/* Derechos de autor */}
-                    <div className="text-center md:text-left mb-4 md:mb-0">
-                        <p className="text-sm text-gray-600 dark:text-gray-300">
-                            © {currentYear} Nicolás Varela. Todos los derechos reservados.
+                <div className="flex flex-col md:flex-row items-center justify-between gap-y-4">
+                    <div className="order-1 md:order-none text-center md:text-left">
+                        <p className="text-sm text-orange-950 dark:text-gray-300">
+                            © {currentYear} Nicolás Varela.
                         </p>
                     </div>
 
-                    {/* Enlaces sociales */}
-                    <div className="flex space-x-4">
+                    <div className="order-3 md:order-none hidden md:block">
+                        <nav className="flex space-x-4">
+                            <motion.a 
+                                whileHover={{ scale: 1.05 }}
+                                href="#proyectos" 
+                                className="text-sm text-orange-950 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-500 transition-colors"
+                            >
+                                Proyectos
+                            </motion.a>
+                            <motion.a 
+                                whileHover={{ scale: 1.05 }}
+                                href="#sobremí" 
+                                className="text-sm text-orange-950 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-500 transition-colors"
+                            >
+                                Sobre mí
+                            </motion.a>  
+                        </nav>      
+                    </div>
+                    
+                    <div className="order-2 md:order-none flex space-x-4">
                         <motion.a
                             whileHover={{ y: -2 }}
-                            href="https://github.com/tuusuario"
+                            href="https://github.com/NiicoVarelaa"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
+                            className="text-orange-950 hover:text-orange-500 dark:text-orange-50 dark:hover:text-orange-500 transition-colors"
                             aria-label="GitHub"
                         >
                             <FaGithub className="h-5 w-5" />
@@ -36,10 +53,10 @@ const Footer = () => {
 
                         <motion.a
                             whileHover={{ y: -2 }}
-                            href="https://linkedin.com/in/tuusuario"
+                            href="https://www.linkedin.com/in/niicolasvarelaa/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
+                            className="text-orange-950 hover:text-orange-500 dark:text-orange-50 dark:hover:text-orange-500 transition-colors"
                             aria-label="LinkedIn"
                         >
                             <FaLinkedin className="h-5 w-5" />
@@ -48,19 +65,12 @@ const Footer = () => {
                         <motion.a
                             whileHover={{ y: -2 }}
                             href="mailto:niicovarelaa@gmail.com"
-                            className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
+                            className="text-orange-950 hover:text-orange-500 dark:text-orange-50 dark:hover:text-orange-500 transition-colors"
                             aria-label="Email"
                         >
                             <FaEnvelope className="h-5 w-5" />
                         </motion.a>
                     </div>
-                </div>
-
-                {/* Mensaje adicional sutil */}
-                <div className="mt-4 text-center">
-                    <p className="text-xs text-gray-500 dark:text-gray-400">
-                        Hecho con ❤️ y React
-                    </p>
                 </div>
             </div>
         </motion.footer>

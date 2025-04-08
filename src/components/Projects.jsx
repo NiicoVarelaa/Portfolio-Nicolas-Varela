@@ -8,18 +8,18 @@ import { FaGithub } from 'react-icons/fa';
 const Projects = () => {
     return (
         <div
-            className="mx-auto max-w-6xl p-4 sm:p-10 text-white flex flex-col gap-10 sm:gap-8 items-center justify-center"
+            className="mx-auto max-w-6xl p-4 sm:p-10 flex flex-col gap-10 sm:gap-8 items-center justify-center"
             id="proyectos"
         >
-            <motion.h1
+            <motion.h2
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="text-4xl sm:text-6xl flex items-center gap-3 text-orange-950 dark:text-gray-50"
+                className="text-4xl sm:text-6xl flex items-center gap-3 text-orange-950 dark:text-orange-50"
             >
-                <FontAwesomeIcon icon={faCode} className="me-2" /> Proyectos
-            </motion.h1>
+                <FontAwesomeIcon icon={faCode} className="me-4" /> Proyectos
+            </motion.h2>
 
             <motion.div
                 initial={{ opacity: 0, y: -100 }}
