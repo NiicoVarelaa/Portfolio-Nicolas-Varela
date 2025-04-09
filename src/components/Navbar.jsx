@@ -32,7 +32,13 @@ const Navbar = () => {
                 />
             )}
 
-            <header className={`fixed top-0 w-full border-b bg-gray backdrop-blur-md z-50 transition-shadow duration-300 ${hasShadow ? "bg-gray/50 backdrop-blur-xl md:border-gray-100 dark:md:border-gray-700" : "border-transparent"}`}>
+            <header className={`fixed top-0 w-full border-b bg-gray backdrop-blur-md z-50 transition-all duration-300 ${
+                isMenuOpen 
+                    ? "border-transparent" 
+                    : hasShadow 
+                        ? "bg-gray/50 backdrop-blur-xl border-gray-100 dark:border-gray-700" 
+                        : "border-transparent"
+            }`}>
                 <nav className="max-w-6xl mx-auto py-3 px-4 sm:px-10 flex items-center justify-between text-base font-medium text-gray-600 dark:text-gray-300">
                     <a href="#home" className="text-xl md:text-2xl font-semibold text-orange-500 hover:scale-105 transition-all duration-300">
                         Nicolas Varela
@@ -76,36 +82,36 @@ const Navbar = () => {
                             )}
                         </button>
                     </div>
-
-                    {isMenuOpen && (
-                        <div className="md:hidden fixed top-[4.5rem] right-4 z-50 w-64 rounded-xl bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg shadow-xl overflow-hidden transition-all duration-300">
-                            <ul className="space-y-2 py-4">
-                                {["Proyectos", "Skills", "Sobre mí", "Contacto"].map((item, index) => (
-                                    <li key={index}>
-                                        <a 
-                                            href={`#${item.toLowerCase().replace(" ", "")}`} 
-                                            onClick={() => setIsMenuOpen(false)}
-                                            className="block px-6 py-3 text-gray-800 dark:text-gray-200 hover:bg-orange-500/10 hover:text-orange-500 dark:hover:text-orange-400 transition-colors duration-200"
-                                        >
-                                            <span className="text-lg font-medium">{item}</span>
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
-                            <div className="border-t border-gray-200 dark:border-gray-700 px-6 py-3 flex items-center justify-between">
-                                <span className="text-gray-600 dark:text-gray-400">
-                                    {isDarkMode ? "Modo claro" : "Modo oscuro"}
-                                </span>
-                                <button 
-                                    onClick={() => setIsDarkMode(!isDarkMode)} 
-                                    className="p-2 rounded-full transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-700"
-                                >
-                                    {isDarkMode ? <BiSun className="text-xl text-gray-300" /> : <BiMoon className="text-xl text-gray-600" />}
-                                </button>
-                            </div>
-                        </div>
-                    )}
                 </nav>
+
+                {isMenuOpen && (
+                    <div className="md:hidden fixed top-[4.5rem] right-4 z-50 w-64 rounded-xl bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg shadow-xl overflow-hidden transition-all duration-300">
+                        <ul className="space-y-2 py-4">
+                            {["Proyectos", "Skills", "Sobre mí", "Contacto"].map((item, index) => (
+                                <li key={index}>
+                                    <a 
+                                        href={`#${item.toLowerCase().replace(" ", "")}`} 
+                                        onClick={() => setIsMenuOpen(false)}
+                                        className="block px-6 py-3 text-gray-800 dark:text-gray-200 hover:bg-orange-500/10 hover:text-orange-500 dark:hover:text-orange-400 transition-colors duration-200"
+                                    >
+                                        <span className="text-lg font-medium">{item}</span>
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                        <div className="border-t border-gray-200 dark:border-gray-700 px-6 py-3 flex items-center justify-between">
+                            <span className="text-gray-600 dark:text-gray-400">
+                                {isDarkMode ? "Modo claro" : "Modo oscuro"}
+                            </span>
+                            <button 
+                                onClick={() => setIsDarkMode(!isDarkMode)} 
+                                className="p-2 rounded-full transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-700"
+                            >
+                                {isDarkMode ? <BiSun className="text-xl text-gray-300" /> : <BiMoon className="text-xl text-gray-600" />}
+                            </button>
+                        </div>
+                    </div>
+                )}
             </header>
         </>
     );
