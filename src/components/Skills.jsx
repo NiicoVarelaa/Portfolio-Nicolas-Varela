@@ -1,78 +1,90 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaLaptopCode } from "react-icons/fa";
 import {
-    SiHtml5, SiCss3, SiJavascript, SiTypescript, SiReact, SiTailwindcss,
+    SiJavascript, SiTypescript, SiReact, SiTailwindcss, SiNextdotjs,
     SiNodedotjs, SiExpress, SiMongodb, SiMysql, SiPython,
     SiGit, SiGithub, SiDocker
 } from "react-icons/si";
 
 const categories = {
     "Frontend": [
-        { name: "HTML5", icon: SiHtml5, color: "text-orange-500" },
-        { name: "CSS3", icon: SiCss3, color: "text-blue-500" },
-        { name: "JavaScript", icon: SiJavascript, color: "text-yellow-400" },
-        { name: "TypeScript", icon: SiTypescript, color: "text-blue-600" },
-        { name: "React", icon: SiReact, color: "text-cyan-400" },
-        { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-cyan-500" }
+        { name: "JavaScript", icon: SiJavascript, color: "text-yellow-400", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+        { name: "TypeScript", icon: SiTypescript, color: "text-blue-600", url: "https://www.typescriptlang.org/" },
+        { name: "React", icon: SiReact, color: "text-cyan-400", url: "https://reactjs.org/" },
+        { name: "Next.js", icon: SiNextdotjs, color: "text-gray-800 dark:text-gray-100", url: "https://nextjs.org/" },
+        { name: "Tailwind CSS", icon: SiTailwindcss, color: "text-cyan-500", url: "https://tailwindcss.com/" }
     ],
     "Backend": [
-        { name: "Node.js", icon: SiNodedotjs, color: "text-green-500" },
-        { name: "Express", icon: SiExpress, color: "text-gray-400" },
-        { name: "Python", icon: SiPython, color: "text-blue-700" }
+        { name: "Node.js", icon: SiNodedotjs, color: "text-green-500", url: "https://nodejs.org/" },
+        { name: "Express", icon: SiExpress, color: "text-gray-800 dark:text-gray-100", url: "https://expressjs.com/" },
+        { name: "Python", icon: SiPython, color: "text-blue-700", url: "https://www.python.org/" }
     ],
     "Bases de Datos": [
-        { name: "MongoDB", icon: SiMongodb, color: "text-green-600" },
-        { name: "MySQL", icon: SiMysql, color: "text-orange-400" }
+        { name: "MongoDB", icon: SiMongodb, color: "text-green-600", url: "https://www.mongodb.com/" },
+        { name: "MySQL", icon: SiMysql, color: "text-cyan-800 dark:text-gray-100", url: "https://www.mysql.com/" }
     ],
     "Herramientas": [
-        { name: "Git", icon: SiGit, color: "text-orange-600" },
-        { name: "GitHub", icon: SiGithub, color: "text-gray-800 dark:text-gray-200" },
-        { name: "Docker", icon: SiDocker, color: "text-blue-400" }
+        { name: "Git", icon: SiGit, color: "text-orange-600", url: "https://git-scm.com/" },
+        { name: "GitHub", icon: SiGithub, color: "text-gray-800 dark:text-gray-100", url: "https://github.com/" },
+        { name: "Docker", icon: SiDocker, color: "text-blue-400", url: "https://www.docker.com/" }
     ]
 };
 
 const Skills = () => {
     return (
-        <div
-            className="mx-auto max-w-6xl px-4 sm:px-10 py-4 sm:py-10 border border-blue-500 text-orange-50 flex flex-col gap-10 sm:gap-8 items-center justify-center"
+        <section
+            className="mx-auto max-w-6xl w-full py-20 px-4 sm:px-10 flex flex-col items-center"
             id="skills"
         >
-            <motion.h2
+            <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="text-4xl sm:text-6xl flex items-center gap-3 text-orange-950 dark:text-orange-50"
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6 }}
+                className="w-full mb-8 sm:mb-8"
             >
-                <FaLaptopCode className="me-4" /> Habilidades
-            </motion.h2>
+                <h2 className="text-3xl sm:text-4xl font-semibold text-gray-800 dark:text-gray-100">
+                    Habilidades
+                </h2>
+            </motion.div>
 
-            {Object.entries(categories).map(([category, skills], i) => (
-                <motion.div
-                    key={category}
-                    initial={{ opacity: 0, y: -50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: 0.2 * i }}
-                    className="w-full"
-                >
-                    <h2 className="text-2xl font-semibold text-orange-900 dark:text-gray-100 mb-4">{category}</h2>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
-                        {skills.map((skill, index) => (
-                            <div key={index} className="flex flex-col items-center gap-3 p-4 bg-orange-50 dark:bg-blue-950/50 dark:hover:bg-blue-900/50 rounded-xl shadow-lg hover:shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out">
-                                <div className={`text-4xl ${skill.color}`}>
-                                    <skill.icon />
-                                </div>
-                                <span className="text-sm font-medium text-orange-950 dark:text-orange-50">
-                                    {skill.name}
-                                </span>
-                            </div>
-                        ))}
-                    </div>
-                </motion.div>
-            ))}
-        </div>
+            <div className="w-full space-y-10">
+                {Object.entries(categories).map(([category, skills], i) => (
+                    <motion.div
+                        key={category}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: i * 0.1 }}
+                        className="space-y-6"
+                    >
+                        <h3 className="text-xl sm:text-2xl font-medium text-gray-700 dark:text-gray-200 text-start">
+                            {category}
+                        </h3>
+
+                        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-6">
+                            {skills.map((skill, index) => (
+                                <motion.a
+                                    key={index}
+                                    href={skill.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex flex-col items-center gap-2 cursor-pointer hover:scale-105 transition-all duration-300 "
+                                >
+                                    <div className="w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center">
+                                        <skill.icon className={`text-4xl sm:text-5xl ${skill.color} transition-colors`} />
+                                    </div>
+                                    <span className="text-sm sm:text-base font-medium text-gray-600 dark:text-gray-300 text-start">
+                                        {skill.name}
+                                    </span>
+                                </motion.a>
+                            ))}
+                        </div>
+                    </motion.div>
+                ))}
+            </div>
+        </section>
+
     );
 };
 

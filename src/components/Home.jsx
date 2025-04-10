@@ -41,16 +41,16 @@ const Home = () => {
                         </div>
 
                         <div className="space-y-2 w-full">
-                            <h2 className="text-orange-950 dark:text-gray-200 text-2xl md:text-3xl">Hola! 👋 Soy</h2>
+                            <h2 className="text-gray-800 dark:text-gray-100 text-2xl md:text-3xl font-semibold">Hola! 👋 Soy</h2>
                             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-orange-500 leading-tight">
                                 Nicolas Varela
                             </h1>
-                            <h3 className="text-xl md:text-2xl text-orange-800 dark:text-gray-300">
+                            <h3 className="text-xl font-semibold md:text-2xl text-gray-700 dark:text-gray-200">
                                 Desarrollador Full Stack
                             </h3>
                         </div>
 
-                        <p className="text-gray-700 dark:text-gray-300 max-w-md">
+                        <p className="text-gray-600 dark:text-gray-300 max-w-md">
                             Creo soluciones digitales con tecnologías modernas y diseño intuitivo.
                         </p>
 
@@ -74,7 +74,7 @@ const Home = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, delay: 0.4 }}
-                        className="w-[250px] md:w-[350px] aspect-square rounded-full overflow-hidden border-4 border-gray-200 dark:border-gray-400"
+                        className="w-[250px] md:w-[350px] aspect-square rounded-full overflow-hidden border-4 border-gray-200 dark:border-gray-700"
                     >
                         <img
                             src={nico}

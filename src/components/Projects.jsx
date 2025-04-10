@@ -41,7 +41,7 @@ const Projects = () => {
                 transition={{ duration: 0.8 }}
                 className="w-full mb-12 sm:mb-16"
             >
-                <h2 className="text-3xl md:text-4xl flex items-start justify-start gap-3 text-orange-950 dark:text-orange-50">
+                <h2 className="text-3xl sm:text-4xl font-semibold text-gray-800 dark:text-gray-100">
                     <span className="relative">
                         Proyectos                        
                     </span>
