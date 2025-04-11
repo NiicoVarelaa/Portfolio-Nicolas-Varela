@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 const Footer = () => {
@@ -10,66 +10,42 @@ const Footer = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
-            className="bg-orange-50 dark:bg-blue-950/50 border-t border-gray-200 dark:border-gray-700 py-6"
+            className="bg-orange-100/40 dark:bg-blue-950/60 border-t border-orange-200 dark:border-blue-900/60 py-6"
         >
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex flex-col md:flex-row items-center justify-between gap-y-4">
-                    <div className="order-1 md:order-none text-center md:text-left">
-                        <p className="text-sm text-orange-950 dark:text-gray-300">
-                            © {currentYear} Nicolás Varela.
-                        </p>
-                    </div>
+            <div className="max-w-6xl mx-auto px-4 sm:px-10">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-6">
 
-                    <div className="order-3 md:order-none hidden md:block">
-                        <nav className="flex space-x-4">
-                            <motion.a 
+                    <p className="text-sm text-center md:text-left text-orange-800 dark:text-gray-300 font-light tracking-wide">
+                        © {currentYear} Nicolás Varela.
+                    </p>
+
+                    <nav className="hidden md:flex space-x-6 text-sm">
+                        {[
+                            { label: 'Proyectos', href: '#proyectos' },
+                            { label: 'Sobre mí', href: '#sobremí' }
+                        ].map((link, index) => (
+                            <motion.a
+                                key={index}
                                 whileHover={{ scale: 1.05 }}
-                                href="#proyectos" 
-                                className="text-sm text-orange-950 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-500 transition-colors"
+                                href={link.href}
+                                className="text-orange-800 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400 transition-colors font-medium"
                             >
-                                Proyectos
+                                {link.label}
                             </motion.a>
-                            <motion.a 
-                                whileHover={{ scale: 1.05 }}
-                                href="#sobremí" 
-                                className="text-sm text-orange-950 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-500 transition-colors"
-                            >
-                                Sobre mí
-                            </motion.a>  
-                        </nav>      
-                    </div>
-                    
-                    <div className="order-2 md:order-none flex space-x-4">
-                        <motion.a
-                            whileHover={{ y: -2 }}
+                        ))}
+                    </nav>
+
+                    <div className="flex space-x-4">
+                        <SocialLink
                             href="https://github.com/NiicoVarelaa"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-orange-950 hover:text-orange-500 dark:text-orange-50 dark:hover:text-orange-500 transition-colors"
-                            aria-label="GitHub"
-                        >
-                            <FaGithub className="h-5 w-5" />
-                        </motion.a>
-
-                        <motion.a
-                            whileHover={{ y: -2 }}
+                            icon={<FaGithub />}
+                            label="GitHub"
+                        />
+                        <SocialLink
                             href="https://www.linkedin.com/in/niicolasvarelaa/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-orange-950 hover:text-orange-500 dark:text-orange-50 dark:hover:text-orange-500 transition-colors"
-                            aria-label="LinkedIn"
-                        >
-                            <FaLinkedin className="h-5 w-5" />
-                        </motion.a>
-
-                        <motion.a
-                            whileHover={{ y: -2 }}
-                            href="mailto:niicovarelaa@gmail.com"
-                            className="text-orange-950 hover:text-orange-500 dark:text-orange-50 dark:hover:text-orange-500 transition-colors"
-                            aria-label="Email"
-                        >
-                            <FaEnvelope className="h-5 w-5" />
-                        </motion.a>
+                            icon={<FaLinkedin />}
+                            label="LinkedIn"
+                        />
                     </div>
                 </div>
             </div>
@@ -77,4 +53,19 @@ const Footer = () => {
     );
 };
 
+const SocialLink = ({ href, icon, label }) => (
+    <motion.a
+        whileHover={{ y: -2 }}
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={label}
+        className="text-orange-800 hover:text-orange-500 dark:text-orange-50 dark:hover:text-orange-400 transition-colors"
+    >
+        <span className="sr-only">{label}</span>
+        <div className="h-5 w-5">{icon}</div>
+    </motion.a>
+);
+
 export default Footer;
+
