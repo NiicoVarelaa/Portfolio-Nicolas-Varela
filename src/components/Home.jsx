@@ -74,7 +74,7 @@ const Home = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8, delay: 0.4 }}
-                        className="w-[250px] md:w-[350px] aspect-square rounded-full overflow-hidden border-4 border-gray-200 dark:border-gray-700"
+                        className="w-[250px] md:w-[350px] aspect-square rounded-full overflow-hidden border-4 border-gray-300 dark:border-gray-700"
                     >
                         <img
                             src={nico}

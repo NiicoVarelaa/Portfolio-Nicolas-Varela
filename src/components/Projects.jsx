@@ -6,32 +6,9 @@ import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FaGithub } from 'react-icons/fa';
 
 const Projects = () => {
-    useEffect(() => {
-        const handleHashChange = () => {
-            if (window.location.hash === '#proyectos') {
-                const element = document.getElementById('proyectos');
-                if (element) {
-                    const offset = 100; // Ajuste visual
-                    const bodyRect = document.body.getBoundingClientRect().top;
-                    const elementRect = element.getBoundingClientRect().top;
-                    const elementPosition = elementRect - bodyRect;
-                    const offsetPosition = elementPosition - offset;
-                    
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            }
-        };
-
-        window.addEventListener('hashchange', handleHashChange);
-        return () => window.removeEventListener('hashchange', handleHashChange);
-    }, []);
-
     return (
         <section
-            className="mx-auto max-w-6xl w-full py-20 px-4 sm:px-10 flex flex-col items-center"
+            className="mx-auto max-w-6xl w-full min-h-screen py-20 px-4 sm:px-10 flex flex-col justify-center items-center"
             id="proyectos"
         >
             <motion.div
@@ -39,12 +16,10 @@ const Projects = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.8 }}
-                className="w-full mb-12 sm:mb-16"
+                className="w-full mb-8 sm:mb-8"
             >
                 <h2 className="text-3xl sm:text-4xl font-semibold text-gray-800 dark:text-gray-100">
-                    <span className="relative">
-                        Proyectos                        
-                    </span>
+                    <span className="relative">Proyectos</span>
                 </h2>
             </motion.div>
 
@@ -53,7 +28,7 @@ const Projects = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full -mt-6"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full"
             >
                 {projectData.map((project) => (
                     <motion.div
@@ -61,9 +36,9 @@ const Projects = () => {
                         whileHover={{ y: -5 }}
                         className="flex flex-col rounded-xl overflow-hidden transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-orange-400/30 h-full"
                     >
-                        <a 
-                            href={project.link} 
-                            target="_blank" 
+                        <a
+                            href={project.link}
+                            target="_blank"
                             rel="noopener noreferrer"
                             className="block overflow-hidden"
                         >
@@ -74,7 +49,7 @@ const Projects = () => {
                                 whileHover={{ scale: 1.05 }}
                             />
                         </a>
-                        
+
                         <div className="flex flex-col bg-orange-50/50 dark:bg-blue-950/50 p-5 flex-grow border-t-4 border-orange-400 dark:border-orange-500">
                             <div className="mb-4">
                                 <h3 className="text-xl font-bold text-orange-600 dark:text-orange-400 mb-2">
@@ -84,7 +59,7 @@ const Projects = () => {
                                     {project.description}
                                 </p>
                             </div>
-                            
+
                             <div className="flex gap-2 flex-wrap mb-5">
                                 {project.technologies.map((tech, index) => (
                                     <span

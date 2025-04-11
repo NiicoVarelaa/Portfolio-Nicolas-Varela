@@ -1,177 +1,191 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
+import Swal from 'sweetalert2';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa';
 
 const Contact = () => {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-    });
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors, isSubmitting },
+    } = useForm();
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            [name]: value
-        }));
-    };
+    const onSubmit = async (data) => {
+        Swal.fire({
+            title: 'Enviando...',
+            text: 'Por favor esperá un momento',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        window.location.href = `mailto:niicovarelaa@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Nombre: ${formData.name}\nEmail: ${formData.email}\n\nMensaje:\n${formData.message}`)}`;
+        const res = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+            },
+            body: JSON.stringify({
+                access_key: "8046450a-746b-45f8-8c2c-12ba1126f2d4", 
+                ...data
+            }),
+        });
+
+        const result = await res.json();
+        Swal.close();
+
+        if (result.success) {
+            Swal.fire({
+                title: '¡Mensaje enviado!',
+                text: 'Gracias por contactarme. Te responderé pronto.',
+                icon: 'success',
+                confirmButtonColor: '#f97316',
+                confirmButtonText: 'Cerrar'
+            });
+            reset();
+        } else {
+            Swal.fire({
+                title: '¡Ups! Algo salió mal',
+                text: 'No se pudo enviar tu mensaje. Intentalo más tarde.',
+                icon: 'error',
+                confirmButtonColor: '#ef4444',
+                confirmButtonText: 'Ok'
+            });
+        }
     };
 
     return (
-        <div className="mx-auto max-w-6xl p-4 sm:p-10" id="contacto">
-            <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="text-4xl sm:text-6xl flex items-center justify-center gap-3 text-orange-950 dark:text-orange-50 mb-10"
-            >
-                <FaPaperPlane className='me-4' /> Contacto
-            </motion.h2>
+        <section className="mx-auto max-w-6xl w-full min-h-screen px-4 sm:px-10 py-20 flex items-center" id="contacto">
+            <div className="w-full">
+                <motion.h2
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="text-3xl sm:text-4xl font-semibold text-gray-800 dark:text-gray-100 mb-8 sm:mb-8"
+                >
+                    Contacto
+                </motion.h2>
 
-            <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="flex flex-col lg:flex-row gap-10"
-            >
-                {/* Sección de información de contacto */}
-                <div className="w-full lg:w-1/2 space-y-6">
-                    <motion.div
-                        whileHover={{ x: 5 }}
-                        className="flex items-start gap-4"
-                    >
-                        <div className="text-orange-500 dark:text-orange-500 mt-1">
-                            <FaPhone size={20} />
-                        </div>
-                        <div>
-                            <h3 className="text-xl font-semibold text-orange-950 dark:text-orange-50">Teléfono</h3>
-                            <p className="text-orange-800 dark:text-gray-200">+54 381 3487-709</p>
-                        </div>
-                    </motion.div>
+                <div className="flex flex-col lg:flex-row gap-10">
+                    <div className="w-full lg:w-1/2 space-y-6">
+                        <Info icon={<FaPhone />} title="Teléfono" text="+54 381 3487-709" />
+                        <Info icon={<FaEnvelope />} title="Email" text="niicovarelaa@gmail.com" />
+                        <Info icon={<FaMapMarkerAlt />} title="Ubicación" text="Tucumán, Argentina" />
+                    </div>
 
-                    <motion.div
-                        whileHover={{ x: 5 }}
-                        className="flex items-start gap-4"
-                    >
-                        <div className="text-orange-500 dark:text-orange-500 mt-1">
-                            <FaEnvelope size={20} />
-                        </div>
-                        <div>
-                            <h3 className="text-xl font-semibold text-orange-950 dark:text-orange-50">Email</h3>
-                            <p className="text-orange-800 dark:text-gray-200">niicovarelaa@gmail.com</p>
-                        </div>
-                    </motion.div>
+                    <div className="w-full lg:w-1/2">
+                        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
 
-                    <motion.div
-                        whileHover={{ x: 5 }}
-                        className="flex items-start gap-4"
-                    >
-                        <div className="text-orange-500 dark:text-orange-500 mt-1">
-                            <FaMapMarkerAlt size={20} />
-                        </div>
-                        <div>
-                            <h3 className="text-xl font-semibold text-orange-950 dark:text-orange-50">Ubicación</h3>
-                            <p className="text-orange-800 dark:text-gray-200">Tucuman, Argentina</p>
-                        </div>
-                    </motion.div>
-                </div>
+                            <input type="checkbox" style={{ display: "none" }} {...register("botcheck")} />
 
-                {/* Formulario de contacto */}
-                <div className="w-full lg:w-1/2">
-                    <form onSubmit={handleSubmit} className="space-y-4">
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5 }}
-                            className="space-y-1"
-                        >
-                            <label htmlFor="name" className="block text-md font-medium text-orange-500">Nombre</label>
-                            <input
-                                type="text"
-                                id="name"
+                            <Input
+                                label="Nombre"
                                 name="name"
-                                value={formData.name}
-                                onChange={handleChange}
-                                required
-                                className="w-full px-4 py-2 border bg-orange-50 border-orange-950 dark:border-orange-100 text-orange-950 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 dark:bg-blue-950/50 dark:text-orange-50"
+                                register={register}
+                                required="Tu nombre es requerido"
+                                error={errors.name}
                             />
-                        </motion.div>
 
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.1 }}
-                            className="space-y-1"
-                        >
-                            <label htmlFor="email" className="block text-md font-medium text-orange-500">Email</label>
-                            <input
-                                type="email"
-                                id="email"
+                            <Input
+                                label="Email"
                                 name="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                required
-                                className="w-full px-4 py-2 border bg-orange-50 border-orange-950 dark:border-orange-100 text-orange-950 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 dark:bg-blue-950/50 dark:text-orange-50"
+                                type="email"
+                                register={register}
+                                required="El email es requerido"
+                                pattern={{
+                                    value: /^\S+@\S+$/i,
+                                    message: "Formato de email inválido"
+                                }}
+                                error={errors.email}
                             />
-                        </motion.div>
 
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.2 }}
-                            className="space-y-1"
-                        >
-                            <label htmlFor="subject" className="block text-md font-medium text-orange-500">Asunto</label>
-                            <input
-                                type="text"
-                                id="subject"
+                            <Input
+                                label="Asunto"
                                 name="subject"
-                                value={formData.subject}
-                                onChange={handleChange}
-                                required
-                                className="w-full px-4 py-2 border bg-orange-50 border-orange-950 dark:border-orange-100 text-orange-950 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 dark:bg-blue-950/50 dark:text-orange-50"
+                                register={register}
+                                required="El asunto es obligatorio"
+                                error={errors.subject}
                             />
-                        </motion.div>
 
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.3 }}
-                            className="space-y-1"
-                        >
-                            <label htmlFor="message" className="block text-md font-medium text-orange-500">Mensaje</label>
-                            <textarea
-                                id="message"
+                            <Textarea
+                                label="Mensaje"
                                 name="message"
-                                rows="5"
-                                value={formData.message}
-                                onChange={handleChange}
-                                required
-                                className="w-full px-4 py-2 border bg-orange-50 border-orange-950 dark:border-orange-100 text-orange-950 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 dark:bg-blue-950/50 dark:text-orange-50"
-                            ></textarea>
-                        </motion.div>
+                                register={register}
+                                required="Escribí un mensaje"
+                                error={errors.message}
+                            />
 
-                        <motion.button
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            type="submit"
-                            className="w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-4 rounded-lg transition duration-300 flex items-center justify-center gap-2"
-                        >
-                            <FaPaperPlane /> Enviar Mensaje
-                        </motion.button>
-                    </form>
+                            <motion.button
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
+                                type="submit"
+                                disabled={isSubmitting}
+                                className="w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-4 rounded-lg transition duration-300 flex items-center justify-center gap-2"
+                            >
+                                <FaPaperPlane /> {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
+                            </motion.button>
+                        </form>
+                    </div>
                 </div>
-            </motion.div>
-        </div>
+            </div>
+        </section>
     );
 };
 
+const Info = ({ icon, title, text }) => (
+    <motion.div whileHover={{ x: 5 }} className="flex items-start gap-4">
+        <div className="text-orange-500 mt-1">{icon}</div>
+        <div>
+            <h3 className="text-xl font-semibold text-gray-700 dark:text-gray-200">{title}</h3>
+            <p className="text-gray-600 dark:text-gray-300">{text}</p>
+        </div>
+    </motion.div>
+);
+
+const Input = ({ label, name, type = "text", register, required, pattern, error }) => (
+    <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="space-y-1"
+    >
+        <label htmlFor={name} className="block text-md font-medium text-orange-500">{label}</label>
+        <input
+            type={type}
+            id={name}
+            className="w-full px-4 py-2 bg-white/80 dark:bg-blue-900/60 border border-orange-200 dark:border-orange-500 text-orange-950 dark:text-orange-100 rounded-lg shadow-sm focus:ring-2 focus:ring-orange-500 focus:outline-none"
+            {...register(name, { required, pattern })}
+        />
+        {error && <p className="text-sm text-red-600">{error.message}</p>}
+    </motion.div>
+);
+
+const Textarea = ({ label, name, register, required, error }) => (
+    <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="space-y-1"
+    >
+        <label htmlFor={name} className="block text-md font-medium text-orange-500">{label}</label>
+        <textarea
+            id={name}
+            rows="5"
+            className="w-full px-4 py-2 bg-white/80 dark:bg-blue-900/60 border border-orange-200 dark:border-orange-500 text-orange-950 dark:text-orange-100 rounded-lg shadow-sm focus:ring-2 focus:ring-orange-500 focus:outline-none"
+            {...register(name, { required })}
+        ></textarea>
+        {error && <p className="text-sm text-red-600">{error.message}</p>}
+    </motion.div>
+);
+
 export default Contact;
+
+
+
+
+
