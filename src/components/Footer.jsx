@@ -1,9 +1,15 @@
-import React from 'react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import { useLanguage } from "../context/LanguageContext";
+import es from "../locales/es";
+import en from "../locales/en";
+
+const languages = { es, en };
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
+    const { lang } = useLanguage();
+    const t = languages[lang].footer; 
 
     return (
         <motion.footer
@@ -16,13 +22,13 @@ const Footer = () => {
                 <div className="flex flex-col md:flex-row items-center justify-between gap-6">
 
                     <p className="text-sm text-center md:text-left text-orange-800 dark:text-gray-300 font-light tracking-wide">
-                        © {currentYear} Nicolás Varela.
+                        {t.copyright.replace("{year}", currentYear)}
                     </p>
 
                     <nav className="hidden md:flex space-x-6 text-sm">
-                        {[
-                            { label: 'Proyectos', href: '#proyectos' },
-                            { label: 'Sobre mí', href: '#sobremí' }
+                        {[ 
+                            { label: t.projects, href: '#proyectos' }, 
+                            { label: t.aboutMe, href: '#sobremí' }
                         ].map((link, index) => (
                             <motion.a
                                 key={index}
@@ -68,4 +74,3 @@ const SocialLink = ({ href, icon, label }) => (
 );
 
 export default Footer;
-

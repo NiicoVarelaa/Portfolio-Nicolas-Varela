@@ -1,39 +1,38 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { FaGraduationCap, FaCertificate, FaUser } from 'react-icons/fa';
 import nico2 from "../../public/nico2.webp";
+import { useLanguage } from "../context/LanguageContext";
+import es from "../locales/es";
+import en from "../locales/en";
 
-const timeline = [
-    {
-        icon: <FaUser />,
-        description: `Hola, soy Nicolás Varela, Desarrollador Full Stack con experiencia en la creación de aplicaciones web modernas y escalables. Ingresé al mundo del desarrollo hace más de 3 años.`,
-    },
-    {
-        icon: <FaGraduationCap />,
-        title: "Educación",
-        description: `Estudiante de la Tecnicatura Universitaria en Programación en la Universidad Tecnológica Nacional - Facultad Regional Tucumán (UTN-FRT).`,
-    },
-    {
-        icon: <FaCertificate />,
-        title: "Certificaciones",
-        certificates: [
-            {
-                name: "FullStack Web Developer - RollingCode",
-                image: "https://certs.rollingcodeschool.com//bmlpY292YXJlbGFhQGdtYWlsLmNvbQ==-1689275429296-1.png"
-            },
-            {
-                name: "React - Coderhouse",
-                image: "/certificados/react.png"
-            },
-            {
-                name: "Backend con Node.js - Udemy",
-                image: "/certificados/node.png"
-            }
-        ]
-    }
-];
+const languages = { es, en };
 
 const AboutMe = () => {
+    const { lang } = useLanguage();
+    const t = languages[lang].about;
+
+    const timeline = [
+        {
+            icon: <FaUser />,
+            description: t.intro,
+        },
+        {
+            icon: <FaGraduationCap />,
+            title: t.educationTitle,
+            description: t.educationText,
+        },
+        {
+            icon: <FaCertificate />,
+            title: t.certificationTitle,
+            certificates: [
+                {
+                    name: t.certificates[0],
+                    image: "https://certs.rollingcodeschool.com//bmlpY292YXJlbGFhQGdtYWlsLmNvbQ==-1689275429296-1.png"
+                }
+            ]
+        }
+    ];
+
     return (
         <section
             className="mx-auto max-w-6xl w-full min-h-screen py-20 px-4 sm:px-10 flex flex-col justify-center"
@@ -47,12 +46,11 @@ const AboutMe = () => {
                 className="w-full mb-8"
             >
                 <h2 className="text-3xl sm:text-4xl font-semibold text-gray-800 dark:text-gray-100">
-                    Sobre Mí
+                    {t.sectionTitle}
                 </h2>
             </motion.div>
 
             <div className="flex flex-col lg:flex-row-reverse gap-10">
-                {/* Imagen */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
@@ -68,7 +66,6 @@ const AboutMe = () => {
                     </div>
                 </motion.div>
 
-                {/* Timeline */}
                 <div className="w-full lg:w-1/2 space-y-10">
                     {timeline.map((item, index) => (
                         <motion.div

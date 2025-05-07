@@ -3,8 +3,16 @@ import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
 import Swal from 'sweetalert2';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa';
+import { useLanguage } from '../context/LanguageContext';
+import es from "../locales/es";
+import en from "../locales/en";
+
+const languages = { es, en };
 
 const Contact = () => {
+    const { lang } = useLanguage();
+    const t = languages[lang].contact;
+
     const {
         register,
         handleSubmit,
@@ -14,8 +22,8 @@ const Contact = () => {
 
     const onSubmit = async (data) => {
         Swal.fire({
-            title: 'Enviando...',
-            text: 'Por favor esperá un momento',
+            title: t.sendingTitle,
+            text: t.sendingText,
             allowOutsideClick: false,
             allowEscapeKey: false,
             didOpen: () => {
@@ -40,20 +48,20 @@ const Contact = () => {
 
         if (result.success) {
             Swal.fire({
-                title: '¡Mensaje enviado!',
-                text: 'Gracias por contactarme. Te responderé pronto.',
+                title: t.successTitle,
+                text: t.successText,
                 icon: 'success',
                 confirmButtonColor: '#f97316',
-                confirmButtonText: 'Cerrar'
+                confirmButtonText: 'OK'
             });
             reset();
         } else {
             Swal.fire({
-                title: '¡Ups! Algo salió mal',
-                text: 'No se pudo enviar tu mensaje. Intentalo más tarde.',
+                title: t.errorTitle,
+                text: t.errorText,
                 icon: 'error',
                 confirmButtonColor: '#ef4444',
-                confirmButtonText: 'Ok'
+                confirmButtonText: 'OK'
             });
         }
     };
@@ -68,14 +76,14 @@ const Contact = () => {
                     transition={{ duration: 0.8 }}
                     className="text-3xl sm:text-4xl font-semibold text-gray-800 dark:text-gray-100 mb-8 sm:mb-8"
                 >
-                    Contacto
+                    {t.sectionTitle}
                 </motion.h2>
 
                 <div className="flex flex-col lg:flex-row gap-10">
                     <div className="w-full lg:w-1/2 space-y-6">
-                        <Info icon={<FaPhone />} title="Teléfono" text="+54 381 3487-709" />
+                        <Info icon={<FaPhone />} title={t.phone} text="+54 381 3487-709" />
                         <Info icon={<FaEnvelope />} title="Email" text="niicovarelaa@gmail.com" />
-                        <Info icon={<FaMapMarkerAlt />} title="Ubicación" text="Tucumán, Argentina" />
+                        <Info icon={<FaMapMarkerAlt />} title={t.location} text="Tucumán, Argentina" />
                     </div>
 
                     <div className="w-full lg:w-1/2">
@@ -84,39 +92,39 @@ const Contact = () => {
                             <input type="checkbox" style={{ display: "none" }} {...register("botcheck")} />
 
                             <Input
-                                label="Nombre"
+                                label={t.name}
                                 name="name"
                                 register={register}
-                                required="Tu nombre es requerido"
+                                required={t.validations.nameRequired}
                                 error={errors.name}
                             />
 
                             <Input
-                                label="Email"
+                                label={t.email}
                                 name="email"
                                 type="email"
                                 register={register}
-                                required="El email es requerido"
+                                required={t.validations.emailRequired}
                                 pattern={{
                                     value: /^\S+@\S+$/i,
-                                    message: "Formato de email inválido"
+                                    message: t.validations.emailInvalid
                                 }}
                                 error={errors.email}
                             />
 
                             <Input
-                                label="Asunto"
+                                label={t.subject}
                                 name="subject"
                                 register={register}
-                                required="El asunto es obligatorio"
+                                required={t.validations.subjectRequired}
                                 error={errors.subject}
                             />
 
                             <Textarea
-                                label="Mensaje"
+                                label={t.message}
                                 name="message"
                                 register={register}
-                                required="Escribí un mensaje"
+                                required={t.validations.messageRequired}
                                 error={errors.message}
                             />
 
@@ -127,7 +135,7 @@ const Contact = () => {
                                 disabled={isSubmitting}
                                 className="w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-2 px-4 rounded-lg transition duration-300 flex items-center justify-center gap-2"
                             >
-                                <FaPaperPlane /> {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
+                                <FaPaperPlane /> {isSubmitting ? t.sending : t.send}
                             </motion.button>
                         </form>
                     </div>
@@ -184,8 +192,3 @@ const Textarea = ({ label, name, register, required, error }) => (
 );
 
 export default Contact;
-
-
-
-
-

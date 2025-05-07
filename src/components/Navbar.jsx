@@ -1,11 +1,19 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { BiMenu, BiSun, BiMoon, BiX } from "react-icons/bi";
+import { useLanguage } from "../context/LanguageContext";
 import useDarkMode from "../hooks/useDarkMode";
+
+import es from "../locales/es";
+import en from "../locales/en";
+
+const languages = { es, en };
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [hasShadow, setHasShadow] = useState(false);
     const [isDarkMode, setIsDarkMode] = useDarkMode();
+    const { lang, toggleLanguage } = useLanguage();
+    const t = languages[lang];
 
     useEffect(() => {
         const handleScroll = () => {
@@ -16,17 +24,20 @@ const Navbar = () => {
     }, []);
 
     useEffect(() => {
-        if (isMenuOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'unset';
-        }
+        document.body.style.overflow = isMenuOpen ? "hidden" : "unset";
     }, [isMenuOpen]);
+
+    const navItems = [
+        { label: t.navbar.projects, id: "proyectos" },
+        { label: t.navbar.skills, id: "skills" },
+        { label: t.navbar.about, id: "sobremí" },
+        { label: t.navbar.contact, id: "contacto" },
+    ];
 
     return (
         <>
             {isMenuOpen && (
-                <div 
+                <div
                     className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40"
                     onClick={() => setIsMenuOpen(false)}
                 />
@@ -40,20 +51,44 @@ const Navbar = () => {
                         : "border-transparent"
             }`}>
                 <nav className="max-w-6xl mx-auto py-3 px-4 sm:px-10 flex items-center justify-between text-base font-medium text-gray-600 dark:text-gray-300">
-                    <a href="#home" className="text-xl md:text-2xl font-semibold text-orange-500 hover:scale-105 transition-all duration-300">
+                    <a href="#home" className="text-xl lg:text-2xl font-semibold text-orange-500 hover:scale-105 transition-all duration-300">
                         Nicolas Varela
                     </a>
 
-                    <div className="hidden md:flex items-center gap-10 ml-auto">
+                    <div className="hidden lg:flex items-center gap-10 ml-auto">
                         <ul className="flex gap-10">
-                            {["Proyectos", "Skills", "Sobre mí", "Contacto"].map((item, index) => (
+                            {navItems.map((item, index) => (
                                 <li key={index} className="group duration-300 relative">
-                                    <a href={`#${item.toLowerCase().replace(" ", "")}`} className="hover:text-gray-900 dark:hover:text-gray-50">{item}</a>
+                                    <a href={`#${item.id}`} className="hover:text-gray-900 dark:hover:text-gray-50">{item.label}</a>
                                 </li>
                             ))}
                         </ul>
 
                         <div className="h-6 w-0.5 bg-gray-100 dark:bg-gray-700"></div>
+
+                        <div className="flex items-center gap-3">
+                            <button
+                                disabled={lang === "es"}
+                                onClick={() => toggleLanguage("es")}
+                                className={`p-1 rounded-sm transition-colors duration-300 ${
+                                    lang === "es" ? "opacity-50 cursor-default" : "hover:bg-gray-200 dark:hover:bg-gray-700"
+                                }`}
+                                aria-label="Español"
+                            >
+                                <img src="./public/flags/es.png" alt="Español" className="w-6 h-4" />
+                            </button>
+
+                            <button
+                                disabled={lang === "en"}
+                                onClick={() => toggleLanguage("en")}
+                                className={`p-1 rounded-sm transition-colors duration-300 ${
+                                    lang === "en" ? "opacity-50 cursor-default" : "hover:bg-gray-200 dark:hover:bg-gray-700"
+                                }`}
+                                aria-label="English"
+                            >
+                                <img src="./public/flags/en.png" alt="English" className="w-6 h-4" />
+                            </button>
+                        </div>
 
                         <button 
                             onClick={() => setIsDarkMode(!isDarkMode)} 
@@ -63,7 +98,7 @@ const Navbar = () => {
                         </button>
                     </div>
 
-                    <div className="flex items-center gap-4 md:hidden">
+                    <div className="flex items-center gap-4 lg:hidden">
                         <button 
                             onClick={() => setIsDarkMode(!isDarkMode)} 
                             className="text-2xl p-2 rounded-full transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-700"
@@ -85,29 +120,47 @@ const Navbar = () => {
                 </nav>
 
                 {isMenuOpen && (
-                    <div className="md:hidden fixed top-[4.5rem] right-4 z-50 w-64 rounded-xl bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg shadow-xl overflow-hidden transition-all duration-300">
+                    <div className="lg:hidden fixed top-[4.5rem] right-4 z-50 w-64 rounded-xl bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg shadow-xl overflow-hidden transition-all duration-300">
                         <ul className="space-y-2 py-4">
-                            {["Proyectos", "Skills", "Sobre mí", "Contacto"].map((item, index) => (
+                            {navItems.map((item, index) => (
                                 <li key={index}>
                                     <a 
-                                        href={`#${item.toLowerCase().replace(" ", "")}`} 
+                                        href={`#${item.id}`} 
                                         onClick={() => setIsMenuOpen(false)}
                                         className="block px-6 py-3 text-gray-800 dark:text-gray-200 hover:bg-orange-500/10 hover:text-orange-500 dark:hover:text-orange-400 transition-colors duration-200"
                                     >
-                                        <span className="text-lg font-medium">{item}</span>
+                                        <span className="text-lg font-medium">{item.label}</span>
                                     </a>
                                 </li>
                             ))}
                         </ul>
                         <div className="border-t border-gray-200 dark:border-gray-700 px-6 py-3 flex items-center justify-between">
                             <span className="text-gray-600 dark:text-gray-400">
-                                {isDarkMode ? "Modo claro" : "Modo oscuro"}
+                                {isDarkMode ? t.navbar.lightMode : t.navbar.darkMode}
                             </span>
                             <button 
                                 onClick={() => setIsDarkMode(!isDarkMode)} 
                                 className="p-2 rounded-full transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-700"
                             >
                                 {isDarkMode ? <BiSun className="text-xl text-gray-300" /> : <BiMoon className="text-xl text-gray-600" />}
+                            </button>
+                        </div>
+
+                        <div className="px-6 py-3 flex items-center justify-between">
+                            <button
+                                onClick={() => toggleLanguage("es")}
+                                className="p-1 rounded-sm transition-colors duration-300"
+                                aria-label="Español"
+                            >
+                                <img src="./public/flags/es.png" alt="Español" className="w-6 h-4" />
+                            </button>
+
+                            <button
+                                onClick={() => toggleLanguage("en")}
+                                className="p-1 rounded-sm transition-colors duration-300"
+                                aria-label="English"
+                            >
+                                <img src="./public/flags/en.png" alt="English" className="w-6 h-4" />
                             </button>
                         </div>
                     </div>
@@ -118,4 +171,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-

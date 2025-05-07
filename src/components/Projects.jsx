@@ -1,15 +1,22 @@
-import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { projectData } from "../projectData";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
-import { FaGithub } from 'react-icons/fa';
+import { FaGithub } from "react-icons/fa";
+import { useLanguage } from "../context/LanguageContext";
+import es from "../locales/es";
+import en from "../locales/en";
+
+const languages = { es, en };
 
 const Projects = () => {
+    const { lang } = useLanguage();
+    const t = languages[lang].projects;
+
     return (
         <section
             className="mx-auto max-w-6xl w-full min-h-screen py-20 px-4 sm:px-10 flex flex-col justify-center items-center"
-            id="proyectos"
+            id="projects"
         >
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -19,7 +26,7 @@ const Projects = () => {
                 className="w-full mb-8 sm:mb-8"
             >
                 <h2 className="text-3xl sm:text-4xl font-semibold text-gray-800 dark:text-gray-100">
-                    <span className="relative">Proyectos</span>
+                    <span className="relative">{t.sectionTitle}</span>
                 </h2>
             </motion.div>
 
@@ -30,7 +37,7 @@ const Projects = () => {
                 transition={{ duration: 0.8, delay: 0.3 }}
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full"
             >
-                {projectData.map((project) => (
+                {projectData.map((project, index) => (
                     <motion.div
                         key={project.id}
                         whileHover={{ y: -5 }}
@@ -45,7 +52,7 @@ const Projects = () => {
                             <motion.img
                                 src={project.image}
                                 className="w-full h-48 sm:h-56 object-cover transition-transform duration-500 hover:scale-110"
-                                alt={`Captura del proyecto ${project.title}`}
+                                alt={`Project screenshot ${t.projectList[index].title}`}
                                 whileHover={{ scale: 1.05 }}
                             />
                         </a>
@@ -53,17 +60,17 @@ const Projects = () => {
                         <div className="flex flex-col bg-orange-50/50 dark:bg-blue-950/50 p-5 flex-grow border-t-4 border-orange-400 dark:border-orange-500">
                             <div className="mb-4">
                                 <h3 className="text-xl font-bold text-orange-600 dark:text-orange-400 mb-2">
-                                    {project.title}
+                                    {t.projectList[index].title}
                                 </h3>
                                 <p className="text-sm text-orange-950/90 dark:text-orange-50/90">
-                                    {project.description}
+                                    {t.projectList[index].description}
                                 </p>
                             </div>
 
                             <div className="flex gap-2 flex-wrap mb-5">
-                                {project.technologies.map((tech, index) => (
+                                {project.technologies.map((tech, i) => (
                                     <span
-                                        key={index}
+                                        key={i}
                                         className="px-3 py-1 bg-orange-100 text-orange-800 dark:bg-blue-900/80 dark:text-orange-200 rounded-full text-xs font-medium"
                                     >
                                         {tech}
@@ -80,7 +87,7 @@ const Projects = () => {
                                         className="flex-1 flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-orange-50 bg-orange-500 hover:bg-orange-600 rounded-lg transition-colors dark:bg-orange-600 dark:hover:bg-orange-700"
                                     >
                                         <FaGithub />
-                                        <span>Código</span>
+                                        <span>{t.code}</span>
                                     </a>
                                 )}
                                 <a
@@ -90,7 +97,7 @@ const Projects = () => {
                                     className="flex-1 flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-orange-50 bg-orange-500 hover:bg-orange-600 rounded-lg transition-colors dark:bg-orange-600 dark:hover:bg-orange-700"
                                 >
                                     <FontAwesomeIcon icon={faExternalLinkAlt} />
-                                    <span>Demo</span>
+                                    <span>{t.demo}</span>
                                 </a>
                             </div>
                         </div>
