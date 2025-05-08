@@ -43,13 +43,12 @@ const Navbar = () => {
                 />
             )}
 
-            <header className={`fixed top-0 w-full border-b bg-gray backdrop-blur-md z-50 transition-all duration-300 ${
-                isMenuOpen 
-                    ? "border-transparent" 
-                    : hasShadow 
-                        ? "bg-gray/50 backdrop-blur-xl border-gray-100 dark:border-gray-700" 
+            <header className={`fixed top-0 w-full border-b bg-gray backdrop-blur-md z-50 transition-all duration-300 ${isMenuOpen
+                    ? "border-transparent"
+                    : hasShadow
+                        ? "bg-gray/50 backdrop-blur-xl border-gray-100 dark:border-gray-700"
                         : "border-transparent"
-            }`}>
+                }`}>
                 <nav className="max-w-6xl mx-auto py-3 px-4 sm:px-10 flex items-center justify-between text-base font-medium text-gray-600 dark:text-gray-300">
                     <a href="#home" className="text-xl lg:text-2xl font-semibold text-orange-500 hover:scale-105 transition-all duration-300">
                         Nicolas Varela
@@ -70,28 +69,42 @@ const Navbar = () => {
                             <button
                                 disabled={lang === "es"}
                                 onClick={() => toggleLanguage("es")}
-                                className={`p-1 rounded-sm transition-colors duration-300 ${
-                                    lang === "es" ? "opacity-50 cursor-default" : "hover:bg-gray-200 dark:hover:bg-gray-700"
-                                }`}
+                                className={`p-1 rounded-sm transition-colors duration-300 ${lang === "es" ? "opacity-50 cursor-default" : "hover:bg-gray-200 dark:hover:bg-gray-700"
+                                    }`}
                                 aria-label="Español"
                             >
-                                <img src="./public/flags/es.png" alt="Español" className="w-6 h-4" />
+                                <img
+                                    src="./public/flags/es.webp"
+                                    alt="Español"
+                                    loading="lazy"
+                                    decoding="async"
+                                    width="24"
+                                    height="16"
+                                    className="w-6 h-4"
+                                />
                             </button>
 
                             <button
                                 disabled={lang === "en"}
                                 onClick={() => toggleLanguage("en")}
-                                className={`p-1 rounded-sm transition-colors duration-300 ${
-                                    lang === "en" ? "opacity-50 cursor-default" : "hover:bg-gray-200 dark:hover:bg-gray-700"
-                                }`}
+                                className={`p-1 rounded-sm transition-colors duration-300 ${lang === "en" ? "opacity-50 cursor-default" : "hover:bg-gray-200 dark:hover:bg-gray-700"
+                                    }`}
                                 aria-label="English"
                             >
-                                <img src="./public/flags/en.png" alt="English" className="w-6 h-4" />
+                                <img
+                                    src="./public/flags/en.webp"
+                                    alt="English"
+                                    loading="lazy"
+                                    decoding="async"
+                                    width="24"
+                                    height="16"
+                                    className="w-6 h-4"
+                                />
                             </button>
                         </div>
 
-                        <button 
-                            onClick={() => setIsDarkMode(!isDarkMode)} 
+                        <button
+                            onClick={() => setIsDarkMode(!isDarkMode)}
                             className="text-2xl p-2 rounded-full transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-700"
                         >
                             {isDarkMode ? <BiSun className="text-gray-50" /> : <BiMoon className="text-gray-600" />}
@@ -99,14 +112,14 @@ const Navbar = () => {
                     </div>
 
                     <div className="flex items-center gap-4 lg:hidden">
-                        <button 
-                            onClick={() => setIsDarkMode(!isDarkMode)} 
+                        <button
+                            onClick={() => setIsDarkMode(!isDarkMode)}
                             className="text-2xl p-2 rounded-full transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-700"
                         >
                             {isDarkMode ? <BiSun className="text-gray-50" /> : <BiMoon className="text-gray-600" />}
                         </button>
 
-                        <button 
+                        <button
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
                             className="p-2 rounded-full transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-700"
                         >
@@ -124,8 +137,8 @@ const Navbar = () => {
                         <ul className="space-y-2 py-4">
                             {navItems.map((item, index) => (
                                 <li key={index}>
-                                    <a 
-                                        href={`#${item.id}`} 
+                                    <a
+                                        href={`#${item.id}`}
                                         onClick={() => setIsMenuOpen(false)}
                                         className="block px-6 py-3 text-gray-800 dark:text-gray-200 hover:bg-orange-500/10 hover:text-orange-500 dark:hover:text-orange-400 transition-colors duration-200"
                                     >
@@ -138,8 +151,8 @@ const Navbar = () => {
                             <span className="text-gray-600 dark:text-gray-400">
                                 {isDarkMode ? t.navbar.lightMode : t.navbar.darkMode}
                             </span>
-                            <button 
-                                onClick={() => setIsDarkMode(!isDarkMode)} 
+                            <button
+                                onClick={() => setIsDarkMode(!isDarkMode)}
                                 className="p-2 rounded-full transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-700"
                             >
                                 {isDarkMode ? <BiSun className="text-xl text-gray-300" /> : <BiMoon className="text-xl text-gray-600" />}
@@ -152,7 +165,8 @@ const Navbar = () => {
                                 className="p-1 rounded-sm transition-colors duration-300"
                                 aria-label="Español"
                             >
-                                <img src="./public/flags/es.png" alt="Español" className="w-6 h-4" />
+                                <img src="./public/flags/es.webp" alt="Español" className="w-6 h-4" loading="lazy"
+                                    decoding="async" />
                             </button>
 
                             <button
@@ -160,7 +174,8 @@ const Navbar = () => {
                                 className="p-1 rounded-sm transition-colors duration-300"
                                 aria-label="English"
                             >
-                                <img src="./public/flags/en.png" alt="English" className="w-6 h-4" />
+                                <img src="./public/flags/en.webp" alt="English" className="w-6 h-4" loading="lazy"
+                                    decoding="async" />
                             </button>
                         </div>
                     </div>

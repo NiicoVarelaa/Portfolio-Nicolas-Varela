@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import nico from "../../public/nico.jpeg";
+import nico from "../../public/nico.webp";
 import Badge from './Badge';
 import SocialButtons from './SocialButtons';
 import { FaLinkedinIn, FaFileDownload } from 'react-icons/fa';
@@ -12,7 +12,7 @@ const languages = { es, en };
 
 const Home = () => {
     const { lang } = useLanguage();
-    const t = languages[lang].home; // Acceder solo a la sección home
+    const t = languages[lang].home; 
 
     const handleDownloadCV = () => {
         const link = document.createElement('a');
