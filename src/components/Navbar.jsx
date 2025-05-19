@@ -44,10 +44,10 @@ const Navbar = () => {
             )}
 
             <header className={`fixed top-0 w-full border-b bg-gray backdrop-blur-md z-50 transition-all duration-300 ${isMenuOpen
-                    ? "border-transparent"
-                    : hasShadow
-                        ? "bg-gray/50 backdrop-blur-xl border-gray-100 dark:border-gray-700"
-                        : "border-transparent"
+                ? "border-transparent"
+                : hasShadow
+                    ? "bg-gray/50 backdrop-blur-xl border-gray-100 dark:border-gray-700"
+                    : "border-transparent"
                 }`}>
                 <nav className="max-w-6xl mx-auto py-3 px-4 sm:px-10 flex items-center justify-between text-base font-medium text-gray-600 dark:text-gray-300">
                     <a href="#home" className="text-xl lg:text-2xl font-semibold text-orange-500 hover:scale-105 transition-all duration-300">
@@ -65,41 +65,28 @@ const Navbar = () => {
 
                         <div className="h-6 w-0.5 bg-gray-100 dark:bg-gray-700"></div>
 
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-2">
                             <button
-                                disabled={lang === "es"}
                                 onClick={() => toggleLanguage("es")}
-                                className={`p-1 rounded-sm transition-colors duration-300 ${lang === "es" ? "opacity-50 cursor-default" : "hover:bg-gray-200 dark:hover:bg-gray-700"
+                                disabled={lang === "es"}
+                                className={`px-2 py-1 rounded-md text-sm font-semibold transition-colors duration-300
+                                    ${lang === "es"
+                                        ? "opacity-50 cursor-not-allowed "
+                                        : "hover:bg-gray-200 dark:hover:bg-gray-700 "
                                     }`}
-                                aria-label="Español"
                             >
-                                <img
-                                    src="./public/flags/es.webp"
-                                    alt="Español"
-                                    loading="lazy"
-                                    decoding="async"
-                                    width="24"
-                                    height="16"
-                                    className="w-6 h-4"
-                                />
+                                ES
                             </button>
-
                             <button
-                                disabled={lang === "en"}
                                 onClick={() => toggleLanguage("en")}
-                                className={`p-1 rounded-sm transition-colors duration-300 ${lang === "en" ? "opacity-50 cursor-default" : "hover:bg-gray-200 dark:hover:bg-gray-700"
+                                disabled={lang === "en"}
+                                className={`px-2 py-1 rounded-md text-sm font-semibold transition-colors duration-300
+                                    ${lang === "en"
+                                        ? "opacity-50 cursor-not-allowed "
+                                        : "hover:bg-gray-200 dark:hover:bg-gray-700 "
                                     }`}
-                                aria-label="English"
                             >
-                                <img
-                                    src="./public/flags/en.webp"
-                                    alt="English"
-                                    loading="lazy"
-                                    decoding="async"
-                                    width="24"
-                                    height="16"
-                                    className="w-6 h-4"
-                                />
+                                EN
                             </button>
                         </div>
 
@@ -147,6 +134,7 @@ const Navbar = () => {
                                 </li>
                             ))}
                         </ul>
+
                         <div className="border-t border-gray-200 dark:border-gray-700 px-6 py-3 flex items-center justify-between">
                             <span className="text-gray-600 dark:text-gray-400">
                                 {isDarkMode ? t.navbar.lightMode : t.navbar.darkMode}
@@ -160,23 +148,31 @@ const Navbar = () => {
                         </div>
 
                         <div className="px-6 py-3 flex items-center justify-between">
-                            <button
-                                onClick={() => toggleLanguage("es")}
-                                className="p-1 rounded-sm transition-colors duration-300"
-                                aria-label="Español"
-                            >
-                                <img src="./public/flags/es.webp" alt="Español" className="w-6 h-4" loading="lazy"
-                                    decoding="async" />
-                            </button>
-
-                            <button
-                                onClick={() => toggleLanguage("en")}
-                                className="p-1 rounded-sm transition-colors duration-300"
-                                aria-label="English"
-                            >
-                                <img src="./public/flags/en.webp" alt="English" className="w-6 h-4" loading="lazy"
-                                    decoding="async" />
-                            </button>
+                            <span>{t.navbar.language}</span>
+                            <div className="flex gap-2">
+                                <button
+                                    onClick={() => toggleLanguage("es")}
+                                    disabled={lang === "es"}
+                                    className={`px-2 py-1 rounded-md text-gray-600 dark:text-gray-400 text-sm font-semibold transition-colors duration-300
+                                        ${lang === "es"
+                                            ? "opacity-50 cursor-not-allowed"
+                                            : "hover:bg-gray-200 dark:hover:bg-gray-700"
+                                        }`}
+                                >
+                                    ES
+                                </button>
+                                <button
+                                    onClick={() => toggleLanguage("en")}
+                                    disabled={lang === "en"}
+                                    className={`px-2 py-1 rounded-md text-gray-600 dark:text-gray-400 text-sm font-semibold transition-colors duration-300
+                                        ${lang === "en"
+                                            ? "opacity-50 cursor-not-allowed"
+                                            : "hover:bg-gray-200 dark:hover:bg-gray-700"
+                                        }`}
+                                >
+                                    EN
+                                </button>
+                            </div>
                         </div>
                     </div>
                 )}
