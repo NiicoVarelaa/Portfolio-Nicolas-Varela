@@ -51,7 +51,7 @@ const Navbar = () => {
                 }`}>
                 <nav className="max-w-6xl mx-auto py-3 px-4 sm:px-10 flex items-center justify-between text-base font-medium text-gray-600 dark:text-gray-300">
                     <a href="#home" className="text-xl lg:text-2xl font-semibold text-orange-500 hover:scale-105 transition-all duration-300">
-                        Nicolas Varela
+                        Nicolás Varela
                     </a>
 
                     <div className="hidden lg:flex items-center gap-10 ml-auto">
