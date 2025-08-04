@@ -48,9 +48,11 @@ const Skills = () => {
                 transition={{ duration: 0.6 }}
                 className="w-full mb-8 sm:mb-8"
             >
-                <h2 className="text-3xl sm:text-4xl font-semibold text-gray-800 dark:text-gray-100">
-                    {t.sectionTitle}
-                </h2>
+                <div className="flex justify-center">
+                    <h2 className="text-center text-3xl sm:text-4xl mb-4 font-semibold text-gray-800 dark:text-gray-100 relative inline-block after:content-[''] after:block after:h-[3px] after:w-16 after:bg-orange-500 after:mx-auto after:mt-2">
+                        {t.sectionTitle}
+                    </h2>
+                </div>
             </motion.div>
 
             <div className="w-full space-y-10">

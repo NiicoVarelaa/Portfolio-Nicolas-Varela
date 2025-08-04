@@ -3,6 +3,7 @@
 @tailwind utilities;
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
+
 * {
     font-family: "Inter";
     scroll-behavior: smooth;
@@ -49,4 +50,8 @@
     --app-gray-800: 243 244 246;
     --app-gray-900: 249 250 251;
     --app-gray-950: 255 255 255;
+}
+
+.no-scroll {
+    overflow: hidden;
 }

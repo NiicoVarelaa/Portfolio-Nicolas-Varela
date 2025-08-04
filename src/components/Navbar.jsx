@@ -1,12 +1,33 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { BiMenu, BiSun, BiMoon, BiX } from "react-icons/bi";
 import { useLanguage } from "../context/LanguageContext";
 import useDarkMode from "../hooks/useDarkMode";
-
 import es from "../locales/es";
 import en from "../locales/en";
 
 const languages = { es, en };
+
+const LanguageButton = ({ code, currentLang, onClick }) => (
+    <button
+        onClick={() => onClick(code)}
+        disabled={currentLang === code}
+        className={`px-2 py-1 rounded-md text-sm font-semibold transition-colors duration-300
+            ${currentLang === code
+                ? "opacity-50 cursor-not-allowed"
+                : "hover:bg-gray-200 dark:hover:bg-gray-700"}`}
+    >
+        {code.toUpperCase()}
+    </button>
+);
+
+const DarkModeToggle = ({ isDark, toggle }) => (
+    <button
+        onClick={toggle}
+        className="text-2xl p-2 rounded-full transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-700"
+    >
+        {isDark ? <BiSun className="text-gray-50" /> : <BiMoon className="text-gray-600" />}
+    </button>
+);
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,40 +36,42 @@ const Navbar = () => {
     const { lang, toggleLanguage } = useLanguage();
     const t = languages[lang];
 
+    const navItems = useMemo(() => [
+        { label: t.navbar.projects, id: "proyectos" },
+        { label: t.navbar.skills, id: "skills" },
+        { label: t.navbar.about, id: "sobremí" },
+        { label: t.navbar.contact, id: "contacto" },
+    ], [t]);
+
     useEffect(() => {
         const handleScroll = () => {
-            setHasShadow(window.scrollY > 10);
+            const shouldShowShadow = window.scrollY > 10;
+            setHasShadow(prev => prev !== shouldShowShadow ? shouldShowShadow : prev);
         };
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
     useEffect(() => {
-        document.body.style.overflow = isMenuOpen ? "hidden" : "unset";
+        document.body.classList.toggle("no-scroll", isMenuOpen);
     }, [isMenuOpen]);
 
-    const navItems = [
-        { label: t.navbar.projects, id: "proyectos" },
-        { label: t.navbar.skills, id: "skills" },
-        { label: t.navbar.about, id: "sobremí" },
-        { label: t.navbar.contact, id: "contacto" },
-    ];
+    const toggleMenu = () => setIsMenuOpen(prev => !prev);
 
     return (
         <>
             {isMenuOpen && (
-                <div
-                    className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40"
-                    onClick={() => setIsMenuOpen(false)}
-                />
+                <div className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40" onClick={toggleMenu} />
             )}
 
-            <header className={`fixed top-0 w-full border-b bg-gray backdrop-blur-md z-50 transition-all duration-300 ${isMenuOpen
-                ? "border-transparent"
-                : hasShadow
-                    ? "bg-gray/50 backdrop-blur-xl border-gray-100 dark:border-gray-700"
-                    : "border-transparent"
-                }`}>
+            <header
+                className={`fixed top-0 w-full z-50 transition-all duration-300
+                    border-b backdrop-blur-md 
+                    ${isMenuOpen || !hasShadow 
+                        ? "border-transparent bg-gray" 
+                        : "bg-gray/50 backdrop-blur-xl border-gray-100 dark:border-gray-700"
+                    }`}
+            >
                 <nav className="max-w-6xl mx-auto py-3 px-4 sm:px-10 flex items-center justify-between text-base font-medium text-gray-600 dark:text-gray-300">
                     <a href="#home" className="text-xl lg:text-2xl font-semibold text-orange-500 hover:scale-105 transition-all duration-300">
                         Nicolás Varela
@@ -66,55 +89,22 @@ const Navbar = () => {
                         <div className="h-6 w-0.5 bg-gray-100 dark:bg-gray-700"></div>
 
                         <div className="flex items-center gap-2">
-                            <button
-                                onClick={() => toggleLanguage("es")}
-                                disabled={lang === "es"}
-                                className={`px-2 py-1 rounded-md text-sm font-semibold transition-colors duration-300
-                                    ${lang === "es"
-                                        ? "opacity-50 cursor-not-allowed "
-                                        : "hover:bg-gray-200 dark:hover:bg-gray-700 "
-                                    }`}
-                            >
-                                ES
-                            </button>
-                            <button
-                                onClick={() => toggleLanguage("en")}
-                                disabled={lang === "en"}
-                                className={`px-2 py-1 rounded-md text-sm font-semibold transition-colors duration-300
-                                    ${lang === "en"
-                                        ? "opacity-50 cursor-not-allowed "
-                                        : "hover:bg-gray-200 dark:hover:bg-gray-700 "
-                                    }`}
-                            >
-                                EN
-                            </button>
+                            <LanguageButton code="es" currentLang={lang} onClick={toggleLanguage} />
+                            <LanguageButton code="en" currentLang={lang} onClick={toggleLanguage} />
                         </div>
 
-                        <button
-                            onClick={() => setIsDarkMode(!isDarkMode)}
-                            className="text-2xl p-2 rounded-full transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-700"
-                        >
-                            {isDarkMode ? <BiSun className="text-gray-50" /> : <BiMoon className="text-gray-600" />}
-                        </button>
+                        <DarkModeToggle isDark={isDarkMode} toggle={() => setIsDarkMode(!isDarkMode)} />
                     </div>
 
                     <div className="flex items-center gap-4 lg:hidden">
+                        <DarkModeToggle isDark={isDarkMode} toggle={() => setIsDarkMode(!isDarkMode)} />
                         <button
-                            onClick={() => setIsDarkMode(!isDarkMode)}
-                            className="text-2xl p-2 rounded-full transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-700"
-                        >
-                            {isDarkMode ? <BiSun className="text-gray-50" /> : <BiMoon className="text-gray-600" />}
-                        </button>
-
-                        <button
-                            onClick={() => setIsMenuOpen(!isMenuOpen)}
+                            onClick={toggleMenu}
                             className="p-2 rounded-full transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-700"
                         >
-                            {isMenuOpen ? (
-                                <BiX className="text-3xl text-gray-600 dark:text-gray-300" />
-                            ) : (
-                                <BiMenu className="text-3xl text-gray-600 dark:text-gray-300" />
-                            )}
+                            {isMenuOpen
+                                ? <BiX className="text-3xl text-gray-600 dark:text-gray-300" />
+                                : <BiMenu className="text-3xl text-gray-600 dark:text-gray-300" />}
                         </button>
                     </div>
                 </nav>
@@ -126,7 +116,7 @@ const Navbar = () => {
                                 <li key={index}>
                                     <a
                                         href={`#${item.id}`}
-                                        onClick={() => setIsMenuOpen(false)}
+                                        onClick={toggleMenu}
                                         className="block px-6 py-3 text-gray-800 dark:text-gray-200 hover:bg-orange-500/10 hover:text-orange-500 dark:hover:text-orange-400 transition-colors duration-200"
                                     >
                                         <span className="text-lg font-medium">{item.label}</span>
@@ -139,39 +129,14 @@ const Navbar = () => {
                             <span className="text-gray-600 dark:text-gray-400">
                                 {isDarkMode ? t.navbar.lightMode : t.navbar.darkMode}
                             </span>
-                            <button
-                                onClick={() => setIsDarkMode(!isDarkMode)}
-                                className="p-2 rounded-full transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-700"
-                            >
-                                {isDarkMode ? <BiSun className="text-xl text-gray-300" /> : <BiMoon className="text-xl text-gray-600" />}
-                            </button>
+                            <DarkModeToggle isDark={isDarkMode} toggle={() => setIsDarkMode(!isDarkMode)} />
                         </div>
 
                         <div className="px-6 py-3 flex items-center justify-between">
                             <span>{t.navbar.language}</span>
                             <div className="flex gap-2">
-                                <button
-                                    onClick={() => toggleLanguage("es")}
-                                    disabled={lang === "es"}
-                                    className={`px-2 py-1 rounded-md text-gray-600 dark:text-gray-400 text-sm font-semibold transition-colors duration-300
-                                        ${lang === "es"
-                                            ? "opacity-50 cursor-not-allowed"
-                                            : "hover:bg-gray-200 dark:hover:bg-gray-700"
-                                        }`}
-                                >
-                                    ES
-                                </button>
-                                <button
-                                    onClick={() => toggleLanguage("en")}
-                                    disabled={lang === "en"}
-                                    className={`px-2 py-1 rounded-md text-gray-600 dark:text-gray-400 text-sm font-semibold transition-colors duration-300
-                                        ${lang === "en"
-                                            ? "opacity-50 cursor-not-allowed"
-                                            : "hover:bg-gray-200 dark:hover:bg-gray-700"
-                                        }`}
-                                >
-                                    EN
-                                </button>
+                                <LanguageButton code="es" currentLang={lang} onClick={toggleLanguage} />
+                                <LanguageButton code="en" currentLang={lang} onClick={toggleLanguage} />
                             </div>
                         </div>
                     </div>

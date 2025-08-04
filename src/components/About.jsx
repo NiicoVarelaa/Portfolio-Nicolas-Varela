@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { FaGraduationCap, FaCertificate, FaUser } from 'react-icons/fa';
-import nico2 from "../../public/nico2.webp";
+import nico2 from "../assets/nico2.webp";
 import { useLanguage } from "../context/LanguageContext";
 import es from "../locales/es";
 import en from "../locales/en";
@@ -45,9 +45,11 @@ const AboutMe = () => {
                 transition={{ duration: 0.6 }}
                 className="w-full mb-8"
             >
-                <h2 className="text-3xl sm:text-4xl font-semibold text-gray-800 dark:text-gray-100">
-                    {t.sectionTitle}
-                </h2>
+                <div className="flex justify-center">
+                    <h2 className="text-center text-3xl sm:text-4xl mb-8 font-semibold text-gray-800 dark:text-gray-100 relative inline-block after:content-[''] after:block after:h-[3px] after:w-20 after:bg-orange-500 after:mx-auto after:mt-2">
+                        {t.sectionTitle}
+                    </h2>
+                </div>
             </motion.div>
 
             <div className="flex flex-col lg:flex-row-reverse gap-10">
