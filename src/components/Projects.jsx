@@ -86,7 +86,7 @@ const Projects = () => {
                                         href={project.githubLink}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-orange-50 bg-orange-500 hover:bg-orange-600 rounded-lg transition-colors dark:bg-orange-600 dark:hover:bg-orange-700 transform hover:scale-105"
+                                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-orange-50 bg-orange-500 hover:bg-orange-600 rounded-lg transition-colors dark:bg-orange-600 dark:hover:bg-orange-700"
                                     >
                                         <FaGithub />
                                         <span>{t.code}</span>
@@ -96,7 +96,7 @@ const Projects = () => {
                                     href={project.link}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-orange-50 bg-orange-500 hover:bg-orange-600 rounded-lg transition-colors dark:bg-orange-600 dark:hover:bg-orange-700 transform hover:scale-105"
+                                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-orange-50 bg-orange-500 hover:bg-orange-600 rounded-lg transition-colors dark:bg-orange-600 dark:hover:bg-orange-700"
                                 >
                                     <FontAwesomeIcon icon={faExternalLinkAlt} />
                                     <span>{t.demo}</span>

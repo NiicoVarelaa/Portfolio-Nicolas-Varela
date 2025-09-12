@@ -1,4 +1,4 @@
-# Portfolio de Nicolás Varela
+# Portfolio Nicolás Varela
 
 Este es mi portfolio personal desarrollado con **React** y **Vite**, donde muestro mis proyectos, habilidades y experiencia como desarrollador.
 
@@ -44,14 +44,6 @@ Este es mi portfolio personal desarrollado con **React** y **Vite**, donde muest
 - `public/`: Archivos públicos estáticos.
 - `index.html`: Archivo HTML principal.
 
-## Personalización
-
-Puedes personalizar este portfolio cambiando los siguientes archivos:
-
-- `src/pages/Home.jsx`: Contenido de la página de inicio.
-- `src/pages/Projects.jsx`: Proyectos mostrados en el portfolio.
-- `src/pages/Skills.jsx`: Habilidades y tecnologías.
-- `src/pages/Contact.jsx`: Información de contacto.
 
 ## Despliegue
 
@@ -62,10 +54,6 @@ Para desplegar tu portfolio en producción, sigue estos pasos:
    npm run build
    ```
 2. **Sirve los archivos estáticos generados en `dist/`** con tu servidor web favorito o despliega en plataformas como Vercel, Netlify o GitHub Pages.
-
-## Licencia
-
-Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
 
 ---
 
