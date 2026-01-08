@@ -25,33 +25,5 @@ export const projectData = [
       project2,
       project3,
     ],
-  },
-  {
-    id: 2,
-    image: project2,
-    title: "AI Content Generator",
-    description:
-      "An AI-powered platform that helps create high-quality content using machine learning algorithms. Features include text generation, image creation, and content optimization.",
-    link: "https://github.com/yourusername/ai-content-generator",
-    technologies: ["React", "Python", "TensorFlow", "FastAPI", "Redis"],
-    galleryImages: [
-      project2,
-      project2,
-      project2,
-    ],
-  },
-  {
-    id: 3,
-    image: project3,
-    title: "Social Media Analytics",
-    description:
-      "A powerful analytics tool that provides insights into social media performance across multiple platforms. Includes customizable dashboards and automated reporting.",
-    link: "https://github.com/yourusername/social-analytics",
-    technologies: ["Vue.js", "Node.js", "MongoDB", "Express", "D3.js"],
-    galleryImages: [
-      project3,
-      project3,
-      project3,
-    ],
-  },
+  }
 ];

@@ -32,6 +32,7 @@ const DarkModeToggle = ({ isDark, toggle }) => (
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [hasShadow, setHasShadow] = useState(false);
+    const [activeSection, setActiveSection] = useState("");
     const [isDarkMode, setIsDarkMode] = useDarkMode();
     const { lang, toggleLanguage } = useLanguage();
     const t = languages[lang];
@@ -47,16 +48,35 @@ const Navbar = () => {
         const handleScroll = () => {
             const shouldShowShadow = window.scrollY > 10;
             setHasShadow(prev => prev !== shouldShowShadow ? shouldShowShadow : prev);
+
+            const scrollPosition = window.scrollY + 200;
+            
+            let current = "";
+            navItems.forEach((item) => {
+                const element = document.getElementById(item.id);
+                if (element && element.offsetTop <= scrollPosition) {
+                    current = item.id;
+                }
+            });
+            setActiveSection(current);
         };
+
         window.addEventListener("scroll", handleScroll);
+        handleScroll(); 
+        
         return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    }, [navItems]);
 
     useEffect(() => {
         document.body.classList.toggle("no-scroll", isMenuOpen);
     }, [isMenuOpen]);
 
     const toggleMenu = () => setIsMenuOpen(prev => !prev);
+
+    const getLinkClass = (id) => `
+        transition-colors duration-300 hover:text-gray-900 dark:hover:text-gray-50
+        ${activeSection === id ? "text-orange-500 font-semibold" : ""} 
+    `;
 
     return (
         <>
@@ -81,7 +101,12 @@ const Navbar = () => {
                         <ul className="flex gap-10">
                             {navItems.map((item, index) => (
                                 <li key={index} className="group duration-300 relative">
-                                    <a href={`#${item.id}`} className="hover:text-gray-900 dark:hover:text-gray-50">{item.label}</a>
+                                    <a 
+                                        href={`#${item.id}`} 
+                                        className={getLinkClass(item.id)}
+                                    >
+                                        {item.label}
+                                    </a>
                                 </li>
                             ))}
                         </ul>
@@ -117,9 +142,13 @@ const Navbar = () => {
                                     <a
                                         href={`#${item.id}`}
                                         onClick={toggleMenu}
-                                        className="block px-6 py-3 text-gray-800 dark:text-gray-200 hover:bg-orange-500/10 hover:text-orange-500 dark:hover:text-orange-400 transition-colors duration-200"
+                                        className={`block px-6 py-3 transition-colors duration-200
+                                            ${activeSection === item.id 
+                                                ? "text-orange-500 bg-orange-500/10 font-medium" 
+                                                : "text-gray-800 dark:text-gray-200 hover:bg-orange-500/10 hover:text-orange-500"
+                                            }`}
                                     >
-                                        <span className="text-lg font-medium">{item.label}</span>
+                                        <span className="text-lg">{item.label}</span>
                                     </a>
                                 </li>
                             ))}
