@@ -1,18 +1,29 @@
-const SocialButtons = ({ href, children, ...props }) => {
+import { motion } from "framer-motion";
+
+const SocialButton = ({ href, children, ...props }) => {
     return (
-        <div className="flex flex-wrap gap-4">
-            <a
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                role="link"
-                className="inline-flex items-center justify-center gap-2 px-4 py-1 text-gray-800 transition bg-gray-50 border border-gray-800 rounded-full dark:bg-transparent dark:border-gray-200 dark:text-gray-200 focus-visible:ring-orange-500/80 text-md hover:bg-orange-500 hover:border-orange-500 hover:text-gray-50 dark:hover:bg-orange-500 dark:hover:border-orange-500 dark:hover:text-gray-50 group max-w-fit focus:outline-none focus-visible:outline-none focus-visible:ring focus-visible:ring-white focus-visible:ring-offset-2"
-                {...props}
-            >
-                {children}
-            </a>
-        </div>
+        <motion.a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.95 }}
+            className="
+                inline-flex items-center gap-2 px-5 py-2.5 
+                text-sm font-medium text-gray-700 dark:text-gray-200 
+                bg-white dark:bg-gray-800 
+                border border-gray-200 dark:border-gray-700 
+                rounded-full shadow-sm 
+                hover:border-orange-500 hover:text-orange-600 
+                dark:hover:border-orange-500 dark:hover:text-orange-400 
+                hover:shadow-md hover:shadow-orange-500/10 
+                transition-all duration-300
+            "
+            {...props}
+        >
+            {children}
+        </motion.a>
     );
 };
 
-export default SocialButtons;
+export default SocialButton;

@@ -49,7 +49,7 @@ const AboutMe = () => {
 
   return (
     <section
-      className="mx-auto max-w-6xl w-full min-h-screen py-24 px-4 sm:px-10 flex flex-col justify-center overflow-hidden"
+      className="mx-auto max-w-6xl w-full min-h-screen pb-24 px-4 sm:px-10 flex flex-col justify-center overflow-hidden"
       id="sobremí"
     >
       <motion.div
@@ -63,8 +63,8 @@ const AboutMe = () => {
           {t.sectionTitle}
         </h2>
 
-        <div className="flex justify-center">
-          <div className="w-24 h-1.5 bg-gradient-to-r from-orange-500 via-orange-500 to-transparent rounded-full"></div>
+        <div className="flex justify-center mt-8">
+          <div className="w-20 h-1 bg-gradient-to-r from-orange-500 via-orange-500 to-transparent rounded-full"></div>
         </div>
       </motion.div>
 

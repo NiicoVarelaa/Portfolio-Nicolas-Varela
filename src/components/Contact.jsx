@@ -76,12 +76,6 @@ const Contact = () => {
         }}
       />
 
-      {/* Elementos de fondo consistentes con Skills */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/4 left-0 w-80 h-80 bg-orange-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl"></div>
-      </div>
-
       <div className="relative w-full max-w-2xl z-10">
         <motion.div
           initial="hidden"
@@ -94,8 +88,8 @@ const Contact = () => {
             {t.sectionTitle}
           </h2>
 
-          <div className="flex justify-center">
-            <div className="w-24 h-1.5 bg-gradient-to-r from-orange-500 via-orange-500 to-transparent rounded-full"></div>
+          <div className="flex justify-center mt-8">
+            <div className="w-20 h-1 bg-gradient-to-r from-orange-500 via-orange-500 to-transparent rounded-full"></div>
           </div>
         </motion.div>
 

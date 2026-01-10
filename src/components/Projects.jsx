@@ -46,13 +46,9 @@ const Projects = () => {
 
   return (
     <section
-      className="relative w-full min-h-screen py-24 px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-center overflow-hidden"
+      className="relative w-full min-h-screen max-w-6xl mx-auto px-4 sm:px-10 flex flex-col justify-center items-center overflow-hidden"
       id="proyectos"
     >
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-orange-500/5 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl"></div>
-      </div>
 
       <div className="relative w-full max-w-6xl">
         <motion.div
