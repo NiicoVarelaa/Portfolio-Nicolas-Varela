@@ -62,12 +62,6 @@ const Projects = () => {
           variants={headerVariants}
           className="text-center mb-16"
         >
-          <div className="inline-block mb-4">
-            <span className="px-4 py-2 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-300 rounded-full text-sm font-semibold tracking-wide uppercase">
-              Portafolio
-            </span>
-          </div>
-
           <h2 className="text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
             {t.sectionTitle}
           </h2>
@@ -113,13 +107,20 @@ const Projects = () => {
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       whileHover={{ opacity: 1, y: 0 }}
-                      animate={hoveredCard === index ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                      animate={
+                        hoveredCard === index
+                          ? { opacity: 1, y: 0 }
+                          : { opacity: 0, y: 20 }
+                      }
                       transition={{ duration: 0.3 }}
                       className="flex items-center gap-2 text-white text-sm font-semibold"
                     >
                       <Eye size={18} />
                       Ver detalles
-                      <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight
+                        size={18}
+                        className="group-hover:translate-x-1 transition-transform"
+                      />
                     </motion.div>
                   </div>
 
@@ -135,7 +136,10 @@ const Projects = () => {
                           whileTap={{ scale: 0.95 }}
                           className="p-2.5 bg-white dark:bg-gray-900 rounded-full shadow-lg hover:shadow-xl transition-all backdrop-blur-sm bg-white/90 dark:bg-gray-900/90"
                         >
-                          <Github size={20} className="text-gray-900 dark:text-white" />
+                          <Github
+                            size={20}
+                            className="text-gray-900 dark:text-white"
+                          />
                         </motion.a>
                       )}
                       <motion.a
@@ -147,7 +151,10 @@ const Projects = () => {
                         whileTap={{ scale: 0.95 }}
                         className="p-2.5 bg-white dark:bg-gray-900 rounded-full shadow-lg hover:shadow-xl transition-all backdrop-blur-sm bg-white/90 dark:bg-gray-900/90"
                       >
-                        <ExternalLink size={20} className="text-gray-900 dark:text-white" />
+                        <ExternalLink
+                          size={20}
+                          className="text-gray-900 dark:text-white"
+                        />
                       </motion.a>
                     </div>
                   </div>
