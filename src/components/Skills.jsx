@@ -15,7 +15,7 @@ import {
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
 
-import { useLanguage } from "../context/LanguageContext";
+import useLanguage from "../hooks/useLanguage";
 import es from "../locales/es";
 import en from "../locales/en";
 

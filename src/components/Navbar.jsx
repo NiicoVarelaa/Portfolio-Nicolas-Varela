@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { BiMenu, BiSun, BiMoon, BiX } from "react-icons/bi";
-import { useLanguage } from "../context/LanguageContext";
+import useLanguage from "../hooks/useLanguage";
 import useDarkMode from "../hooks/useDarkMode";
 import es from "../locales/es";
 import en from "../locales/en";

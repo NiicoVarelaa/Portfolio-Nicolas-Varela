@@ -4,7 +4,7 @@ import { SiGithub, SiLinkedin } from 'react-icons/si';
 // Solo importamos Heart, ya no necesitamos ArrowUp
 import { Heart } from 'lucide-react'; 
 
-import { useLanguage } from "../context/LanguageContext";
+import useLanguage from "../hooks/useLanguage";
 import es from "../locales/es";
 import en from "../locales/en";
 

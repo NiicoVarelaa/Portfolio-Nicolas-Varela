@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, X, Github, ChevronLeft, ChevronRight } from "lucide-react";
-import { useLanguage } from "../context/LanguageContext";
+import useLanguage from "../hooks/useLanguage";
 import es from "../locales/es";
 import en from "../locales/en";
 import { useState, useEffect, useCallback } from "react";
