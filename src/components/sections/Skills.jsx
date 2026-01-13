@@ -1,23 +1,20 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { Code2, Database } from "lucide-react";
 import {
-  Code2,
-  Database,
-} from "lucide-react";
-import { 
-  SiJavascript, 
-  SiReact, 
-  SiTailwindcss, 
-  SiNodedotjs, 
-  SiExpress, 
-  SiMongodb, 
+  SiJavascript,
+  SiReact,
+  SiTailwindcss,
+  SiNodedotjs,
+  SiExpress,
+  SiMongodb,
   SiMysql,
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
 
-import useLanguage from "../hooks/useLanguage";
-import es from "../locales/es";
-import en from "../locales/en";
+import useLanguage from "../../hooks/useLanguage";
+import es from "../../locales/es.js";
+import en from "../../locales/en.js";
 
 const languages = { es, en };
 
@@ -126,7 +123,9 @@ const SkillCard = ({ skill }) => {
       <div className="relative h-full rounded-2xl overflow-hidden bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 p-6 flex flex-col items-center justify-center text-center">
         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-orange-500/5 via-transparent to-blue-500/5 pointer-events-none"></div>
         <motion.div
-          animate={isHovered ? { scale: 1.1, rotate: 5 } : { scale: 1, rotate: 0 }}
+          animate={
+            isHovered ? { scale: 1.1, rotate: 5 } : { scale: 1, rotate: 0 }
+          }
           transition={{ duration: 0.3 }}
           className={`relative w-20 h-20 rounded-2xl bg-gradient-to-br ${skill.color} flex items-center justify-center mb-6 shadow-lg group-hover:shadow-orange-500/20`}
         >
@@ -151,8 +150,6 @@ const Skills = () => {
       className="relative w-full min-h-screen max-w-6xl py-24 mx-auto px-4 sm:px-10 flex flex-col justify-center items-center overflow-hidden"
       id="skills"
     >
-      
-
       <div className="relative w-full max-w-6xl">
         <motion.div
           initial="hidden"
@@ -161,13 +158,13 @@ const Skills = () => {
           variants={headerVariants}
           className="text-center mb-20"
         >
-
           <h2 className="text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
             {t.sectionTitle}
           </h2>
 
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Stack tecnológico completo con experiencia en desarrollo full-stack, especializado en crear aplicaciones modernas y escalables.
+            Stack tecnológico completo con experiencia en desarrollo full-stack,
+            especializado en crear aplicaciones modernas y escalables.
           </p>
 
           <div className="flex justify-center mt-8">
@@ -178,9 +175,9 @@ const Skills = () => {
         <div className="space-y-16">
           {Object.entries(skillData).map(([key, category], categoryIndex) => {
             const Icon = category.icon;
-            
+
             // Usamos nombres mapeados para el título de categoría o usamos el que puse en el objeto
-            const title = category.categoryName; 
+            const title = category.categoryName;
 
             return (
               <motion.div

@@ -1,16 +1,16 @@
 import { motion } from "framer-motion";
-import nico from "../assets/nico.webp";
-import cvPdf from "../assets/cv.pdf";
-import Badge from "./Badge";
-import SocialButton from "./SocialButtons";
-import ScrollToTop from "./ScrollToTop";
-import FloatingBadge from "./FloatingBadge";
-import ProfileImageHome from "./ProfileImageHome";
-import DownloadCVButton from "./DownloadCVButton";
+import nico from "../../assets/nico.webp";
+import cvPdf from "../../assets/cv.pdf";
+import Badge from "../common/Badge";
+import SocialButton from "../common/SocialButtons";
+import ScrollToTop from "../layout/ScrollToTop";
+import FloatingBadge from "../images/FloatingBadge";
+import ProfileImageHome from "../images/ProfileImageHome";
+import DownloadCVButton from "../images/DownloadCVButton";
 import { useMemo, useCallback } from "react";
-import useLanguage from "../hooks/useLanguage";
-import es from "../locales/es";
-import en from "../locales/en";
+import useLanguage from "../../hooks/useLanguage";
+import es from "../../locales/es.js";
+import en from "../../locales/en.js";
 import { SiLinkedin, SiGithub } from "react-icons/si";
 
 const languages = { es, en };

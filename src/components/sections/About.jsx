@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 import { useMemo } from "react";
-import ProfileImageAbout from "./ProfileImageAbout";
-import nico2 from "../assets/nico2.webp";
-import TimelineItem from "./TimelineItem";
-import useLanguage from "../hooks/useLanguage";
-import es from "../locales/es";
-import en from "../locales/en";
+import ProfileImageAbout from "../images/ProfileImageAbout";
+import nico2 from "../../assets/nico2.webp";
+import TimelineItem from "../timeline/TimelineItem";
+import useLanguage from "../../hooks/useLanguage";
+import es from "../../locales/es.js";
+import en from "../../locales/en.js";
 
 const languages = { es, en };
 

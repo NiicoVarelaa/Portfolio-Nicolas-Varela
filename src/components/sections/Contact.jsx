@@ -2,9 +2,9 @@ import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import { Send, User, Mail, MessageSquare, FileText } from "lucide-react"; // Usamos Lucide para consistencia
 import { toast, Toaster } from "react-hot-toast";
-import useLanguage from "../hooks/useLanguage";
-import es from "../locales/es";
-import en from "../locales/en";
+import useLanguage from "../../hooks/useLanguage";
+import es from "../../locales/es.js";
+import en from "../../locales/en.js";
 
 const languages = { es, en };
 
