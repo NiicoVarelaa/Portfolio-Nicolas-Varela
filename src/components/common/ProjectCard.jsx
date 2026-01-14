@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Github, ExternalLink, Eye, ArrowRight } from "lucide-react";
+import { ExternalLink, Eye, ArrowRight } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
 import TechBadge from "../common/TechBadge";
 import ActionButton from "../common/ActionButton";
 import IconCircleButton from "../common/IconCircleButton";
@@ -43,28 +44,28 @@ const ProjectCard = ({
           alt={project.title}
           loading="lazy"
         />
-        {/* Ver detalles overlay estilo imagen: fondo oscuro, texto blanco, alineado izquierda */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end justify-center pb-6">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end justify-center pb-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="flex items-center gap-2 text-white text-xl font-bold pointer-events-auto select-none bg-transparent"
+            className="flex items-center gap-2 text-white text-md pointer-events-auto select-none bg-transparent"
             aria-hidden="true"
             style={{ pointerEvents: "auto" }}
           >
             <Eye size={24} />
             <span>{lang === "es" ? "Ver detalles" : "See details"}</span>
-            <ArrowRight size={24} />
+            <span className="transition-transform duration-200 group-hover:translate-x-1 group-focus-within:translate-x-1">
+              <ArrowRight size={24} />
+            </span>
           </motion.div>
         </div>
-        {/* Botones icono arriba derecha */}
         <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all duration-300 z-10 flex gap-2">
           {project.githubLink && (
             <IconCircleButton
               href={project.githubLink}
               label="GitHub"
-              icon={Github}
+              icon={FaGithub}
               onClick={(e) => e.stopPropagation()}
             />
           )}
@@ -102,7 +103,7 @@ const ProjectCard = ({
             <ActionButton
               href={project.githubLink}
               label={lang === "es" ? "Código" : "Code"}
-              icon={Github}
+              icon={FaGithub}
               onClick={(e) => e.stopPropagation()}
             />
           )}
@@ -111,7 +112,7 @@ const ProjectCard = ({
             label={lang === "es" ? "Ver Demo" : "View Demo"}
             icon={ExternalLink}
             onClick={(e) => e.stopPropagation()}
-            className="bg-gradient-to-br from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white focus-visible:ring-orange-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900 shadow-md hover:shadow-lg hover:shadow-orange-500/30"
+            className="bg-gradient-to-br from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white focus-visible:ring-orange-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900 "
           />
         </div>
       </div>

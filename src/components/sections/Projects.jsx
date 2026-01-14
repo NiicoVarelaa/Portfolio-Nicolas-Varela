@@ -62,10 +62,6 @@ const Projects = () => {
           >
             {t.sectionTitle}
           </h2>
-          <p className="text-base xs:text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            {t.sectionSubtitle ||
-              "Una colección de mis proyectos más recientes y destacados, donde la creatividad y la tecnología se unen para crear experiencias excepcionales."}
-          </p>
           <div className="flex justify-center mt-6 sm:mt-8" aria-hidden="true">
             <div className="w-16 sm:w-20 h-1 bg-gradient-to-r from-orange-500 via-orange-500 to-transparent rounded-full"></div>
           </div>

@@ -162,11 +162,6 @@ const Skills = () => {
             {t.sectionTitle}
           </h2>
 
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Stack tecnológico completo con experiencia en desarrollo full-stack,
-            especializado en crear aplicaciones modernas y escalables.
-          </p>
-
           <div className="flex justify-center mt-8">
             <div className="w-20 h-1 bg-gradient-to-r from-orange-500 via-orange-500 to-transparent rounded-full"></div>
           </div>
@@ -175,8 +170,6 @@ const Skills = () => {
         <div className="space-y-16">
           {Object.entries(skillData).map(([key, category], categoryIndex) => {
             const Icon = category.icon;
-
-            // Usamos nombres mapeados para el título de categoría o usamos el que puse en el objeto
             const title = category.categoryName;
 
             return (
@@ -219,8 +212,7 @@ const Skills = () => {
             );
           })}
         </div>
-
-        {/* Footer section */}
+        
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
