@@ -1,4 +1,3 @@
-
 export default {
   navbar: {
     projects: "Proyectos",
@@ -14,12 +13,12 @@ export default {
     iAm: "Soy",
     fullStackDeveloper: "Desarrollador Full Stack",
     homeDescription:
-      "Enfocado en crear productos digitales que impulsan negocios y mejoran la experiencia de usuario. Experto en React, Node.js y tecnologías modernas.",
+      "Enfocado en crear productos digitales que impulsan negocios y mejoran la experiencia de usuario.",
     downloadCV: "Descargar CV",
   },
-    floatingBadge: {
+  floatingBadge: {
     specialty: "Especialidad",
-    frontend: "Full Stack"
+    frontend: "Full Stack",
   },
   projects: {
     sectionTitle: "Proyectos",
@@ -51,6 +50,9 @@ export default {
       databases: "Bases de Datos",
       tools: "Herramientas",
     },
+    technologiesCount: "tecnologías",
+    alwaysLearning: "Siempre Aprendiendo",
+    currentlyExploring: "Actualmente explorando TypeScript y Next.js",
   },
   about: {
     sectionTitle: "Sobre Mí",
@@ -78,6 +80,7 @@ export default {
     successText: "Gracias por contactarme. Te responderé pronto.",
     errorTitle: "¡Ups! Algo salió mal",
     errorText: "No se pudo enviar tu mensaje. Intentalo más tarde.",
+    errorGeneric: "Ocurrió un problema al enviar el mensaje",
     sendingTitle: "Enviando...",
     sendingText: "Por favor esperá un momento",
     phone: "Teléfono",

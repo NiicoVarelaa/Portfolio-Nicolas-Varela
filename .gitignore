@@ -10,6 +10,7 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+build
 *.local
 
 # Editor directories and files
@@ -22,3 +23,20 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Env files
+.env
+.env.*
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+.AppleDouble
+.LSOverride
+
+# Test coverage
+coverage
+
+# Lock files (optional, if not using)
+pnpm-lock.yaml
+bun.lockb

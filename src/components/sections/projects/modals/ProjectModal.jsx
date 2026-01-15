@@ -1,13 +1,13 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
-import useLanguage from "../../hooks/useLanguage";
-import es from "../../locales/es.js";
-import en from "../../locales/en.js";
+import useLanguage from "../../../../hooks/useLanguage.js";
+import es from "../../../../locales/es.js";
+import en from "../../../../locales/en.js";
 import { useState, useEffect, useCallback, useRef } from "react";
-import { Gallery } from "./Gallery";
-import { GalleryThumbnails } from "./GalleryThumbnails";
-import { ProjectInfo } from "./ProjectInfo";
-import { ProjectActions } from "./ProjectActions";
+import { Gallery } from "./Gallery.jsx";
+import { GalleryThumbnails } from "./GalleryThumbnails.jsx";
+import { ProjectInfo } from "./ProjectInfo.jsx";
+import { ProjectActions } from "./ProjectActions.jsx";
 
 const languages = { es, en };
 
@@ -73,7 +73,7 @@ const ProjectModal = ({ project, onClose }) => {
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.18 }}
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-0 sm:p-4"
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 sm:p-4"
         onClick={onClose}
         role="dialog"
         aria-modal="true"
@@ -90,8 +90,9 @@ const ProjectModal = ({ project, onClose }) => {
           <button
             ref={closeBtnRef}
             onClick={onClose}
-            className="absolute top-2 right-2 sm:top-4 sm:right-4 w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-full bg-white/90 dark:bg-gray-800/90 text-gray-500 hover:text-gray-900 dark:hover:text-gray-200 shadow-lg hover:shadow-xl transition-all duration-150 hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2"
+            className="absolute top-4 right-4 w-10 h-10 sm:w-11 sm:h-11 flex items-center justify-center rounded-full bg-white/90 dark:bg-gray-800/90 text-gray-500 hover:text-gray-900 dark:hover:text-gray-200 shadow-lg hover:shadow-xl transition-all duration-150 hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2"
             aria-label={lang === "es" ? "Cerrar modal" : "Close modal"}
+            style={{ zIndex: 60 }}
           >
             <X size={22} strokeWidth={2.5} />
           </button>

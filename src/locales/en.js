@@ -13,12 +13,12 @@ export default {
     iAm: "I'm",
     fullStackDeveloper: "Full Stack Developer",
     homeDescription:
-      "Focused on building digital products that drive business growth and enhance user experience. Expert in React, Node.js, and modern technologies.",
+      "Focused on building digital products that drive business growth and enhance user experience.",
     downloadCV: "Download CV",
   },
   floatingBadge: {
     specialty: "Specialty",
-    frontend: "Full Stack"
+    frontend: "Full Stack",
   },
   projects: {
     sectionTitle: "Projects",
@@ -50,6 +50,9 @@ export default {
       databases: "Databases",
       tools: "Tools",
     },
+    technologiesCount: "technologies",
+    alwaysLearning: "Always Learning",
+    currentlyExploring: "Currently exploring TypeScript and Next.js",
   },
   about: {
     sectionTitle: "About Me",
@@ -77,6 +80,7 @@ export default {
     successText: "Thanks for reaching out. I’ll get back to you soon.",
     errorTitle: "Oops! Something went wrong",
     errorText: "Your message couldn't be sent. Please try again later.",
+    errorGeneric: "An error occurred while sending the message",
     sendingTitle: "Sending...",
     sendingText: "Please wait a moment",
     phone: "Phone",

@@ -1,48 +1,24 @@
-import { useState, useEffect, useMemo } from "react";
-import { BiMenu, BiSun, BiMoon, BiX } from "react-icons/bi";
+import { useState, useEffect, useMemo, useCallback } from "react";
+import { BiMenu, BiX } from "react-icons/bi";
 import useLanguage from "../../hooks/useLanguage";
 import useDarkMode from "../../hooks/useDarkMode";
+import useScrollSpy from "../../hooks/useScrollSpy";
+import DarkModeToggle from "./navbar/DarkModeToggle";
+import LanguageButton from "./navbar/LanguageButton";
+import NavLink from "./navbar/NavLink";
+import MobileMenu from "./navbar/MobileMenu";
 import es from "../../locales/es.js";
 import en from "../../locales/en.js";
 
 const languages = { es, en };
 
-const LanguageButton = ({ code, currentLang, onClick }) => (
-  <button
-    onClick={() => onClick(code)}
-    disabled={currentLang === code}
-    className={`px-2 py-1 rounded-md text-sm font-semibold transition-colors duration-300
-            ${
-              currentLang === code
-                ? "opacity-50 cursor-not-allowed"
-                : "hover:bg-gray-200 dark:hover:bg-gray-700"
-            }`}
-  >
-    {code.toUpperCase()}
-  </button>
-);
-
-const DarkModeToggle = ({ isDark, toggle }) => (
-  <button
-    onClick={toggle}
-    className="text-2xl p-2 rounded-full transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-700"
-  >
-    {isDark ? (
-      <BiSun className="text-gray-50" />
-    ) : (
-      <BiMoon className="text-gray-600" />
-    )}
-  </button>
-);
-
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [hasShadow, setHasShadow] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
   const [isDarkMode, setIsDarkMode] = useDarkMode();
   const { lang, toggleLanguage } = useLanguage();
   const t = languages[lang];
 
+  // Memoizar navItems solo cuando cambie el idioma
   const navItems = useMemo(
     () => [
       { label: t.navbar.projects, id: "proyectos" },
@@ -50,85 +26,94 @@ const Navbar = () => {
       { label: t.navbar.about, id: "sobremí" },
       { label: t.navbar.contact, id: "contacto" },
     ],
-    [t]
+    [t.navbar]
   );
 
+  // Extraer IDs para el scroll spy
+  const sectionIds = useMemo(() => navItems.map((item) => item.id), [navItems]);
+
+  // Custom hook para scroll spy optimizado
+  const { activeSection, hasShadow } = useScrollSpy(sectionIds);
+
+  // Bloquear scroll del body cuando el menú está abierto
   useEffect(() => {
-    const handleScroll = () => {
-      const shouldShowShadow = window.scrollY > 10;
-      setHasShadow((prev) =>
-        prev !== shouldShowShadow ? shouldShowShadow : prev
-      );
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
 
-      const scrollPosition = window.scrollY + 200;
-
-      let current = "";
-      navItems.forEach((item) => {
-        const element = document.getElementById(item.id);
-        if (element && element.offsetTop <= scrollPosition) {
-          current = item.id;
-        }
-      });
-      setActiveSection(current);
+    return () => {
+      document.body.style.overflow = "";
     };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [navItems]);
-
-  useEffect(() => {
-    document.body.classList.toggle("no-scroll", isMenuOpen);
   }, [isMenuOpen]);
 
-  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
-
-  const getLinkClass = (id) => `
-        transition-colors duration-300 hover:text-gray-900 dark:hover:text-gray-50
-        ${activeSection === id ? "text-orange-500 font-semibold" : ""} 
-    `;
+  // Handlers memoizados
+  const toggleMenu = useCallback(() => setIsMenuOpen((prev) => !prev), []);
+  const closeMenu = useCallback(() => setIsMenuOpen(false), []);
+  const toggleDark = useCallback(
+    () => setIsDarkMode((prev) => !prev),
+    [setIsDarkMode]
+  );
 
   return (
     <>
+      {/* Backdrop overlay */}
       {isMenuOpen && (
         <div
-          className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40"
-          onClick={toggleMenu}
+          className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 lg:hidden"
+          onClick={closeMenu}
+          aria-hidden="true"
         />
       )}
 
       <header
-        className={`fixed top-0 w-full z-50 transition-all duration-300
-                    border-b backdrop-blur-md 
-                    ${
-                      isMenuOpen || !hasShadow
-                        ? "border-transparent bg-gray"
-                        : "bg-gray/50 backdrop-blur-xl border-gray-100 dark:border-gray-700"
-                    }`}
+        className={`fixed top-0 w-full z-50 transition-all duration-300 border-b backdrop-blur-md ${
+          hasShadow
+            ? "bg-white/80 dark:bg-gray-900/80 border-gray-200 dark:border-gray-700 shadow-sm"
+            : "bg-transparent border-transparent"
+        }`}
+        role="banner"
       >
-        <nav className="max-w-6xl mx-auto py-3 px-4 sm:px-10 flex items-center justify-between text-base font-medium text-gray-600 dark:text-gray-300">
+        <nav
+          className="max-w-6xl mx-auto py-3 px-4 sm:px-10 flex items-center justify-between"
+          aria-label="Main navigation"
+        >
+          {/* Logo */}
           <a
             href="#home"
-            className="text-xl lg:text-2xl font-semibold text-orange-500 hover:scale-105 transition-all duration-300"
+            className="text-xl lg:text-2xl font-bold text-orange-500 hover:scale-105 transition-transform duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 rounded-lg px-2"
+            aria-label="Nicolás Varela - Home"
           >
             Nicolás Varela
           </a>
 
-          <div className="hidden lg:flex items-center gap-10 ml-auto">
-            <ul className="flex gap-10">
-              {navItems.map((item, index) => (
-                <li key={index} className="group duration-300 relative">
-                  <a href={`#${item.id}`} className={getLinkClass(item.id)}>
-                    {item.label}
-                  </a>
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center gap-8 ml-auto">
+            <ul className="flex gap-8" role="list">
+              {navItems.map((item) => (
+                <li key={item.id}>
+                  <NavLink
+                    href={`#${item.id}`}
+                    label={item.label}
+                    isActive={activeSection === item.id}
+                  />
                 </li>
               ))}
             </ul>
 
-            <div className="h-6 w-0.5 bg-gray-100 dark:bg-gray-700"></div>
+            {/* Divider */}
+            <div
+              className="h-6 w-px bg-gray-300 dark:bg-gray-600"
+              aria-hidden="true"
+            />
 
-            <div className="flex items-center gap-2">
+            {/* Language Buttons */}
+            <div
+              className="flex items-center gap-2"
+              role="group"
+              aria-label="Language selection"
+            >
               <LanguageButton
                 code="es"
                 currentLang={lang}
@@ -141,78 +126,47 @@ const Navbar = () => {
               />
             </div>
 
-            <DarkModeToggle
-              isDark={isDarkMode}
-              toggle={() => setIsDarkMode(!isDarkMode)}
-            />
+            {/* Dark Mode Toggle */}
+            <DarkModeToggle isDark={isDarkMode} toggle={toggleDark} />
           </div>
 
-          <div className="flex items-center gap-4 lg:hidden">
-            <DarkModeToggle
-              isDark={isDarkMode}
-              toggle={() => setIsDarkMode(!isDarkMode)}
-            />
+          {/* Mobile Controls */}
+          <div className="flex items-center gap-3 lg:hidden">
+            <DarkModeToggle isDark={isDarkMode} toggle={toggleDark} />
             <button
               onClick={toggleMenu}
-              className="p-2 rounded-full transition-colors duration-300 hover:bg-gray-200 dark:hover:bg-gray-700"
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-menu"
+              className="p-2 rounded-full transition-all duration-300 hover:bg-gray-200 dark:hover:bg-gray-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
             >
               {isMenuOpen ? (
-                <BiX className="text-3xl text-gray-600 dark:text-gray-300" />
+                <BiX
+                  className="text-3xl text-gray-700 dark:text-gray-300"
+                  aria-hidden="true"
+                />
               ) : (
-                <BiMenu className="text-3xl text-gray-600 dark:text-gray-300" />
+                <BiMenu
+                  className="text-3xl text-gray-700 dark:text-gray-300"
+                  aria-hidden="true"
+                />
               )}
             </button>
           </div>
         </nav>
 
-        {isMenuOpen && (
-          <div className="lg:hidden fixed top-[4.5rem] right-4 z-50 w-64 rounded-xl bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg shadow-xl overflow-hidden transition-all duration-300">
-            <ul className="space-y-2 py-4">
-              {navItems.map((item, index) => (
-                <li key={index}>
-                  <a
-                    href={`#${item.id}`}
-                    onClick={toggleMenu}
-                    className={`block px-6 py-3 transition-colors duration-200
-                                            ${
-                                              activeSection === item.id
-                                                ? "text-orange-500 bg-orange-500/10 font-medium"
-                                                : "text-gray-800 dark:text-gray-200 hover:bg-orange-500/10 hover:text-orange-500"
-                                            }`}
-                  >
-                    <span className="text-lg">{item.label}</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-
-            <div className="border-t border-gray-200 dark:border-gray-700 px-6 py-3 flex items-center justify-between">
-              <span className="text-gray-600 dark:text-gray-400">
-                {isDarkMode ? t.navbar.lightMode : t.navbar.darkMode}
-              </span>
-              <DarkModeToggle
-                isDark={isDarkMode}
-                toggle={() => setIsDarkMode(!isDarkMode)}
-              />
-            </div>
-
-            <div className="px-6 py-3 flex items-center justify-between">
-              <span>{t.navbar.language}</span>
-              <div className="flex gap-2">
-                <LanguageButton
-                  code="es"
-                  currentLang={lang}
-                  onClick={toggleLanguage}
-                />
-                <LanguageButton
-                  code="en"
-                  currentLang={lang}
-                  onClick={toggleLanguage}
-                />
-              </div>
-            </div>
-          </div>
-        )}
+        {/* Mobile Menu */}
+        <MobileMenu
+          isOpen={isMenuOpen}
+          navItems={navItems}
+          activeSection={activeSection}
+          onItemClick={closeMenu}
+          isDarkMode={isDarkMode}
+          toggleDarkMode={toggleDark}
+          lang={lang}
+          toggleLanguage={toggleLanguage}
+          translations={t.navbar}
+        />
       </header>
     </>
   );
