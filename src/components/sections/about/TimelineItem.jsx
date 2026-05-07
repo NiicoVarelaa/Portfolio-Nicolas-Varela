@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 import { FaGraduationCap, FaCertificate, FaUser } from "react-icons/fa";
-import useReducedMotion from "../../../hooks/useReducedMotion.js";
+import useReducedMotion from "@hooks/useReducedMotion.js";
 
 const iconMap = {
   user: <FaUser />,
@@ -32,7 +32,7 @@ const TimelineItem = ({ item, isLast }) => {
       </div>
       {!isLast && (
         <div
-          className="absolute top-10 sm:top-12 left-1/2 -translate-x-1/2 w-0.5 h-full bg-gray-200 dark:bg-gray-800 -z-10 group-hover:bg-orange-200 dark:group-hover:bg-orange-900/50 transition-colors"
+          className="absolute top-10 sm:top-12 left-1/2 -translate-x-1/2 w-0.5 h-[calc(100%+2rem)] sm:h-[calc(100%+2.5rem)] bg-gray-200 dark:bg-gray-700 -z-10 group-hover:bg-orange-200 dark:group-hover:bg-orange-900/50 transition-colors"
           aria-hidden="true"
         ></div>
       )}

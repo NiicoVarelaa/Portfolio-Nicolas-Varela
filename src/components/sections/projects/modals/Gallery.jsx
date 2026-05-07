@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import PropTypes from "prop-types";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import useReducedMotion from "../../../../hooks/useReducedMotion.js";
+import useReducedMotion from "@hooks/useReducedMotion.js";
 
 export function Gallery({
   images,

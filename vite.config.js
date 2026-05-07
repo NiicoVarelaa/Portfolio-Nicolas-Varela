@@ -1,6 +1,9 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
+import { fileURLToPath } from 'url'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
   base: '/',
@@ -15,6 +18,7 @@ export default defineConfig({
       '@locales': path.resolve(__dirname, './src/locales'),
       '@assets': path.resolve(__dirname, './src/assets'),
       '@constants': path.resolve(__dirname, './src/constants'),
+      '@data': path.resolve(__dirname, './src/data'),
     },
   },
   build: {

@@ -1,11 +1,11 @@
 import { useMemo } from "react";
 import { SiGithub, SiLinkedin } from "react-icons/si";
-import useLanguage from "../../hooks/useLanguage";
+import useLanguage from "@hooks/useLanguage";
 import SocialLink from "./footer/SocialLink";
 import FooterLinks from "./footer/FooterLinks";
 import FooterBranding from "./footer/FooterBranding";
-import es from "../../locales/es.js";
-import en from "../../locales/en.js";
+import es from "@locales/es.js";
+import en from "@locales/en.js";
 
 const languages = { es, en };
 
@@ -21,9 +21,9 @@ const Footer = () => {
     () => [
       { label: t.projects, href: "#proyectos" },
       { label: t.aboutMe, href: "#sobremí" },
-      { label: "Contacto", href: "#contacto" },
+      { label: t.contact, href: "#contacto" },
     ],
-    [t.projects, t.aboutMe]
+    [t.projects, t.aboutMe, t.contact]
   );
 
   // Links sociales
@@ -50,7 +50,7 @@ const Footer = () => {
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <FooterBranding copyrightText={t.copyright} year={currentYear} />
+          <FooterBranding copyrightText={t.copyright} year={currentYear} madeWith={t.madeWith} andReact={t.andReact} />
           <FooterLinks links={footerLinks} />
           <div
             className="flex items-center gap-5"

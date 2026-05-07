@@ -26,7 +26,6 @@ build
 
 # Env files
 .env
-.env.*
 
 # OS generated files
 Thumbs.db

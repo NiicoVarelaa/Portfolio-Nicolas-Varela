@@ -31,7 +31,7 @@ const FormInput = memo(
             error
               ? "border-red-500 focus:ring-red-500"
               : "border-gray-200 dark:border-gray-700 focus:border-orange-500 focus:ring-orange-500/20"
-          } text-gray-900 dark:text-white rounded-xl shadow-sm focus:ring-4 focus:outline-none transition-all duration-300`}
+          } text-gray-900 dark:text-white rounded-xl focus:ring-1 focus:outline-none transition-all duration-300`}
           aria-invalid={error ? "true" : "false"}
           aria-describedby={error ? `${name}-error` : undefined}
           {...register(name, { required, pattern })}

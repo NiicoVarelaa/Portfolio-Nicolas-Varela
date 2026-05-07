@@ -1,11 +1,11 @@
-import ProfileImageAbout from "../../ui/ProfileImageAbout.jsx";
-import nico2 from "../../../assets/nico2.webp";
-import useLanguage from "../../../hooks/useLanguage.js";
-import { useAboutTimeline } from "../../../hooks/useAboutTimeline.js";
+import ProfileImageAbout from "@components/ui/ProfileImageAbout.jsx";
+import nico2 from "@assets/nico2.webp";
+import useLanguage from "@hooks/useLanguage.js";
+import { useAboutTimeline } from "@hooks/useAboutTimeline.js";
 import AboutHeader from "./AboutHeader.jsx";
 import AboutTimeline from "./AboutTimeline.jsx";
-import es from "../../../locales/es.js";
-import en from "../../../locales/en.js";
+import es from "@locales/es.js";
+import en from "@locales/en.js";
 
 const languages = { es, en };
 

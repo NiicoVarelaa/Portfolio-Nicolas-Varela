@@ -6,7 +6,7 @@ import {
   useCallback,
 } from "react";
 import PropTypes from "prop-types";
-import SUPPORTED_LANGUAGES from "../constants/languages";
+import SUPPORTED_LANGUAGES from "@constants/languages";
 const LanguageContext = createContext();
 
 function getInitialLang() {

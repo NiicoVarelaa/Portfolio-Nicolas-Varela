@@ -8,8 +8,8 @@ const NavLink = ({ href, label, isActive, onClick }) => (
     aria-current={isActive ? "page" : undefined}
     className={`transition-all duration-300 relative group ${
       isActive
-        ? "text-orange-500 font-semibold"
-        : "text-gray-700 dark:text-gray-300 hover:text-orange-500 dark:hover:text-orange-400"
+        ? "text-orange-600 font-semibold"
+        : "text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-500"
     }`}
   >
     {label}

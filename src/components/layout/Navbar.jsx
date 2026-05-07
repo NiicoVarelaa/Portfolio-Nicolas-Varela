@@ -1,9 +1,9 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { BiMenu, BiX } from "react-icons/bi";
-import useLanguage from "../../hooks/useLanguage";
-import useDarkMode from "../../hooks/useDarkMode";
-import useScrollSpy from "../../hooks/useScrollSpy";
-import useTranslation from "../../hooks/useTranslation";
+import useLanguage from "@hooks/useLanguage";
+import useDarkMode from "@hooks/useDarkMode";
+import useScrollSpy from "@hooks/useScrollSpy";
+import useTranslation from "@hooks/useTranslation";
 import DarkModeToggle from "./navbar/DarkModeToggle";
 import LanguageButton from "./navbar/LanguageButton";
 import NavLink from "./navbar/NavLink";

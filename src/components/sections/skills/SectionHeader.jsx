@@ -1,8 +1,8 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
-import { animationVariants, getSafeVariants } from "../../../constants/animations";
-import useReducedMotion from "../../../hooks/useReducedMotion.js";
+import { animationVariants, getSafeVariants } from "@constants/animations";
+import useReducedMotion from "@hooks/useReducedMotion.js";
 
 const SectionHeader = memo(({ title }) => {
   const reducedMotion = useReducedMotion();

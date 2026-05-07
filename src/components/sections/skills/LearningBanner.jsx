@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
-import useReducedMotion from "../../../hooks/useReducedMotion.js";
+import useReducedMotion from "@hooks/useReducedMotion.js";
 
 const LearningBanner = memo(({ title, description }) => {
   const reducedMotion = useReducedMotion();

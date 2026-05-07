@@ -1,8 +1,8 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
-import { animationVariants, getSafeVariants } from "../../../constants/animations";
-import useReducedMotion from "../../../hooks/useReducedMotion.js";
+import { animationVariants, getSafeVariants } from "@constants/animations";
+import useReducedMotion from "@hooks/useReducedMotion.js";
 
 const SkillCard = memo(({ skill }) => {
   const IconComponent = skill.icon;
@@ -10,20 +10,19 @@ const SkillCard = memo(({ skill }) => {
   return (
     <motion.div
       variants={getSafeVariants(reducedMotion, animationVariants.skillCard)}
-      className="group relative h-full"
+      className="group w-full"
     >
-      <div className="relative h-full rounded-2xl overflow-hidden bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 p-6 flex flex-col items-center justify-center text-center">
-        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br from-orange-500/5 via-transparent to-blue-500/5 pointer-events-none" />
+      <div
+        className="w-full rounded-xl bg-white dark:bg-gray-900/70 border border-gray-100 dark:border-gray-800/50 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 p-4 flex items-center gap-3"
+      >
         <div
-          className={`relative w-20 h-20 rounded-2xl bg-gradient-to-br ${skill.color} flex items-center justify-center mb-6 shadow-lg group-hover:shadow-orange-500/20 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300`}
+          className={`flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br ${skill.color} flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-300`}
         >
-          <IconComponent className="text-4xl text-white" aria-hidden="true" />
+          <IconComponent className="text-lg text-white" aria-hidden="true" />
         </div>
-        <div className="relative z-10">
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors duration-300">
-            {skill.name}
-          </h3>
-        </div>
+        <h3 className="text-sm font-semibold text-gray-800 dark:text-gray-200 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors duration-300">
+          {skill.name}
+        </h3>
       </div>
     </motion.div>
   );

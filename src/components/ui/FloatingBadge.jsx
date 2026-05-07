@@ -1,9 +1,9 @@
 import { MousePointer2 } from "lucide-react";
 import { motion } from "framer-motion";
-import useLanguage from "../../hooks/useLanguage";
-import useReducedMotion from "../../hooks/useReducedMotion.js";
-import es from "../../locales/es.js";
-import en from "../../locales/en.js";
+import useLanguage from "@hooks/useLanguage";
+import useReducedMotion from "@hooks/useReducedMotion.js";
+import es from "@locales/es.js";
+import en from "@locales/en.js";
 const languages = { es, en };
 
 const FloatingBadge = () => {

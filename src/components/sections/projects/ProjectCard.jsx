@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 import PropTypes from "prop-types";
 import { ExternalLink, Eye, ArrowRight } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
-import TechBadge from "../../common/TechBadge";
-import ActionButton from "../../common/ActionButton";
-import IconCircleButton from "../../common/IconCircleButton";
-import { animationVariants, getSafeVariants } from "../../../constants/animations";
-import useReducedMotion from "../../../hooks/useReducedMotion.js";
+import TechBadge from "@components/common/TechBadge";
+import ActionButton from "@components/common/ActionButton";
+import IconCircleButton from "@components/common/IconCircleButton";
+import { animationVariants, getSafeVariants } from "@constants/animations";
+import useReducedMotion from "@hooks/useReducedMotion.js";
 
 const ProjectCard = ({
   project,
@@ -21,6 +22,7 @@ const ProjectCard = ({
   role = "button",
 }) => {
   const reducedMotion = useReducedMotion();
+  const [imageLoaded, setImageLoaded] = useState(false);
   return (
     <motion.article
     key={project.id}
@@ -45,11 +47,15 @@ const ProjectCard = ({
       />
 
       <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900">
+        {!imageLoaded && (
+          <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-gray-200 via-gray-300 to-gray-200 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700" aria-hidden="true" />
+        )}
         <img
           src={project.image}
-          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-focus-within:scale-110"
+          className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-focus-within:scale-110 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
           alt={`Captura de pantalla del proyecto ${project.title}`}
           loading="lazy"
+          onLoad={() => setImageLoaded(true)}
         />
 
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all duration-500 hidden sm:flex items-end justify-center pb-6">

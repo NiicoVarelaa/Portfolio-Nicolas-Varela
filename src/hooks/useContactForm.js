@@ -1,4 +1,4 @@
-import { toast } from "react-hot-toast";
+import { toast } from "sonner";
 import { z } from "zod";
 
 const contactFormSchema = z.object({
@@ -31,9 +31,14 @@ const contactFormSchema = z.object({
 });
 
 export const useContactForm = (reset, t) => {
-  const onSubmit = async (data) => {
-    if (!import.meta.env.VITE_WEB3FORMS_KEY) {
-      toast.error("Configuration error: Web3Forms key is missing");
+  const onSubmit = async (data, token) => {
+    if (!import.meta.env.VITE_API_URL) {
+      toast.error(t.configError || "Configuration error: API URL is missing");
+      return;
+    }
+
+    if (!token) {
+      toast.error(t.validations?.captchaRequired || "Please complete the security verification");
       return;
     }
 
@@ -47,35 +52,34 @@ export const useContactForm = (reset, t) => {
       return;
     }
 
-    const loadingToast = toast.loading(t.sendingText);
-
-    try {
-      const res = await fetch("https://api.web3forms.com/submit", {
+    toast.promise(
+      fetch(import.meta.env.VITE_API_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: import.meta.env.VITE_WEB3FORMS_KEY,
+          "cf-turnstile-response": token,
           ...parsed.data,
         }),
-      });
-
-      const result = await res.json();
-      toast.dismiss(loadingToast);
-
-      if (result.success) {
-        toast.success(t.successText);
-        reset();
-      } else {
-        toast.error(t.errorText);
+      }).then(async (res) => {
+        const result = await res.json();
+        if (!result.success) throw new Error(result.message || "Error");
+        return result;
+      }),
+      {
+        loading: t.sendingText,
+        success: () => {
+          reset();
+          return t.successText;
+        },
+        error: (err) => {
+          if (err.message === "Error") return t.errorText;
+          return t.errorGeneric || "Ocurrió un problema al enviar el mensaje";
+        },
       }
-    } catch (error) {
-      toast.dismiss(loadingToast);
-      console.error("Error al enviar el formulario:", error);
-      toast.error(t.errorGeneric || "Ocurrió un problema al enviar el mensaje");
-    }
+    );
   };
 
   return onSubmit;

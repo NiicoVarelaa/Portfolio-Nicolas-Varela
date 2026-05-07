@@ -1,10 +1,10 @@
 import { useState, useCallback, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
-import { projects } from "../../../data/projects.js";
-import useLanguage from "../../../hooks/useLanguage.js";
-import es from "../../../locales/es.js";
-import en from "../../../locales/en.js";
-import ProjectModal from "../projects/modals/ProjectModal.jsx";
+import { projects } from "@data/projects.js";
+import useLanguage from "@hooks/useLanguage.js";
+import es from "@locales/es.js";
+import en from "@locales/en.js";
+import ProjectModal from "@components/sections/projects/modals/ProjectModal.jsx";
 import ProjectsHeader from "./ProjectsHeader.jsx";
 import ProjectsGrid from "./ProjectsGrid.jsx";
 

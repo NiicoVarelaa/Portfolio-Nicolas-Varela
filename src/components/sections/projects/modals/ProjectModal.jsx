@@ -1,8 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import PropTypes from "prop-types";
 import { X } from "lucide-react";
-import useTranslation, { useLang } from "../../../../hooks/useTranslation.js";
-import useReducedMotion from "../../../../hooks/useReducedMotion.js";
+import useTranslation, { useLang } from "@hooks/useTranslation.js";
+import useReducedMotion from "@hooks/useReducedMotion.js";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { Gallery } from "./Gallery.jsx";
 import { GalleryThumbnails } from "./GalleryThumbnails.jsx";

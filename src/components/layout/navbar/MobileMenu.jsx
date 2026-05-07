@@ -18,7 +18,7 @@ const MobileMenu = ({
 
   return (
     <div
-      className="lg:hidden fixed top-[4.5rem] right-4 z-50 w-64 rounded-xl bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg shadow-2xl overflow-hidden transition-all duration-300 border border-gray-200 dark:border-gray-700"
+      className="lg:hidden fixed top-[4.5rem] right-4 z-50 w-64 rounded-2xl bg-white/95 dark:bg-gray-800/95 backdrop-blur-lg shadow-2xl overflow-hidden transition-all duration-300 border border-gray-200 dark:border-gray-700"
       role="dialog"
       aria-label="Mobile navigation menu"
     >
@@ -32,8 +32,8 @@ const MobileMenu = ({
                 aria-current={activeSection === item.id ? "page" : undefined}
                 className={`block px-6 py-3 transition-all duration-200 ${
                   activeSection === item.id
-                    ? "text-orange-500 bg-orange-500/10 font-semibold border-l-4 border-orange-500"
-                    : "text-gray-800 dark:text-gray-200 hover:bg-orange-500/5 hover:text-orange-500 border-l-4 border-transparent"
+                    ? "text-orange-600 bg-orange-500/10 font-semibold border-l-4 border-orange-500"
+                    : "text-gray-800 dark:text-gray-200 hover:bg-orange-500/5 hover:text-orange-600 border-l-4 border-transparent"
                 }`}
               >
                 <span className="text-base">{item.label}</span>

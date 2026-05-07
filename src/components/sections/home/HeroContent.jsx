@@ -1,10 +1,10 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
-import useReducedMotion from "../../../hooks/useReducedMotion.js";
-import Badge from "../../common/Badge";
-import SocialButton from "../../common/SocialButtons";
-import DownloadCVButton from "../../ui/DownloadCVButton";
+import useReducedMotion from "@hooks/useReducedMotion.js";
+import Badge from "@components/common/Badge";
+import SocialButton from "@components/common/SocialButtons";
+import DownloadCVButton from "@components/ui/DownloadCVButton";
 import { SiLinkedin, SiGithub } from "react-icons/si";
 
 const HeroContent = memo(({ t, onDownloadCV }) => {

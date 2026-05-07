@@ -2,8 +2,8 @@ import { memo } from "react";
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 import ProjectCard from "./ProjectCard";
-import { animationVariants, getSafeVariants } from "../../../constants/animations";
-import useReducedMotion from "../../../hooks/useReducedMotion.js";
+import { animationVariants, getSafeVariants } from "@constants/animations";
+import useReducedMotion from "@hooks/useReducedMotion.js";
 
 const ProjectsGrid = memo(
   ({
@@ -22,7 +22,11 @@ const ProjectsGrid = memo(
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
         variants={getSafeVariants(reducedMotion, animationVariants.projectsGrid)}
-      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 w-full"
+      className={`grid w-full ${
+        projects.length === 1
+          ? "grid-cols-1 max-w-md mx-auto"
+          : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+      } gap-4 sm:gap-5 md:gap-6`}
       role="list"
       aria-label={t.projectList ? "Lista de proyectos" : "Projects list"}
     >

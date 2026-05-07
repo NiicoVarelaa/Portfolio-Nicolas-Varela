@@ -1,10 +1,10 @@
 import { useMemo } from "react";
 import { motion } from "framer-motion";
-import useLanguage from "../../../hooks/useLanguage.js";
-import useReducedMotion from "../../../hooks/useReducedMotion.js";
-import es from "../../../locales/es.js";
-import en from "../../../locales/en.js";
-import { skillData } from "../../../data/skills.js";
+import useLanguage from "@hooks/useLanguage.js";
+import useReducedMotion from "@hooks/useReducedMotion.js";
+import es from "@locales/es.js";
+import en from "@locales/en.js";
+import { skillData } from "@data/skills.js";
 import SkillCard from "./SkillCard.jsx";
 import CategoryHeader from "./CategoryHeader.jsx";
 import SectionHeader from "./SectionHeader.jsx";
@@ -57,7 +57,7 @@ const Skills = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6"
+                className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3"
               >
                 {category.skills.map((skill) => (
                   <SkillCard key={skill.id || skill.name} skill={skill} />
