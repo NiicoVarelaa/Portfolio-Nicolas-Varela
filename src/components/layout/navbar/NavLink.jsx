@@ -1,4 +1,5 @@
 import { memo } from "react";
+import PropTypes from "prop-types";
 
 const NavLink = ({ href, label, isActive, onClick }) => (
   <a
@@ -22,5 +23,12 @@ const NavLink = ({ href, label, isActive, onClick }) => (
 );
 
 NavLink.displayName = "NavLink";
+
+NavLink.propTypes = {
+  href: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  isActive: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
 
 export default memo(NavLink);

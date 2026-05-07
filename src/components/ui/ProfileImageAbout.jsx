@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const ProfileImageAbout = ({
   src,
   alt = "Nicolás Varela - Desarrollador Full Stack",
@@ -12,5 +14,10 @@ const ProfileImageAbout = ({
     <figcaption className="sr-only">{alt}</figcaption>
   </div>
 );
+
+ProfileImageAbout.propTypes = {
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string,
+};
 
 export default ProfileImageAbout;

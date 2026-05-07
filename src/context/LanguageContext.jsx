@@ -5,6 +5,7 @@ import {
   useMemo,
   useCallback,
 } from "react";
+import PropTypes from "prop-types";
 import SUPPORTED_LANGUAGES from "../constants/languages";
 const LanguageContext = createContext();
 
@@ -22,6 +23,7 @@ export const LanguageProvider = ({ children }) => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       localStorage.setItem("lang", lang);
+      document.documentElement.lang = lang;
     }
   }, [lang]);
 
@@ -39,6 +41,10 @@ export const LanguageProvider = ({ children }) => {
       {children}
     </LanguageContext.Provider>
   );
+};
+
+LanguageProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default LanguageContext;

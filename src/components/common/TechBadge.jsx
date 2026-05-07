@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import PropTypes from "prop-types";
 
 const TechBadge = ({ tech }) => (
   <motion.span
@@ -9,5 +10,9 @@ const TechBadge = ({ tech }) => (
     {tech}
   </motion.span>
 );
+
+TechBadge.propTypes = {
+  tech: PropTypes.string.isRequired,
+};
 
 export default TechBadge;

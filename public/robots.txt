@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://niicovarelaa.github.io/Portfolio-Nicolas-Varela/sitemap.xml

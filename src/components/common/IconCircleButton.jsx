@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import PropTypes from "prop-types";
 
 const IconCircleButton = ({
   href,
@@ -30,6 +31,14 @@ const IconCircleButton = ({
       <Icon size={iconSize} className="text-gray-900 dark:text-white" />
     </MotionTag>
   );
+};
+
+IconCircleButton.propTypes = {
+  href: PropTypes.string,
+  label: PropTypes.string.isRequired,
+  icon: PropTypes.elementType.isRequired,
+  className: PropTypes.string,
+  iconSize: PropTypes.number,
 };
 
 export default IconCircleButton;

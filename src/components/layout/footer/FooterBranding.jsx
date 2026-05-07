@@ -1,6 +1,7 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
 import { Heart } from "lucide-react";
+import PropTypes from "prop-types";
 
 const FooterBranding = ({ copyrightText, year }) => (
   <div className="flex flex-col items-center md:items-start gap-2">
@@ -27,5 +28,10 @@ const FooterBranding = ({ copyrightText, year }) => (
 );
 
 FooterBranding.displayName = "FooterBranding";
+
+FooterBranding.propTypes = {
+  copyrightText: PropTypes.string.isRequired,
+  year: PropTypes.number.isRequired,
+};
 
 export default memo(FooterBranding);

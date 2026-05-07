@@ -1,4 +1,5 @@
 import { memo } from "react";
+import PropTypes from "prop-types";
 import DarkModeToggle from "./DarkModeToggle";
 import LanguageButton from "./LanguageButton";
 
@@ -71,5 +72,26 @@ const MobileMenu = ({
 };
 
 MobileMenu.displayName = "MobileMenu";
+
+MobileMenu.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  navItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  activeSection: PropTypes.string.isRequired,
+  onItemClick: PropTypes.func.isRequired,
+  isDarkMode: PropTypes.bool.isRequired,
+  toggleDarkMode: PropTypes.func.isRequired,
+  lang: PropTypes.string.isRequired,
+  toggleLanguage: PropTypes.func.isRequired,
+  translations: PropTypes.shape({
+    lightMode: PropTypes.string.isRequired,
+    darkMode: PropTypes.string.isRequired,
+    language: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default memo(MobileMenu);

@@ -1,5 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
+import PropTypes from "prop-types";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import useReducedMotion from "../../../../hooks/useReducedMotion.js";
 
 export function Gallery({
   images,
@@ -11,7 +13,14 @@ export function Gallery({
   onImageLoad,
   lang,
 }) {
-  const imageVariants = {
+  const reducedMotion = useReducedMotion();
+  const imageVariants = reducedMotion
+    ? {
+        enter: { opacity: 0 },
+        center: { opacity: 1 },
+        exit: { opacity: 0 },
+      }
+    : {
     enter: (direction) => ({
       x: direction > 0 ? 320 : -320,
       opacity: 0,
@@ -37,10 +46,14 @@ export function Gallery({
           initial="enter"
           animate="center"
           exit="exit"
-          transition={{
-            x: { type: "spring", stiffness: 260, damping: 28 },
-            opacity: { duration: 0.18 },
-          }}
+          transition={
+            reducedMotion
+              ? { duration: 0 }
+              : {
+                  x: { type: "spring", stiffness: 260, damping: 28 },
+                  opacity: { duration: 0.18 },
+                }
+          }
           src={images[currentIndex]}
           alt={`Screenshot ${currentIndex + 1}`}
           className="w-full h-full object-cover"
@@ -73,8 +86,9 @@ export function Gallery({
         </>
       )}
       <motion.div
-        initial={{ opacity: 0, y: 10 }}
+        initial={reducedMotion ? {} : { opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
+        transition={reducedMotion ? { duration: 0 } : {}}
         className="absolute bottom-2 left-0 right-0 flex justify-center"
       >
         <span className="bg-black/80 backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-xs font-medium shadow-lg">
@@ -84,3 +98,14 @@ export function Gallery({
     </div>
   );
 }
+
+Gallery.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.string).isRequired,
+  currentIndex: PropTypes.number.isRequired,
+  direction: PropTypes.number.isRequired,
+  isImageLoading: PropTypes.bool.isRequired,
+  onPrev: PropTypes.func.isRequired,
+  onNext: PropTypes.func.isRequired,
+  onImageLoad: PropTypes.func.isRequired,
+  lang: PropTypes.string.isRequired,
+};

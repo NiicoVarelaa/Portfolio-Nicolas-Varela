@@ -1,5 +1,6 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
+import PropTypes from "prop-types";
 
 const SocialLink = ({ href, icon, label }) => (
   <motion.a
@@ -16,5 +17,11 @@ const SocialLink = ({ href, icon, label }) => (
 );
 
 SocialLink.displayName = "SocialLink";
+
+SocialLink.propTypes = {
+  href: PropTypes.string.isRequired,
+  icon: PropTypes.node.isRequired,
+  label: PropTypes.string.isRequired,
+};
 
 export default memo(SocialLink);

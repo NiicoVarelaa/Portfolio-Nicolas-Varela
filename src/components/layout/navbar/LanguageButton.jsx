@@ -1,4 +1,5 @@
 import { memo } from "react";
+import PropTypes from "prop-types";
 
 const LanguageButton = ({ code, currentLang, onClick }) => {
   const isActive = currentLang === code;
@@ -21,5 +22,11 @@ const LanguageButton = ({ code, currentLang, onClick }) => {
 };
 
 LanguageButton.displayName = "LanguageButton";
+
+LanguageButton.propTypes = {
+  code: PropTypes.string.isRequired,
+  currentLang: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
 
 export default memo(LanguageButton);

@@ -1,24 +1,29 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
+import PropTypes from "prop-types";
+import useReducedMotion from "../../../hooks/useReducedMotion.js";
 import Badge from "../../common/Badge";
 import SocialButton from "../../common/SocialButtons";
 import DownloadCVButton from "../../ui/DownloadCVButton";
 import { SiLinkedin, SiGithub } from "react-icons/si";
 
-const HeroContent = memo(({ t, onDownloadCV }) => (
-  <motion.div
-    initial={{ opacity: 0, x: -30 }}
-    animate={{ opacity: 1, x: 0 }}
-    transition={{ duration: 0.8, delay: 0.2 }}
-    className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 lg:w-1/2"
-  >
+const HeroContent = memo(({ t, onDownloadCV }) => {
+  const reducedMotion = useReducedMotion();
+
+  return (
     <motion.div
-      initial={{ scale: 0.8, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ delay: 0.4 }}
+      initial={reducedMotion ? {} : { opacity: 0, x: -30 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={reducedMotion ? { duration: 0 } : { duration: 0.8, delay: 0.2 }}
+      className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 lg:w-1/2"
     >
-      <Badge>{t.availableForWork}</Badge>
-    </motion.div>
+      <motion.div
+        initial={reducedMotion ? {} : { scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={reducedMotion ? { duration: 0 } : { delay: 0.4 }}
+      >
+        <Badge>{t.availableForWork}</Badge>
+      </motion.div>
 
     <div className="space-y-2">
       <h2 className="text-2xl font-medium text-gray-600 dark:text-gray-300 flex items-center gap-2 justify-center lg:justify-start">
@@ -64,8 +69,21 @@ const HeroContent = memo(({ t, onDownloadCV }) => (
       </div>
     </div>
   </motion.div>
-));
+  );
+});
 
 HeroContent.displayName = "HeroContent";
+
+HeroContent.propTypes = {
+  t: PropTypes.shape({
+    availableForWork: PropTypes.string.isRequired,
+    greeting: PropTypes.string.isRequired,
+    iAm: PropTypes.string.isRequired,
+    fullStackDeveloper: PropTypes.string.isRequired,
+    homeDescription: PropTypes.string.isRequired,
+    downloadCV: PropTypes.string.isRequired,
+  }).isRequired,
+  onDownloadCV: PropTypes.func.isRequired,
+};
 
 export default HeroContent;

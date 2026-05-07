@@ -3,20 +3,17 @@ import { BiMenu, BiX } from "react-icons/bi";
 import useLanguage from "../../hooks/useLanguage";
 import useDarkMode from "../../hooks/useDarkMode";
 import useScrollSpy from "../../hooks/useScrollSpy";
+import useTranslation from "../../hooks/useTranslation";
 import DarkModeToggle from "./navbar/DarkModeToggle";
 import LanguageButton from "./navbar/LanguageButton";
 import NavLink from "./navbar/NavLink";
 import MobileMenu from "./navbar/MobileMenu";
-import es from "../../locales/es.js";
-import en from "../../locales/en.js";
-
-const languages = { es, en };
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useDarkMode();
+  const { isDarkMode, toggleTheme } = useDarkMode();
   const { lang, toggleLanguage } = useLanguage();
-  const t = languages[lang];
+  const t = useTranslation();
 
   // Memoizar navItems solo cuando cambie el idioma
   const navItems = useMemo(
@@ -51,10 +48,6 @@ const Navbar = () => {
   // Handlers memoizados
   const toggleMenu = useCallback(() => setIsMenuOpen((prev) => !prev), []);
   const closeMenu = useCallback(() => setIsMenuOpen(false), []);
-  const toggleDark = useCallback(
-    () => setIsDarkMode((prev) => !prev),
-    [setIsDarkMode]
-  );
 
   return (
     <>
@@ -127,12 +120,12 @@ const Navbar = () => {
             </div>
 
             {/* Dark Mode Toggle */}
-            <DarkModeToggle isDark={isDarkMode} toggle={toggleDark} />
+            <DarkModeToggle isDark={isDarkMode} toggle={toggleTheme} />
           </div>
 
           {/* Mobile Controls */}
           <div className="flex items-center gap-3 lg:hidden">
-            <DarkModeToggle isDark={isDarkMode} toggle={toggleDark} />
+            <DarkModeToggle isDark={isDarkMode} toggle={toggleTheme} />
             <button
               onClick={toggleMenu}
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -162,7 +155,7 @@ const Navbar = () => {
           activeSection={activeSection}
           onItemClick={closeMenu}
           isDarkMode={isDarkMode}
-          toggleDarkMode={toggleDark}
+          toggleThemeMode={toggleTheme}
           lang={lang}
           toggleLanguage={toggleLanguage}
           translations={t.navbar}

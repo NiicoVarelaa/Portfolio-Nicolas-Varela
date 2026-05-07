@@ -1,4 +1,5 @@
 import { memo } from "react";
+import PropTypes from "prop-types";
 
 const CategoryHeader = memo(
   ({ icon: Icon, title, skillsCount, technologiesLabel }) => (
@@ -21,4 +22,12 @@ const CategoryHeader = memo(
 );
 
 CategoryHeader.displayName = "CategoryHeader";
+
+CategoryHeader.propTypes = {
+  icon: PropTypes.elementType.isRequired,
+  title: PropTypes.string.isRequired,
+  skillsCount: PropTypes.number.isRequired,
+  technologiesLabel: PropTypes.string.isRequired,
+};
+
 export default CategoryHeader;

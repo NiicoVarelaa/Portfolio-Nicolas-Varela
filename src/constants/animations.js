@@ -1,4 +1,5 @@
 // Animation variants para Framer Motion
+
 export const animationVariants = {
   container: {
     hidden: { opacity: 0 },
@@ -80,3 +81,12 @@ export const animationVariants = {
     },
   },
 };
+
+export function getSafeVariants(reducedMotion, variants) {
+  if (!reducedMotion) return variants;
+  const safe = {};
+  for (const key of Object.keys(variants)) {
+    safe[key] = { opacity: 1, transition: { duration: 0 } };
+  }
+  return safe;
+}

@@ -1,4 +1,5 @@
 import { memo } from "react";
+import PropTypes from "prop-types";
 import TimelineItem from "./TimelineItem";
 
 const AboutTimeline = memo(({ timeline }) => (
@@ -14,5 +15,21 @@ const AboutTimeline = memo(({ timeline }) => (
 ));
 
 AboutTimeline.displayName = "AboutTimeline";
+
+AboutTimeline.propTypes = {
+  timeline: PropTypes.arrayOf(
+    PropTypes.shape({
+      icon: PropTypes.string,
+      title: PropTypes.string,
+      description: PropTypes.string,
+      certificates: PropTypes.arrayOf(
+        PropTypes.shape({
+          name: PropTypes.string,
+          image: PropTypes.string,
+        })
+      ),
+    })
+  ).isRequired,
+};
 
 export default AboutTimeline;

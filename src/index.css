@@ -3,10 +3,13 @@
 @tailwind utilities;
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
-
 * {
-    font-family: "Inter";
+    font-family: "Inter", system-ui, sans-serif;
     scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Playfair Display", Georgia, serif;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -22,36 +25,36 @@
     width: 10px;
 }
 
-:root {
-    --app-gray-default: 255 255 255;
-    --app-gray-50: 249 250 251;
-    --app-gray-100: 243 244 246;
-    --app-gray-200: 229 231 235;
-    --app-gray-300: 209 213 219;
-    --app-gray-400: 156 163 175;
-    --app-gray-500: 107 114 128;
-    --app-gray-600: 75 85 99;
-    --app-gray-700: 55 65 81;
-    --app-gray-800: 31 41 55;
-    --app-gray-900: 17 24 39;
-    --app-gray-950: 3 7 18;
-}
-
-.dark {
-    --app-gray-default: 3 7 18;
-    --app-gray-50: 17 24 39;
-    --app-gray-100: 31 41 55;
-    --app-gray-200: 55 65 81;
-    --app-gray-300: 75 85 99;
-    --app-gray-400: 107 114 128;
-    --app-gray-500: 156 163 175;
-    --app-gray-600: 209 213 219;
-    --app-gray-700: 229 231 235;
-    --app-gray-800: 243 244 246;
-    --app-gray-900: 249 250 251;
-    --app-gray-950: 255 255 255;
-}
-
 .no-scroll {
     overflow: hidden;
+}
+
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 16px;
+    z-index: 100;
+    padding: 12px 24px;
+    background: #f97316;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: top 0.2s;
+}
+
+.skip-link:focus {
+    top: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }

@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { motion } from "framer-motion";
 import useLanguage from "../../../hooks/useLanguage.js";
+import useReducedMotion from "../../../hooks/useReducedMotion.js";
 import es from "../../../locales/es.js";
 import en from "../../../locales/en.js";
 import { skillData } from "../../../data/skills.js";
@@ -21,6 +22,7 @@ const animationVariants = {
 const Skills = () => {
   const { lang } = useLanguage();
   const t = languages[lang].skills;
+  const reducedMotion = useReducedMotion();
 
   const skillCategories = useMemo(() => Object.entries(skillData), []);
 
@@ -37,10 +39,10 @@ const Skills = () => {
           {skillCategories.map(([key, category], categoryIndex) => (
             <motion.div
               key={category.id || key}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={reducedMotion ? {} : { opacity: 0, y: 40 }}
+              whileInView={reducedMotion ? {} : { opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
+              transition={reducedMotion ? { duration: 0 } : { duration: 0.6, delay: categoryIndex * 0.1 }}
               className="space-y-8"
             >
               <CategoryHeader
@@ -51,7 +53,7 @@ const Skills = () => {
               />
 
               <motion.div
-                variants={animationVariants.container}
+                variants={reducedMotion ? {} : animationVariants.container}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}

@@ -1,5 +1,6 @@
 import { FileDown } from "lucide-react";
 import { motion } from "framer-motion";
+import PropTypes from "prop-types";
 
 const DownloadCVButton = ({ onClick, label }) => (
   <motion.button
@@ -15,5 +16,10 @@ const DownloadCVButton = ({ onClick, label }) => (
     {label}
   </motion.button>
 );
+
+DownloadCVButton.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  label: PropTypes.string.isRequired,
+};
 
 export default DownloadCVButton;

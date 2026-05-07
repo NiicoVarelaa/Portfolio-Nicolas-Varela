@@ -87,10 +87,15 @@ export default {
     location: "Location",
     validations: {
       nameRequired: "Your name is required",
+      nameTooLong: "Name is too long",
       emailRequired: "Email is required",
       emailInvalid: "Invalid email format",
+      emailTooLong: "Email is too long",
       subjectRequired: "Subject is required",
+      subjectTooLong: "Subject is too long",
       messageRequired: "Please write a message",
+      messageTooLong: "Message is too long",
+      botDetected: "Validation error. Refresh the page and try again.",
     },
   },
   footer: {

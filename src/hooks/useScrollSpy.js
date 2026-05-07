@@ -1,21 +1,14 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 
-/**
- * Custom hook para detectar la sección activa en el viewport
- * @param {Array} sectionIds - Array de IDs de las secciones a observar
- * @param {number} offset - Offset desde el top para considerar la sección activa
- * @returns {Object} - { activeSection, hasShadow }
- */
 const useScrollSpy = (sectionIds, offset = 200) => {
   const [activeSection, setActiveSection] = useState("");
   const [hasShadow, setHasShadow] = useState(false);
+  const activeSectionRef = useRef("");
 
   const handleScroll = useCallback(() => {
-    // Detectar shadow en navbar
     const shouldShowShadow = window.scrollY > 10;
     setHasShadow(shouldShowShadow);
 
-    // Detectar sección activa con throttle mediante requestAnimationFrame
     const scrollPosition = window.scrollY + offset;
 
     let current = "";
@@ -26,13 +19,13 @@ const useScrollSpy = (sectionIds, offset = 200) => {
       }
     });
 
-    if (current !== activeSection) {
+    if (current !== activeSectionRef.current) {
+      activeSectionRef.current = current;
       setActiveSection(current);
     }
-  }, [sectionIds, offset, activeSection]);
+  }, [sectionIds, offset]);
 
   useEffect(() => {
-    // Throttle con requestAnimationFrame para mejor performance
     let rafId = null;
     let isThrottled = false;
 
@@ -46,7 +39,6 @@ const useScrollSpy = (sectionIds, offset = 200) => {
       });
     };
 
-    // Ejecutar una vez al montar
     handleScroll();
 
     window.addEventListener("scroll", throttledScroll, { passive: true });

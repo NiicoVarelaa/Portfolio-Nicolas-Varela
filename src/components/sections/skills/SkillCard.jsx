@@ -1,12 +1,15 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
-import { animationVariants } from "../../../constants/animations";
+import PropTypes from "prop-types";
+import { animationVariants, getSafeVariants } from "../../../constants/animations";
+import useReducedMotion from "../../../hooks/useReducedMotion.js";
 
 const SkillCard = memo(({ skill }) => {
   const IconComponent = skill.icon;
+  const reducedMotion = useReducedMotion();
   return (
     <motion.div
-      variants={animationVariants.skillCard}
+      variants={getSafeVariants(reducedMotion, animationVariants.skillCard)}
       className="group relative h-full"
     >
       <div className="relative h-full rounded-2xl overflow-hidden bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 p-6 flex flex-col items-center justify-center text-center">
@@ -27,4 +30,13 @@ const SkillCard = memo(({ skill }) => {
 });
 
 SkillCard.displayName = "SkillCard";
+
+SkillCard.propTypes = {
+  skill: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    icon: PropTypes.elementType.isRequired,
+    color: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
 export default SkillCard;

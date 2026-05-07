@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const Badge = ({ children }) => {
   return (
     <div className="flex items-center">
@@ -14,6 +16,10 @@ const Badge = ({ children }) => {
       </span>
     </div>
   );
+};
+
+Badge.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default Badge;

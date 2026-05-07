@@ -1,5 +1,6 @@
 import { memo } from "react";
 import { BiSun, BiMoon } from "react-icons/bi";
+import PropTypes from "prop-types";
 
 const DarkModeToggle = ({ isDark, toggle }) => (
   <button
@@ -17,5 +18,10 @@ const DarkModeToggle = ({ isDark, toggle }) => (
 );
 
 DarkModeToggle.displayName = "DarkModeToggle";
+
+DarkModeToggle.propTypes = {
+  isDark: PropTypes.bool.isRequired,
+  toggle: PropTypes.func.isRequired,
+};
 
 export default memo(DarkModeToggle);

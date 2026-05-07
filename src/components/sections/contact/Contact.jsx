@@ -2,19 +2,16 @@ import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import { Send, User, Mail, MessageSquare, FileText } from "lucide-react";
 import { Toaster } from "react-hot-toast";
-import useLanguage from "../../../hooks/useLanguage.js";
+import useReducedMotion from "../../../hooks/useReducedMotion.js";
 import { useContactForm } from "../../../hooks/useContactForm.js";
+import useTranslation from "../../../hooks/useTranslation.js";
 import ContactHeader from "./ContactHeader.jsx";
 import FormInput from "./FormInput.jsx";
 import FormTextarea from "./FormTextarea.jsx";
-import es from "../../../locales/es.js";
-import en from "../../../locales/en.js";
-
-const languages = { es, en };
 
 const Contact = () => {
-  const { lang } = useLanguage();
-  const t = languages[lang].contact;
+  const t = useTranslation().contact;
+  const reducedMotion = useReducedMotion();
 
   const {
     register,
@@ -45,10 +42,10 @@ const Contact = () => {
         <ContactHeader title={t.sectionTitle} />
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={reducedMotion ? {} : { opacity: 0, y: 30 }}
+          whileInView={reducedMotion ? {} : { opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={reducedMotion ? { duration: 0 } : { duration: 0.6, delay: 0.2 }}
           className="bg-white dark:bg-gray-900/50 backdrop-blur-sm border border-gray-200 dark:border-gray-800 rounded-2xl p-8 shadow-xl"
         >
           <form
@@ -108,8 +105,8 @@ const Contact = () => {
             />
 
             <motion.button
-              whileHover={{ scale: 1.01 }}
-              whileTap={{ scale: 0.98 }}
+              whileHover={reducedMotion ? {} : { scale: 1.01 }}
+              whileTap={reducedMotion ? {} : { scale: 0.98 }}
               type="submit"
               disabled={isSubmitting}
               className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-4 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-orange-500/25 flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2"

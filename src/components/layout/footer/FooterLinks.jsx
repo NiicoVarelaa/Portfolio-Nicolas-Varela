@@ -1,4 +1,5 @@
 import { memo } from "react";
+import PropTypes from "prop-types";
 
 const FooterLink = ({ href, label }) => (
   <a
@@ -26,5 +27,19 @@ const FooterLinks = ({ links }) => (
 );
 
 FooterLinks.displayName = "FooterLinks";
+
+FooterLink.propTypes = {
+  href: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+};
+
+FooterLinks.propTypes = {
+  links: PropTypes.arrayOf(
+    PropTypes.shape({
+      href: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};
 
 export default memo(FooterLinks);

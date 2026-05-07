@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import PropTypes from "prop-types";
 
 export function ProjectInfo({ project, t }) {
   return (
@@ -46,3 +47,19 @@ export function ProjectInfo({ project, t }) {
     </>
   );
 }
+
+ProjectInfo.propTypes = {
+  project: PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    technologies: PropTypes.arrayOf(PropTypes.string).isRequired,
+  }).isRequired,
+  t: PropTypes.shape({
+    projectList: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string,
+        description: PropTypes.string,
+      })
+    ).isRequired,
+    technologiesTitle: PropTypes.string.isRequired,
+  }).isRequired,
+};

@@ -1,13 +1,17 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
-import { animationVariants } from "../../../constants/animations";
+import PropTypes from "prop-types";
+import { animationVariants, getSafeVariants } from "../../../constants/animations";
+import useReducedMotion from "../../../hooks/useReducedMotion.js";
 
-const SectionHeader = memo(({ title }) => (
-  <motion.div
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true, margin: "-100px" }}
-    variants={animationVariants.header}
+const SectionHeader = memo(({ title }) => {
+  const reducedMotion = useReducedMotion();
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-100px" }}
+      variants={getSafeVariants(reducedMotion, animationVariants.header)}
     className="text-center mb-20"
   >
     <h2 className="text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
@@ -17,7 +21,13 @@ const SectionHeader = memo(({ title }) => (
       <div className="w-20 h-1 bg-gradient-to-r from-orange-500 via-orange-500 to-transparent rounded-full" />
     </div>
   </motion.div>
-));
+  );
+});
 
 SectionHeader.displayName = "SectionHeader";
+
+SectionHeader.propTypes = {
+  title: PropTypes.string.isRequired,
+};
+
 export default SectionHeader;

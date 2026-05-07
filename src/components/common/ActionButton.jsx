@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import PropTypes from "prop-types";
 
 const ActionButton = ({
   href,
@@ -23,5 +24,12 @@ const ActionButton = ({
     <span className="text-sm">{label}</span>
   </motion.a>
 );
+
+ActionButton.propTypes = {
+  href: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  icon: PropTypes.elementType.isRequired,
+  className: PropTypes.string,
+};
 
 export default ActionButton;

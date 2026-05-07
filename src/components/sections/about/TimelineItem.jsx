@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
+import PropTypes from "prop-types";
 import { FaGraduationCap, FaCertificate, FaUser } from "react-icons/fa";
+import useReducedMotion from "../../../hooks/useReducedMotion.js";
 
 const iconMap = {
   user: <FaUser />,
@@ -7,12 +9,15 @@ const iconMap = {
   certificate: <FaCertificate />,
 };
 
-const TimelineItem = ({ item, isLast }) => (
-  <motion.li
-    initial={{ opacity: 0, x: -30 }}
-    whileInView={{ opacity: 1, x: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.5 }}
+const TimelineItem = ({ item, isLast }) => {
+  const reducedMotion = useReducedMotion();
+
+  return (
+    <motion.li
+      initial={reducedMotion ? {} : { opacity: 0, x: -30 }}
+      whileInView={reducedMotion ? {} : { opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={reducedMotion ? { duration: 0 } : { duration: 0.5 }}
     className="group flex items-start gap-4 sm:gap-6 outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
     tabIndex={0}
     aria-label={item.title ? item.title : undefined}
@@ -70,6 +75,22 @@ const TimelineItem = ({ item, isLast }) => (
       )}
     </div>
   </motion.li>
-);
+  );
+};
+
+TimelineItem.propTypes = {
+  item: PropTypes.shape({
+    icon: PropTypes.string,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    certificates: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string,
+        image: PropTypes.string,
+      })
+    ),
+  }).isRequired,
+  isLast: PropTypes.bool.isRequired,
+};
 
 export default TimelineItem;

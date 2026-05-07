@@ -1,5 +1,6 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
+import PropTypes from "prop-types";
 
 const FormTextarea = memo(
   ({ label, name, icon: Icon, register, required, error }) => (
@@ -43,5 +44,16 @@ const FormTextarea = memo(
 );
 
 FormTextarea.displayName = "FormTextarea";
+
+FormTextarea.propTypes = {
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  icon: PropTypes.elementType.isRequired,
+  register: PropTypes.func.isRequired,
+  required: PropTypes.bool,
+  error: PropTypes.shape({
+    message: PropTypes.string,
+  }),
+};
 
 export default FormTextarea;

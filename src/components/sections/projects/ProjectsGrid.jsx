@@ -1,7 +1,9 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
+import PropTypes from "prop-types";
 import ProjectCard from "./ProjectCard";
-import { animationVariants } from "../../../constants/animations";
+import { animationVariants, getSafeVariants } from "../../../constants/animations";
+import useReducedMotion from "../../../hooks/useReducedMotion.js";
 
 const ProjectsGrid = memo(
   ({
@@ -12,12 +14,14 @@ const ProjectsGrid = memo(
     onSelectProject,
     onCardHover,
     onCardLeave,
-  }) => (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
-      variants={animationVariants.projectsGrid}
+  }) => {
+    const reducedMotion = useReducedMotion();
+    return (
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+        variants={getSafeVariants(reducedMotion, animationVariants.projectsGrid)}
       className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 w-full"
       role="list"
       aria-label={t.projectList ? "Lista de proyectos" : "Projects list"}
@@ -43,9 +47,38 @@ const ProjectsGrid = memo(
         />
       ))}
     </motion.div>
-  )
+    );
+  }
 );
 
 ProjectsGrid.displayName = "ProjectsGrid";
+
+ProjectsGrid.propTypes = {
+  projects: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
+      link: PropTypes.string.isRequired,
+      githubLink: PropTypes.string,
+      technologies: PropTypes.arrayOf(PropTypes.string).isRequired,
+      galleryImages: PropTypes.arrayOf(PropTypes.string),
+    })
+  ).isRequired,
+  t: PropTypes.shape({
+    projectList: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string,
+        description: PropTypes.string,
+      })
+    ),
+  }).isRequired,
+  lang: PropTypes.string.isRequired,
+  hoveredCard: PropTypes.number,
+  onSelectProject: PropTypes.func.isRequired,
+  onCardHover: PropTypes.func.isRequired,
+  onCardLeave: PropTypes.func.isRequired,
+};
 
 export default ProjectsGrid;

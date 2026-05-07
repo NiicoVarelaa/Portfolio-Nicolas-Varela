@@ -1,5 +1,6 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
+import PropTypes from "prop-types";
 
 const FormInput = memo(
   ({
@@ -52,5 +53,18 @@ const FormInput = memo(
 );
 
 FormInput.displayName = "FormInput";
+
+FormInput.propTypes = {
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  type: PropTypes.string,
+  icon: PropTypes.elementType.isRequired,
+  register: PropTypes.func.isRequired,
+  required: PropTypes.bool,
+  pattern: PropTypes.instanceOf(RegExp),
+  error: PropTypes.shape({
+    message: PropTypes.string,
+  }),
+};
 
 export default FormInput;

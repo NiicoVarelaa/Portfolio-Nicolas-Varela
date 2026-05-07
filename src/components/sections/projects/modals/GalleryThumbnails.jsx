@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import PropTypes from "prop-types";
 
 export function GalleryThumbnails({
   images,
@@ -38,3 +39,10 @@ export function GalleryThumbnails({
     </div>
   );
 }
+
+GalleryThumbnails.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.string).isRequired,
+  currentIndex: PropTypes.number.isRequired,
+  onThumbnailClick: PropTypes.func.isRequired,
+  lang: PropTypes.string.isRequired,
+};

@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import PropTypes from "prop-types";
 
 const SocialButton = ({ href, children, ...props }) => {
     return (
@@ -25,6 +26,11 @@ const SocialButton = ({ href, children, ...props }) => {
             {children}
         </motion.a>
     );
+};
+
+SocialButton.propTypes = {
+  href: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default SocialButton;

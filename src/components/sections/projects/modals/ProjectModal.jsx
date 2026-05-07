@@ -1,23 +1,26 @@
 import { motion, AnimatePresence } from "framer-motion";
+import PropTypes from "prop-types";
 import { X } from "lucide-react";
-import useLanguage from "../../../../hooks/useLanguage.js";
-import es from "../../../../locales/es.js";
-import en from "../../../../locales/en.js";
+import useTranslation, { useLang } from "../../../../hooks/useTranslation.js";
+import useReducedMotion from "../../../../hooks/useReducedMotion.js";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { Gallery } from "./Gallery.jsx";
 import { GalleryThumbnails } from "./GalleryThumbnails.jsx";
 import { ProjectInfo } from "./ProjectInfo.jsx";
 import { ProjectActions } from "./ProjectActions.jsx";
 
-const languages = { es, en };
+const FOCUSABLE_SELECTOR =
+  'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
 
 const ProjectModal = ({ project, onClose }) => {
-  const { lang } = useLanguage();
-  const t = languages[lang].projects;
+  const t = useTranslation().projects;
+  const lang = useLang();
+  const reducedMotion = useReducedMotion();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [isImageLoading, setIsImageLoading] = useState(true);
   const closeBtnRef = useRef(null);
+  const modalRef = useRef(null);
 
   const handleNext = useCallback(() => {
     if (!project.galleryImages || project.galleryImages.length <= 1) return;
@@ -54,6 +57,26 @@ const ProjectModal = ({ project, onClose }) => {
       if (e.key === "Escape") onClose();
       if (e.key === "ArrowLeft") handlePrev();
       if (e.key === "ArrowRight") handleNext();
+
+      if (e.key === "Tab" && modalRef.current) {
+        const focusable = modalRef.current.querySelectorAll(FOCUSABLE_SELECTOR);
+        if (focusable.length === 0) return;
+
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else {
+          if (document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      }
     };
     window.addEventListener("keydown", handleKeyDown);
     document.body.style.overflow = "hidden";
@@ -72,7 +95,7 @@ const ProjectModal = ({ project, onClose }) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.18 }}
+        transition={{ duration: reducedMotion ? 0 : 0.18 }}
         className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 sm:p-4"
         onClick={onClose}
         role="dialog"
@@ -80,10 +103,15 @@ const ProjectModal = ({ project, onClose }) => {
         aria-labelledby="project-title"
       >
         <motion.div
-          initial={{ scale: 0.97, opacity: 0, y: 16 }}
-          animate={{ scale: 1, opacity: 1, y: 0 }}
-          exit={{ scale: 0.97, opacity: 0, y: 16 }}
-          transition={{ type: "spring", damping: 28, stiffness: 260 }}
+          ref={modalRef}
+          initial={reducedMotion ? {} : { scale: 0.97, opacity: 0, y: 16 }}
+          animate={reducedMotion ? {} : { scale: 1, opacity: 1, y: 0 }}
+          exit={reducedMotion ? {} : { scale: 0.97, opacity: 0, y: 16 }}
+          transition={
+            reducedMotion
+              ? { duration: 0 }
+              : { type: "spring", damping: 28, stiffness: 260 }
+          }
           className="relative w-full max-w-lg sm:max-w-2xl md:max-w-4xl lg:max-w-6xl max-h-[96vh] bg-white dark:bg-gray-900 rounded-2xl shadow-2xl flex flex-col lg:flex-row overflow-hidden"
           onClick={(e) => e.stopPropagation()}
         >
@@ -128,6 +156,20 @@ const ProjectModal = ({ project, onClose }) => {
       </motion.div>
     </AnimatePresence>
   );
+};
+
+ProjectModal.propTypes = {
+  project: PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    link: PropTypes.string.isRequired,
+    githubLink: PropTypes.string,
+    technologies: PropTypes.arrayOf(PropTypes.string).isRequired,
+    galleryImages: PropTypes.arrayOf(PropTypes.string),
+  }).isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
 export default ProjectModal;

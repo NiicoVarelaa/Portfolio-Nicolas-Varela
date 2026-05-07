@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import PropTypes from "prop-types";
 import { FaGithub } from "react-icons/fa";
 import { ExternalLink } from "lucide-react";
 
@@ -48,3 +49,15 @@ export function ProjectActions({ project, t, lang }) {
     </motion.div>
   );
 }
+
+ProjectActions.propTypes = {
+  project: PropTypes.shape({
+    githubLink: PropTypes.string,
+    link: PropTypes.string.isRequired,
+  }).isRequired,
+  t: PropTypes.shape({
+    code: PropTypes.string.isRequired,
+    demo: PropTypes.string.isRequired,
+  }).isRequired,
+  lang: PropTypes.string.isRequired,
+};
