@@ -24,19 +24,19 @@ export default {
     sectionTitle: "Projects",
     projectList: [
       {
-        title: "Game Zone",
+        title: "GesClub",
         description:
-          "Online video game store website designed with HTML, CSS, Bootstrap, and JavaScript. It offers a modern and intuitive experience for exploring and purchasing games across different platforms.",
+          "Complete sports club management system with animated landing page, member portal, and admin dashboard. Includes CRUD for members, sports, registrations, and payments with interactive charts, PDF/Excel export, and dark/light mode.",
       },
       {
-        title: "AI Content Generator",
+        title: "Pixel Salud",
         description:
-          "An AI-powered platform that helps create high-quality content using machine learning algorithms. Features include text generation, image creation, and content optimization.",
+          "E-commerce and pharmacy management platform with admin, employee (POS), and customer roles. Features shopping cart, Mercado Pago payments, discount campaigns, coupons, exportable reports, and audit trail.",
       },
       {
-        title: "Social Media Analytics",
+        title: "StockFlow",
         description:
-          "A powerful analytics tool that provides insights into social media performance. Includes customizable dashboards and automated reporting.",
+          "Stock and supplier management system for electronics stores. Dashboard with interactive charts, low-stock alerts, ACID-transaction stock movements, Cloudinary image upload, and email password recovery.",
       },
     ],
     code: "Code",
@@ -77,7 +77,7 @@ export default {
     send: "Send Message",
     sending: "Sending...",
     successTitle: "Message sent!",
-    successText: "Thanks for reaching out. I’ll get back to you soon.",
+    successText: "Thanks for reaching out. I'll get back to you soon.",
     errorTitle: "Oops! Something went wrong",
     errorText: "Your message couldn't be sent. Please try again later.",
     errorGeneric: "An error occurred while sending the message",

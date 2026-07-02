@@ -24,19 +24,19 @@ export default {
     sectionTitle: "Proyectos",
     projectList: [
       {
-        title: "Game Zone",
+        title: "GesClub",
         description:
-          "Página para una tienda online de videojuegos diseñada con HTML, CSS, Bootstrap y JavaScript. Ofrece una experiencia moderna e intuitiva para explorar y comprar juegos de diferentes plataformas.",
+          "Sistema de gestión deportiva completo con landing page animada, portal para socios y panel administrativo. Incluye CRUD de socios, deportes, inscripciones y pagos con gráficos interactivos, exportación a PDF/Excel y modo oscuro/claro.",
       },
       {
-        title: "Generador de Contenido AI",
+        title: "Pixel Salud",
         description:
-          "Una plataforma impulsada por IA que ayuda a crear contenido de alta calidad utilizando algoritmos de aprendizaje automático. Incluye generación de texto, creación de imágenes y optimización de contenido.",
+          "Plataforma de e-commerce y gestión farmacéutica con roles de administrador, empleado (POS) y cliente. Integra carrito de compras, pagos con Mercado Pago, campañas de descuento, cupones, reportes exportables y trail de auditoría.",
       },
       {
-        title: "Análisis de Redes Sociales",
+        title: "StockFlow",
         description:
-          "Herramienta de análisis poderosa que proporciona información sobre el rendimiento en redes sociales. Incluye paneles personalizables e informes automatizados.",
+          "Sistema de gestión de stock y proveedores para tiendas de electrónica. Panel con gráficos interactivos, alertas de stock bajo, movimientos con transacciones ACID, subida de imágenes a Cloudinary y recuperación de contraseña por email.",
       },
     ],
     code: "Código",

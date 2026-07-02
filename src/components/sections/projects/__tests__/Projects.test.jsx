@@ -10,9 +10,9 @@ const mockT = {
   projects: {
     sectionTitle: 'Proyectos',
     projectList: [
-      { title: 'Game Zone', description: 'Tienda online de videojuegos' },
-      { title: 'TaskFlow', description: 'Gestión de tareas con drag & drop' },
-      { title: 'WeatherPulse', description: 'Dashboard meteorológico' },
+      { title: 'GesClub', description: 'Sistema de gestión deportiva' },
+      { title: 'Pixel Salud', description: 'E-commerce y gestión farmacéutica' },
+      { title: 'StockFlow', description: 'Sistema de stock y proveedores' },
     ],
   },
   skills: { sectionTitle: 'Habilidades', technologiesCount: 'tecnologías', alwaysLearning: 'Aprendiendo', currentlyExploring: 'Explorando' },
@@ -43,7 +43,7 @@ vi.mock('@hooks/useScrollSpy', () => ({
   default: () => ({ activeSection: '', hasShadow: false }),
 }))
 
-const getProjectCard = () => screen.getByRole('listitem', { name: /Game Zone/i })
+const getProjectCard = () => screen.getByRole('listitem', { name: /GesClub/i })
 
 describe('Projects', () => {
   it('renders the projects section', () => {
@@ -58,7 +58,7 @@ describe('Projects', () => {
 
   it('renders project cards from data', () => {
     render(<Projects />, { wrapper })
-    expect(screen.getByText('Game Zone')).toBeInTheDocument()
+    expect(screen.getByText('GesClub')).toBeInTheDocument()
   })
 
   it('opens modal when clicking a project card', async () => {
