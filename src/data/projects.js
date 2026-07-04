@@ -5,6 +5,12 @@ import gesclubG3 from "@assets/gesclub-g3.webp";
 import gesclubG4 from "@assets/gesclub-g4.webp";
 import gesclubG5 from "@assets/gesclub-g5.webp";
 import gesclubG6 from "@assets/gesclub-g6.webp";
+import gesclubG7 from "@assets/gesclub-g7.webp";
+import gesclubG8 from "@assets/gesclub-g8.webp";
+import gesclubG9 from "@assets/gesclub-g9.webp";
+import gesclubG10 from "@assets/gesclub-g10.webp";
+import gesclubG11 from "@assets/gesclub-g11.webp";
+import gesclubG12 from "@assets/gesclub-g12.webp";
 
 import pixelCard from "@assets/pixel-card.webp";
 import pixelG1 from "@assets/pixel-g1.webp";
@@ -13,6 +19,12 @@ import pixelG3 from "@assets/pixel-g3.webp";
 import pixelG4 from "@assets/pixel-g4.webp";
 import pixelG5 from "@assets/pixel-g5.webp";
 import pixelG6 from "@assets/pixel-g6.webp";
+import pixelG7 from "@assets/pixel-g7.webp";
+import pixelG8 from "@assets/pixel-g8.webp";
+import pixelG9 from "@assets/pixel-g9.webp";
+import pixelG10 from "@assets/pixel-g10.webp";
+import pixelG11 from "@assets/pixel-g11.webp";
+import pixelG12 from "@assets/pixel-g12.webp";
 
 import stockflowCard from "@assets/stockflow-card.webp";
 import stockflowG1 from "@assets/stockflow-g1.webp";
@@ -21,6 +33,12 @@ import stockflowG3 from "@assets/stockflow-g3.webp";
 import stockflowG4 from "@assets/stockflow-g4.webp";
 import stockflowG5 from "@assets/stockflow-g5.webp";
 import stockflowG6 from "@assets/stockflow-g6.webp";
+import stockflowG7 from "@assets/stockflow-g7.webp";
+import stockflowG8 from "@assets/stockflow-g8.webp";
+import stockflowG9 from "@assets/stockflow-g9.webp";
+import stockflowG10 from "@assets/stockflow-g10.webp";
+import stockflowG11 from "@assets/stockflow-g11.webp";
+import stockflowG12 from "@assets/stockflow-g12.webp";
 
 export const projects = [
   {
@@ -49,6 +67,12 @@ export const projects = [
       gesclubG4,
       gesclubG5,
       gesclubG6,
+      gesclubG7,
+      gesclubG8,
+      gesclubG9,
+      gesclubG10,
+      gesclubG11,
+      gesclubG12,
     ],
   },
   {
@@ -76,6 +100,12 @@ export const projects = [
       pixelG4,
       pixelG5,
       pixelG6,
+      pixelG7,
+      pixelG8,
+      pixelG9,
+      pixelG10,
+      pixelG11,
+      pixelG12,
     ],
   },
   {
@@ -104,6 +134,12 @@ export const projects = [
       stockflowG4,
       stockflowG5,
       stockflowG6,
+      stockflowG7,
+      stockflowG8,
+      stockflowG9,
+      stockflowG10,
+      stockflowG11,
+      stockflowG12,
     ],
   },
 ];
