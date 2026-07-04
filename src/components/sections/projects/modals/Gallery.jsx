@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import PropTypes from "prop-types";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
 import useReducedMotion from "@hooks/useReducedMotion.js";
 
 export function Gallery({
@@ -11,6 +11,7 @@ export function Gallery({
   onPrev,
   onNext,
   onImageLoad,
+  onExpand,
   lang,
 }) {
   const reducedMotion = useReducedMotion();
@@ -35,8 +36,9 @@ export function Gallery({
   };
   return (
     <div
-      className="relative mb-3 sm:mb-4 rounded-xl overflow-hidden bg-gray-200 dark:bg-gray-700 shadow-xl"
+      className="group relative mb-3 sm:mb-4 rounded-xl overflow-hidden bg-gray-200 dark:bg-gray-700 shadow-xl cursor-pointer"
       style={{ aspectRatio: "16/10" }}
+      onClick={onExpand}
     >
       <AnimatePresence initial={false} custom={direction} mode="wait">
         <motion.img
@@ -56,12 +58,19 @@ export function Gallery({
           }
           src={images[currentIndex]}
           alt={`Screenshot ${currentIndex + 1}`}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover pointer-events-none"
           onLoad={onImageLoad}
           loading="lazy"
           draggable={false}
         />
       </AnimatePresence>
+      <button
+        onClick={(e) => { e.stopPropagation(); onExpand(); }}
+        className="absolute top-3 right-3 w-9 h-9 flex items-center justify-center rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 hover:bg-orange-500 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
+        aria-label={lang === "es" ? "Expandir imagen" : "Expand image"}
+      >
+        <Maximize2 size={16} strokeWidth={2.2} />
+      </button>
       {isImageLoading && (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-200 dark:bg-gray-700">
           <div className="w-10 h-10 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
@@ -107,5 +116,6 @@ Gallery.propTypes = {
   onPrev: PropTypes.func.isRequired,
   onNext: PropTypes.func.isRequired,
   onImageLoad: PropTypes.func.isRequired,
+  onExpand: PropTypes.func.isRequired,
   lang: PropTypes.string.isRequired,
 };

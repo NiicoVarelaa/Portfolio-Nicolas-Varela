@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import PropTypes from "prop-types";
-import { X } from "lucide-react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import useTranslation, { useLang } from "@hooks/useTranslation.js";
 import useReducedMotion from "@hooks/useReducedMotion.js";
 import { useState, useEffect, useCallback, useRef } from "react";
@@ -19,6 +19,7 @@ const ProjectModal = ({ project, onClose }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [isImageLoading, setIsImageLoading] = useState(true);
+  const [previewOpen, setPreviewOpen] = useState(false);
   const closeBtnRef = useRef(null);
   const modalRef = useRef(null);
 
@@ -52,8 +53,25 @@ const ProjectModal = ({ project, onClose }) => {
     [currentIndex]
   );
 
+  const openPreview = useCallback(() => setPreviewOpen(true), []);
+  const closePreview = useCallback(() => setPreviewOpen(false), []);
+
+  const handlePrevPreview = useCallback(() => {
+    setCurrentIndex((prev) => (prev - 1 + project.galleryImages.length) % project.galleryImages.length);
+  }, [project.galleryImages]);
+
+  const handleNextPreview = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % project.galleryImages.length);
+  }, [project.galleryImages]);
+
   useEffect(() => {
     const handleKeyDown = (e) => {
+      if (previewOpen) {
+        if (e.key === "Escape") closePreview();
+        if (e.key === "ArrowLeft") handlePrevPreview();
+        if (e.key === "ArrowRight") handleNextPreview();
+        return;
+      }
       if (e.key === "Escape") onClose();
       if (e.key === "ArrowLeft") handlePrev();
       if (e.key === "ArrowRight") handleNext();
@@ -85,7 +103,7 @@ const ProjectModal = ({ project, onClose }) => {
       window.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "unset";
     };
-  }, [onClose, handlePrev, handleNext]);
+  }, [onClose, handlePrev, handleNext, previewOpen, closePreview, handlePrevPreview, handleNextPreview]);
 
   if (!project) return null;
 
@@ -134,6 +152,7 @@ const ProjectModal = ({ project, onClose }) => {
               onPrev={handlePrev}
               onNext={handleNext}
               onImageLoad={() => setIsImageLoading(false)}
+              onExpand={openPreview}
               lang={lang}
             />
             {project.galleryImages.length > 1 && (
@@ -153,6 +172,61 @@ const ProjectModal = ({ project, onClose }) => {
             <ProjectActions project={project} t={t} lang={lang} />
           </div>
         </motion.div>
+
+        {previewOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.18 }}
+            className="fixed inset-0 z-[70] flex items-center justify-center bg-black/95"
+            onClick={closePreview}
+          >
+            <button
+              onClick={closePreview}
+              className="absolute top-4 right-4 w-11 h-11 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-orange-500 transition-all duration-200 z-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
+              aria-label={lang === "es" ? "Cerrar" : "Close"}
+            >
+              <X size={24} strokeWidth={2.5} />
+            </button>
+
+            <span className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium z-10">
+              {currentIndex + 1} / {project.galleryImages.length}
+            </span>
+
+            {project.galleryImages.length > 1 && (
+              <>
+                <button
+                  onClick={(e) => { e.stopPropagation(); handlePrevPreview(); }}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-orange-500 transition-all duration-200 z-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
+                  aria-label={lang === "es" ? "Anterior" : "Previous"}
+                >
+                  <ChevronLeft size={28} strokeWidth={2.2} />
+                </button>
+                <button
+                  onClick={(e) => { e.stopPropagation(); handleNextPreview(); }}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center rounded-full bg-white/10 text-white hover:bg-orange-500 transition-all duration-200 z-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
+                  aria-label={lang === "es" ? "Siguiente" : "Next"}
+                >
+                  <ChevronRight size={28} strokeWidth={2.2} />
+                </button>
+              </>
+            )}
+
+            <motion.img
+              key={currentIndex}
+              src={project.galleryImages[currentIndex]}
+              alt={`Screenshot ${currentIndex + 1}`}
+              initial={{ scale: 0.92, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.92, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="max-w-[92vw] max-h-[92vh] object-contain"
+              onClick={(e) => e.stopPropagation()}
+              draggable={false}
+            />
+          </motion.div>
+        )}
       </motion.div>
     </AnimatePresence>
   );
