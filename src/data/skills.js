@@ -1,4 +1,4 @@
-import { Code2, Database } from "lucide-react";
+import { Code2, Database, Wrench } from "lucide-react";
 import {
   SiJavascript,
   SiReact,
@@ -7,6 +7,9 @@ import {
   SiExpress,
   SiMongodb,
   SiMysql,
+  SiTypescript,
+  SiPostgresql,
+  SiPrisma,
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
 
@@ -54,6 +57,12 @@ export const skillData = {
         color: "from-gray-500 to-gray-700",
       },
       {
+        id: "typescript",
+        name: "TypeScript",
+        icon: SiTypescript,
+        color: "from-blue-500 to-blue-700",
+      },
+      {
         id: "java",
         name: "Java",
         icon: FaJava,
@@ -77,6 +86,25 @@ export const skillData = {
         name: "MySQL",
         icon: SiMysql,
         color: "from-blue-500 to-cyan-600",
+      },
+      {
+        id: "postgresql",
+        name: "PostgreSQL",
+        icon: SiPostgresql,
+        color: "from-indigo-500 to-blue-600",
+      },
+    ],
+  },
+  tools: {
+    id: "tools",
+    icon: Wrench,
+    categoryName: "Tools",
+    skills: [
+      {
+        id: "prisma",
+        name: "Prisma",
+        icon: SiPrisma,
+        color: "from-gray-600 to-gray-800",
       },
     ],
   },
