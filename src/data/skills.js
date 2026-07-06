@@ -1,4 +1,4 @@
-import { Code2, Database, Wrench } from "lucide-react";
+import { Code2, Database, Wrench, Box } from "lucide-react";
 import {
   SiJavascript,
   SiReact,
@@ -10,6 +10,7 @@ import {
   SiTypescript,
   SiPostgresql,
   SiPrisma,
+  SiSupabase,
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
 
@@ -105,6 +106,18 @@ export const skillData = {
         name: "Prisma",
         icon: SiPrisma,
         color: "from-gray-600 to-gray-800",
+      },
+      {
+        id: "supabase",
+        name: "Supabase",
+        icon: SiSupabase,
+        color: "from-emerald-500 to-green-600",
+      },
+      {
+        id: "zustand",
+        name: "Zustand",
+        icon: Box,
+        color: "from-amber-500 to-orange-600",
       },
     ],
   },
