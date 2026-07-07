@@ -1,4 +1,4 @@
-import { Code2, Database, Wrench, Box } from "lucide-react";
+import { Code2, Database, Wrench } from "lucide-react";
 import {
   SiJavascript,
   SiReact,
@@ -113,12 +113,7 @@ export const skillData = {
         icon: SiSupabase,
         color: "from-emerald-500 to-green-600",
       },
-      {
-        id: "zustand",
-        name: "Zustand",
-        icon: Box,
-        color: "from-amber-500 to-orange-600",
-      },
+
     ],
   },
 };
