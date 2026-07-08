@@ -8,7 +8,6 @@ import { skillData } from "@data/skills.js";
 import SkillCard from "./SkillCard.jsx";
 import CategoryHeader from "./CategoryHeader.jsx";
 import SectionHeader from "./SectionHeader.jsx";
-import LearningBanner from "./LearningBanner.jsx";
 
 const languages = { es, en };
 
@@ -66,11 +65,6 @@ const Skills = () => {
             </motion.div>
           ))}
         </div>
-
-        <LearningBanner
-          title={t.alwaysLearning}
-          description={t.currentlyExploring}
-        />
       </div>
     </section>
   );
