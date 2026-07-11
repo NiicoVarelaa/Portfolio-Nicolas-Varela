@@ -1,16 +1,16 @@
-import gesclubCard from "@assets/projects/gesclub/gesclub-card.webp";
-import gesclubG1 from "@assets/projects/gesclub/gesclub-g1.webp";
-import gesclubG2 from "@assets/projects/gesclub/gesclub-g2.webp";
-import gesclubG3 from "@assets/projects/gesclub/gesclub-g3.webp";
-import gesclubG4 from "@assets/projects/gesclub/gesclub-g4.webp";
-import gesclubG5 from "@assets/projects/gesclub/gesclub-g5.webp";
-import gesclubG6 from "@assets/projects/gesclub/gesclub-g6.webp";
-import gesclubG7 from "@assets/projects/gesclub/gesclub-g7.webp";
-import gesclubG8 from "@assets/projects/gesclub/gesclub-g8.webp";
-import gesclubG9 from "@assets/projects/gesclub/gesclub-g9.webp";
-import gesclubG10 from "@assets/projects/gesclub/gesclub-g10.webp";
-import gesclubG11 from "@assets/projects/gesclub/gesclub-g11.webp";
-import gesclubG12 from "@assets/projects/gesclub/gesclub-g12.webp";
+import gesclubImg1 from "@assets/projects/gesclub/1.webp";
+import gesclubImg2 from "@assets/projects/gesclub/2.webp";
+import gesclubImg3 from "@assets/projects/gesclub/3.webp";
+import gesclubImg4 from "@assets/projects/gesclub/4.webp";
+import gesclubImg5 from "@assets/projects/gesclub/5.webp";
+import gesclubImg6 from "@assets/projects/gesclub/6.webp";
+import gesclubImg7 from "@assets/projects/gesclub/7.webp";
+import gesclubImg8 from "@assets/projects/gesclub/8.webp";
+import gesclubImg9 from "@assets/projects/gesclub/9.webp";
+import gesclubImg10 from "@assets/projects/gesclub/10.webp";
+import gesclubImg11 from "@assets/projects/gesclub/11.webp";
+import gesclubImg12 from "@assets/projects/gesclub/12.webp";
+import gesclubImg13 from "@assets/projects/gesclub/13.webp";
 
 import pixelCard from "@assets/projects/pixel/pixel-card.webp";
 import pixelG1 from "@assets/projects/pixel/pixel-g1.webp";
@@ -43,7 +43,7 @@ import stockflowG12 from "@assets/projects/stockflow/stockflow-g12.webp";
 export const projects = [
   {
     id: 1,
-    image: gesclubCard,
+    image: gesclubImg1,
     title: "GesClub",
     description:
       "Sistema de gestion deportiva completo con landing page animada, portal para socios y panel administrativo. Incluye CRUD de socios, deportes, inscripciones y pagos con graficos interactivos, exportacion a PDF/Excel y modo oscuro/claro.",
@@ -60,19 +60,19 @@ export const projects = [
       "Zustand",
     ],
     galleryImages: [
-      gesclubCard,
-      gesclubG1,
-      gesclubG2,
-      gesclubG3,
-      gesclubG4,
-      gesclubG5,
-      gesclubG6,
-      gesclubG7,
-      gesclubG8,
-      gesclubG9,
-      gesclubG10,
-      gesclubG11,
-      gesclubG12,
+      gesclubImg1,
+      gesclubImg2,
+      gesclubImg3,
+      gesclubImg4,
+      gesclubImg5,
+      gesclubImg6,
+      gesclubImg7,
+      gesclubImg8,
+      gesclubImg9,
+      gesclubImg10,
+      gesclubImg11,
+      gesclubImg12,
+      gesclubImg13,
     ],
   },
   {
