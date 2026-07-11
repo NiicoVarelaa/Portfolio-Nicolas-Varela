@@ -3,8 +3,7 @@ import PropTypes from "prop-types";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import useTranslation, { useLang } from "@hooks/useTranslation.js";
 import useReducedMotion from "@hooks/useReducedMotion.js";
-import useMediaQuery from "@hooks/useMediaQuery.js";
-import { useState, useEffect, useCallback, useRef, useMemo } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Gallery } from "./Gallery.jsx";
 import { GalleryThumbnails } from "./GalleryThumbnails.jsx";
 import { ProjectInfo } from "./ProjectInfo.jsx";
@@ -23,14 +22,8 @@ const ProjectModal = ({ project, onClose }) => {
   const [previewOpen, setPreviewOpen] = useState(false);
   const closeBtnRef = useRef(null);
   const modalRef = useRef(null);
-  const isDesktop = useMediaQuery("(min-width: 768px)");
 
-  const images = useMemo(() => {
-    const all = project.galleryImages || [];
-    if (all.length <= 1) return all;
-    const mid = Math.ceil(all.length / 2);
-    return isDesktop ? all.slice(mid) : all.slice(0, mid);
-  }, [project.galleryImages, isDesktop]);
+  const images = project.galleryImages || [];
 
   const handleNext = useCallback(() => {
     if (!images || images.length <= 1) return;
@@ -71,11 +64,6 @@ const ProjectModal = ({ project, onClose }) => {
 
   const handleNextPreview = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % images.length);
-  }, [images]);
-
-  useEffect(() => {
-    setCurrentIndex(0);
-    setIsImageLoading(true);
   }, [images]);
 
   useEffect(() => {

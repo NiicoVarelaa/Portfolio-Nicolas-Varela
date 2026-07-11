@@ -88,14 +88,14 @@ describe('ProjectModal', () => {
   it('navigates to next image on right arrow key', () => {
     render(<ProjectModal project={mockProject} onClose={mockOnClose} />, { wrapper })
     fireEvent.keyDown(document, { key: 'ArrowRight' })
-    expect(screen.getByText('2 / 3')).toBeInTheDocument()
+    expect(screen.getByText('2 / 6')).toBeInTheDocument()
   })
 
   it('navigates to previous image on left arrow key', () => {
     render(<ProjectModal project={mockProject} onClose={mockOnClose} />, { wrapper })
     fireEvent.keyDown(document, { key: 'ArrowRight' })
     fireEvent.keyDown(document, { key: 'ArrowLeft' })
-    expect(screen.getByText('1 / 3')).toBeInTheDocument()
+    expect(screen.getByText('1 / 6')).toBeInTheDocument()
   })
 
   it('renders project title', () => {
