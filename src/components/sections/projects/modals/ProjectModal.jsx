@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import useTranslation, { useLang } from "@hooks/useTranslation.js";
 import useReducedMotion from "@hooks/useReducedMotion.js";
-import { useState, useEffect, useCallback, useRef } from "react";
+import useMediaQuery from "@hooks/useMediaQuery.js";
+import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { Gallery } from "./Gallery.jsx";
 import { GalleryThumbnails } from "./GalleryThumbnails.jsx";
 import { ProjectInfo } from "./ProjectInfo.jsx";
@@ -22,26 +23,34 @@ const ProjectModal = ({ project, onClose }) => {
   const [previewOpen, setPreviewOpen] = useState(false);
   const closeBtnRef = useRef(null);
   const modalRef = useRef(null);
+  const isDesktop = useMediaQuery("(min-width: 768px)");
+
+  const images = useMemo(() => {
+    const all = project.galleryImages || [];
+    if (all.length <= 1) return all;
+    const mid = Math.ceil(all.length / 2);
+    return isDesktop ? all.slice(mid) : all.slice(0, mid);
+  }, [project.galleryImages, isDesktop]);
 
   const handleNext = useCallback(() => {
-    if (!project.galleryImages || project.galleryImages.length <= 1) return;
+    if (!images || images.length <= 1) return;
     setDirection(1);
     setCurrentIndex(
-      (prevIndex) => (prevIndex + 1) % project.galleryImages.length
+      (prevIndex) => (prevIndex + 1) % images.length
     );
     setIsImageLoading(true);
-  }, [project.galleryImages]);
+  }, [images]);
 
   const handlePrev = useCallback(() => {
-    if (!project.galleryImages || project.galleryImages.length <= 1) return;
+    if (!images || images.length <= 1) return;
     setDirection(-1);
     setCurrentIndex(
       (prevIndex) =>
-        (prevIndex - 1 + project.galleryImages.length) %
-        project.galleryImages.length
+        (prevIndex - 1 + images.length) %
+        images.length
     );
     setIsImageLoading(true);
-  }, [project.galleryImages]);
+  }, [images]);
 
   const handleThumbnailClick = useCallback(
     (index) => {
@@ -57,12 +66,17 @@ const ProjectModal = ({ project, onClose }) => {
   const closePreview = useCallback(() => setPreviewOpen(false), []);
 
   const handlePrevPreview = useCallback(() => {
-    setCurrentIndex((prev) => (prev - 1 + project.galleryImages.length) % project.galleryImages.length);
-  }, [project.galleryImages]);
+    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  }, [images]);
 
   const handleNextPreview = useCallback(() => {
-    setCurrentIndex((prev) => (prev + 1) % project.galleryImages.length);
-  }, [project.galleryImages]);
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  }, [images]);
+
+  useEffect(() => {
+    setCurrentIndex(0);
+    setIsImageLoading(true);
+  }, [images]);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -145,7 +159,7 @@ const ProjectModal = ({ project, onClose }) => {
 
           <div className="w-full lg:w-3/5 flex flex-col bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 p-3 sm:p-6">
             <Gallery
-              images={project.galleryImages}
+              images={images}
               currentIndex={currentIndex}
               direction={direction}
               isImageLoading={isImageLoading}
@@ -155,9 +169,9 @@ const ProjectModal = ({ project, onClose }) => {
               onExpand={openPreview}
               lang={lang}
             />
-            {project.galleryImages.length > 1 && (
+            {images.length > 1 && (
               <GalleryThumbnails
-                images={project.galleryImages}
+                images={images}
                 currentIndex={currentIndex}
                 onThumbnailClick={handleThumbnailClick}
                 lang={lang}
@@ -191,10 +205,10 @@ const ProjectModal = ({ project, onClose }) => {
             </button>
 
             <span className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-black/60 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium z-10">
-              {currentIndex + 1} / {project.galleryImages.length}
+              {currentIndex + 1} / {images.length}
             </span>
 
-            {project.galleryImages.length > 1 && (
+            {images.length > 1 && (
               <>
                 <button
                   onClick={(e) => { e.stopPropagation(); handlePrevPreview(); }}
@@ -215,7 +229,7 @@ const ProjectModal = ({ project, onClose }) => {
 
             <motion.img
               key={currentIndex}
-              src={project.galleryImages[currentIndex]}
+              src={images[currentIndex]}
               alt={`Screenshot ${currentIndex + 1}`}
               initial={{ scale: 0.92, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}

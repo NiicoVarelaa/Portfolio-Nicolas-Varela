@@ -10,7 +10,7 @@ const mockProject = {
   link: 'https://example.com',
   githubLink: 'https://github.com',
   technologies: ['HTML', 'CSS', 'JavaScript'],
-  galleryImages: ['/img1.webp', '/img2.webp', '/img3.webp'],
+  galleryImages: ['/img1.webp', '/img2.webp', '/img3.webp', '/img4.webp', '/img5.webp', '/img6.webp'],
 }
 
 const mockOnClose = vi.fn()
