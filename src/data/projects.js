@@ -26,19 +26,18 @@ import pixelG10 from "@assets/projects/pixel/pixel-g10.webp";
 import pixelG11 from "@assets/projects/pixel/pixel-g11.webp";
 import pixelG12 from "@assets/projects/pixel/pixel-g12.webp";
 
-import stockflowCard from "@assets/projects/stockflow/stockflow-card.webp";
-import stockflowG1 from "@assets/projects/stockflow/stockflow-g1.webp";
-import stockflowG2 from "@assets/projects/stockflow/stockflow-g2.webp";
-import stockflowG3 from "@assets/projects/stockflow/stockflow-g3.webp";
-import stockflowG4 from "@assets/projects/stockflow/stockflow-g4.webp";
-import stockflowG5 from "@assets/projects/stockflow/stockflow-g5.webp";
-import stockflowG6 from "@assets/projects/stockflow/stockflow-g6.webp";
-import stockflowG7 from "@assets/projects/stockflow/stockflow-g7.webp";
-import stockflowG8 from "@assets/projects/stockflow/stockflow-g8.webp";
-import stockflowG9 from "@assets/projects/stockflow/stockflow-g9.webp";
-import stockflowG10 from "@assets/projects/stockflow/stockflow-g10.webp";
-import stockflowG11 from "@assets/projects/stockflow/stockflow-g11.webp";
-import stockflowG12 from "@assets/projects/stockflow/stockflow-g12.webp";
+import stockflowImg1 from "@assets/projects/stockflow/1.webp";
+import stockflowImg2 from "@assets/projects/stockflow/2.webp";
+import stockflowImg3 from "@assets/projects/stockflow/3.webp";
+import stockflowImg4 from "@assets/projects/stockflow/4.webp";
+import stockflowImg5 from "@assets/projects/stockflow/5.webp";
+import stockflowImg6 from "@assets/projects/stockflow/6.webp";
+import stockflowImg7 from "@assets/projects/stockflow/7.webp";
+import stockflowImg8 from "@assets/projects/stockflow/8.webp";
+import stockflowImg9 from "@assets/projects/stockflow/9.webp";
+import stockflowImg10 from "@assets/projects/stockflow/10.webp";
+import stockflowImg11 from "@assets/projects/stockflow/11.webp";
+import stockflowImg12 from "@assets/projects/stockflow/12.webp";
 
 export const projects = [
   {
@@ -110,7 +109,7 @@ export const projects = [
   },
   {
     id: 3,
-    image: stockflowCard,
+    image: stockflowImg1,
     title: "StockFlow",
     description:
       "Sistema de gestion de stock y proveedores para tiendas de electronica. Panel con graficos interactivos, alertas de stock bajo, movimientos con transacciones ACID, subida de imagenes a Cloudinary y recuperacion de contrasena por email.",
@@ -127,19 +126,18 @@ export const projects = [
       "Zustand",
     ],
     galleryImages: [
-      stockflowCard,
-      stockflowG1,
-      stockflowG2,
-      stockflowG3,
-      stockflowG4,
-      stockflowG5,
-      stockflowG6,
-      stockflowG7,
-      stockflowG8,
-      stockflowG9,
-      stockflowG10,
-      stockflowG11,
-      stockflowG12,
+      stockflowImg1,
+      stockflowImg2,
+      stockflowImg3,
+      stockflowImg4,
+      stockflowImg5,
+      stockflowImg6,
+      stockflowImg7,
+      stockflowImg8,
+      stockflowImg9,
+      stockflowImg10,
+      stockflowImg11,
+      stockflowImg12,
     ],
   },
 ];
