@@ -13,8 +13,6 @@ const Turnstile = ({ siteKey, onVerify, onExpire, theme = "auto" }) => {
     widgetIdRef.current = window.turnstile.render(containerRef.current, {
       sitekey: siteKey,
       theme,
-      size: "compact",
-      appearance: "interaction-only",
       callback: (token) => onVerify(token),
       "expired-callback": () => onExpire(),
     });
@@ -43,12 +41,10 @@ const Turnstile = ({ siteKey, onVerify, onExpire, theme = "auto" }) => {
   }, []);
 
   return (
-    <div className="flex justify-center">
-      <div
-        ref={containerRef}
-        className="p-3 rounded-xl bg-gray-50/50 dark:bg-gray-800/30 border border-gray-100 dark:border-gray-700/50"
-      />
-    </div>
+    <div
+      ref={containerRef}
+      className="w-full min-h-[52px] flex items-center justify-center rounded-xl bg-gray-50/50 dark:bg-gray-800/30 border border-gray-100 dark:border-gray-700/50 overflow-hidden [&>iframe]:!w-full"
+    />
   );
 };
 
