@@ -60,7 +60,7 @@ export default {
       "Desarrollador Full Stack con 3+ años creando aplicaciones web modernas y escalables. Especialista en React, Node.js y bases de datos; disfruto trabajar en equipos donde la innovación es prioridad.",
     educationTitle: "Educación",
     educationText:
-      "Estudiante de la Tecnicatura Universitaria en Programación en la Universidad Tecnológica Nacional - Facultad Regional Tucumán (UTN-FRT).",
+      "Graduado de la Tecnicatura Universitaria en Programación en la Universidad Tecnológica Nacional - Facultad Regional Tucumán (UTN-FRT).",
     certificationTitle: "Certificaciones",
     certificates: [
       "FullStack Web Developer - RollingCode",

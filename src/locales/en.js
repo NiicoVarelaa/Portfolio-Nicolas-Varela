@@ -60,7 +60,7 @@ export default {
       "Full Stack Developer with 3+ years building modern, scalable web apps. Specialist in React, Node.js, and databases; I enjoy working in teams where innovation is key.",
     educationTitle: "Education",
     educationText:
-      "Student of the University Technician in Programming at the National Technological University - Tucumán Regional Faculty (UTN-FRT).",
+      "Graduate of the University Technician in Programming at the National Technological University - Tucumán Regional Faculty (UTN-FRT).",
     certificationTitle: "Certifications",
     certificates: [
       "FullStack Web Developer - RollingCode",
