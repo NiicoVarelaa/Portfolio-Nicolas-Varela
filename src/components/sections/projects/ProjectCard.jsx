@@ -102,7 +102,7 @@ const ProjectCard = ({
           </h3>
         </div>
 
-        <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-3 sm:mb-4 flex-grow line-clamp-3 leading-relaxed">
+        <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-3 sm:mb-4 flex-grow line-clamp-5 leading-relaxed">
           {t.projectList[index]?.description || project.description}
         </p>
 
