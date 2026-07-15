@@ -102,7 +102,15 @@ const ProjectCard = ({
           </h3>
         </div>
 
-        <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-3 sm:mb-4 flex-grow line-clamp-5 leading-relaxed">
+        <p
+          className="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-3 sm:mb-4 flex-grow leading-relaxed"
+          style={{
+            display: "-webkit-box",
+            WebkitLineClamp: 5,
+            WebkitBoxOrient: "vertical",
+            overflow: "hidden",
+          }}
+        >
           {t.projectList[index]?.description || project.description}
         </p>
 
