@@ -21,7 +21,7 @@ vi.mock('@hooks/useTranslation', () => ({
     },
     home: { availableForWork: 'Disponible', greeting: 'Hola', iAm: '', fullStackDeveloper: 'Dev', homeDescription: 'Desc', downloadCV: 'CV' },
     projects: { sectionTitle: 'Proyectos', projectList: [] },
-    skills: { sectionTitle: 'Habilidades', technologiesCount: 'tecnologías', alwaysLearning: 'Aprendiendo', currentlyExploring: 'Explorando' },
+    skills: { sectionTitle: 'Habilidades', technologiesCount: 'tecnologías' },
     about: { sectionTitle: 'Sobre mí', timeline: [] },
     contact: { sectionTitle: 'Contacto', name: 'Nombre', email: 'Email', subject: 'Asunto', message: 'Mensaje', send: 'Enviar', sending: 'Enviando', validations: { nameRequired: 'Req', emailRequired: 'Req', emailInvalid: 'Invalid', subjectRequired: 'Req', messageRequired: 'Req' } },
     floatingBadge: { specialty: 'Esp', frontend: 'Frontend' },

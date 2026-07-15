@@ -26,8 +26,6 @@ const mockT = {
   skills: {
     sectionTitle: "Habilidades",
     technologiesCount: "tecnologías",
-    alwaysLearning: "Siempre aprendiendo",
-    currentlyExploring: "Explorando nuevas tecnologías",
   },
   about: {
     sectionTitle: "Sobre mí",

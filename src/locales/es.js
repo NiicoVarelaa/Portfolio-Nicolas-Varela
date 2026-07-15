@@ -51,8 +51,6 @@ export default {
       tools: "Herramientas",
     },
     technologiesCount: "tecnologías",
-    alwaysLearning: "Siempre Aprendiendo",
-    currentlyExploring: "Actualmente explorando TypeScript y Next.js",
   },
   about: {
     sectionTitle: "Sobre Mí",

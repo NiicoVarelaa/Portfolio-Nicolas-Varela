@@ -15,7 +15,7 @@ const mockT = {
       { title: 'StockFlow', description: 'Sistema de stock y proveedores' },
     ],
   },
-  skills: { sectionTitle: 'Habilidades', technologiesCount: 'tecnologías', alwaysLearning: 'Aprendiendo', currentlyExploring: 'Explorando' },
+  skills: { sectionTitle: 'Habilidades', technologiesCount: 'tecnologías' },
   about: { sectionTitle: 'Sobre mí', timeline: [] },
   contact: { sectionTitle: 'Contacto', name: 'Nombre', email: 'Email', subject: 'Asunto', message: 'Mensaje', send: 'Enviar', sending: 'Enviando', validations: { nameRequired: 'Req', emailRequired: 'Req', emailInvalid: 'Invalid', subjectRequired: 'Req', messageRequired: 'Req' } },
   floatingBadge: { specialty: 'Esp', frontend: 'Frontend' },
