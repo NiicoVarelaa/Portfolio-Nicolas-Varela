@@ -52,18 +52,10 @@ const ProjectCard = ({
         )}
         <img
           src={project.image}
-          className={`absolute inset-0 w-full h-full object-cover blur-2xl scale-110 transition-opacity duration-700 ${imageLoaded ? "opacity-60" : "opacity-0"}`}
-          alt=""
-          aria-hidden="true"
-          loading="lazy"
-          onLoad={() => setImageLoaded(true)}
-        />
-        <div className="absolute inset-0 bg-black/10 dark:bg-black/30 transition-opacity duration-700" aria-hidden="true" />
-        <img
-          src={project.image}
-          className={`relative w-full h-full object-contain p-4 z-10 transition-all duration-700 group-hover:scale-105 group-focus-within:scale-105 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
+          className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-focus-within:scale-110 ${imageLoaded ? "opacity-100" : "opacity-0"}`}
           alt={`Captura de pantalla del proyecto ${project.title}`}
           loading="lazy"
+          onLoad={() => setImageLoaded(true)}
         />
 
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all duration-500 hidden sm:flex items-end justify-center pb-6 z-20">
