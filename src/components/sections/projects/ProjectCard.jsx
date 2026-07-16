@@ -46,7 +46,7 @@ const ProjectCard = ({
         aria-hidden="true"
       />
 
-      <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900">
+      <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
         {!imageLoaded && (
           <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-gray-200 via-gray-300 to-gray-200 dark:from-gray-700 dark:via-gray-600 dark:to-gray-700" aria-hidden="true" />
         )}
@@ -110,7 +110,7 @@ const ProjectCard = ({
           </h3>
         </div>
 
-        <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-3 sm:mb-4 flex-grow leading-relaxed line-clamp-5">
+        <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-3 sm:mb-4 flex-grow leading-relaxed line-clamp-4 min-h-[5rem]">
           {t.projectList[index]?.description || project.description}
         </p>
 

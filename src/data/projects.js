@@ -83,7 +83,7 @@ export const projects = [
     link: "https://www.pixelsalud.com",
     githubLink: "https://github.com/NiicoVarelaa/PixelSalud",
     technologies: [
-      "React 19",
+      "React",
       "Express",
       "MySQL",
       "Mercado Pago",
@@ -116,7 +116,7 @@ export const projects = [
     link: "https://mini-erp-demo.vercel.app",
     githubLink: "https://github.com/NiicoVarelaa/Gestion-Stock-Proveedores",
     technologies: [
-      "React 19",
+      "React",
       "TypeScript",
       "Express",
       "Prisma",
