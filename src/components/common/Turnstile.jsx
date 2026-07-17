@@ -43,7 +43,7 @@ const Turnstile = ({ siteKey, onVerify, onExpire, theme = "auto" }) => {
   return (
     <div
       ref={containerRef}
-      className="w-full min-h-[52px] flex items-center justify-center rounded-xl bg-gray-50/50 dark:bg-gray-800/30 border border-gray-100 dark:border-gray-700/50 overflow-hidden [&>iframe]:!w-full"
+      className="w-full min-h-[52px] flex items-center justify-center overflow-hidden [&>iframe]:!w-full"
     />
   );
 };
