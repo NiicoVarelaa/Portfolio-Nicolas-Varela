@@ -27,7 +27,7 @@ const Skills = () => {
 
   return (
     <section
-      className="relative w-full min-h-screen max-w-6xl py-24 mx-auto px-4 sm:px-10 flex flex-col justify-center items-center overflow-hidden"
+      className="relative w-full min-h-screen max-w-6xl py-24 mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-center overflow-hidden"
       id="skills"
       aria-labelledby="skills-title"
     >

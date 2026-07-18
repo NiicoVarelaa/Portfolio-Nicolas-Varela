@@ -69,7 +69,7 @@ const Navbar = () => {
         role="banner"
       >
         <nav
-          className="max-w-6xl mx-auto py-3 px-4 sm:px-10 flex items-center justify-between"
+          className="max-w-6xl mx-auto py-3 px-4 sm:px-6 lg:px-8 flex items-center justify-between"
           aria-label="Main navigation"
         >
           {/* Logo */}
