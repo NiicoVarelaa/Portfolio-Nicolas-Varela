@@ -33,6 +33,8 @@ export function GalleryThumbnails({
             className="w-full h-full object-cover"
             loading="lazy"
             draggable={false}
+            width={80}
+            height={80}
           />
         </motion.button>
       ))}

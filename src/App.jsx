@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import Navbar from "./components/layout/Navbar";
 import Home from "./components/sections/home/Home";
 import Footer from "./components/layout/Footer";
@@ -17,6 +17,22 @@ const SectionLoader = () => (
 );
 
 function App() {
+  useEffect(() => {
+    let timeout;
+    const onScroll = () => {
+      document.documentElement.classList.add("is-scrolling");
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        document.documentElement.classList.remove("is-scrolling");
+      }, 1000);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      clearTimeout(timeout);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+
   return (
     <ThemeProvider>
       <LanguageProvider>
@@ -34,8 +50,14 @@ function App() {
         <Home />
         <Suspense fallback={<SectionLoader />}>
           <Projects />
+        </Suspense>
+        <Suspense fallback={<SectionLoader />}>
           <Skills />
+        </Suspense>
+        <Suspense fallback={<SectionLoader />}>
           <About />
+        </Suspense>
+        <Suspense fallback={<SectionLoader />}>
           <Contact />
         </Suspense>
       </main>

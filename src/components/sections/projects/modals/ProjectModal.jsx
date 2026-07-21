@@ -226,6 +226,8 @@ const ProjectModal = ({ project, onClose }) => {
               className="max-w-[92vw] max-h-[92vh] object-contain"
               onClick={(e) => e.stopPropagation()}
               draggable={false}
+              width={1920}
+              height={1080}
             />
           </motion.div>
         )}

@@ -56,6 +56,8 @@ const ProjectCard = ({
           alt={`Captura de pantalla del proyecto ${project.title}`}
           loading="lazy"
           onLoad={() => setImageLoaded(true)}
+          width={800}
+          height={600}
         />
 
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-all duration-500 hidden sm:flex items-end justify-center pb-6 z-20">

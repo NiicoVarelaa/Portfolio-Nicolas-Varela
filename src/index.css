@@ -1,8 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
-
 * {
     font-family: "Inter", system-ui, sans-serif;
     scroll-behavior: smooth;
@@ -12,17 +10,39 @@ h1, h2, h3, h4, h5, h6 {
     font-family: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
 }
 
-::-webkit-scrollbar-thumb {
-    background: #70768a;
-    border-radius: 2em;
+::-webkit-scrollbar {
+    width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #c5cadf;
+    background: transparent;
 }
 
-::-webkit-scrollbar {
-    width: 10px;
+::-webkit-scrollbar-thumb {
+    background: rgba(112, 118, 138, 0.15);
+    border-radius: 2em;
+}
+
+html.is-scrolling::-webkit-scrollbar-thumb {
+    background: rgba(112, 118, 138, 0.6);
+}
+
+[data-theme="dark"]::-webkit-scrollbar-thumb {
+    background: rgba(160, 165, 180, 0.15);
+}
+
+html.is-scrolling[data-theme="dark"]::-webkit-scrollbar-thumb {
+    background: rgba(160, 165, 180, 0.5);
+}
+
+html {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(112, 118, 138, 0.15) transparent;
+    transition: scrollbar-color 0.3s;
+}
+
+html.is-scrolling {
+    scrollbar-color: rgba(112, 118, 138, 0.6) transparent;
 }
 
 .no-scroll {

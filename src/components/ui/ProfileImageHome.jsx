@@ -8,6 +8,8 @@ const ProfileImageHome = ({ src, alt = "Nicolás Varela", children }) => (
           src={src}
           className="w-full h-full object-cover object-[center_25%] rounded-full transition-transform duration-700 ease-in-out group-hover:scale-110"
           alt={alt}
+          width={400}
+          height={400}
         />
       </div>
       {children}

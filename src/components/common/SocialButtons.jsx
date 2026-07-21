@@ -1,15 +1,11 @@
-import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 
 const SocialButton = ({ href, children, ...props }) => {
     return (
-        <motion.a
+        <a
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
             className="
                 inline-flex items-center gap-2 px-5 py-2.5 
                 text-sm font-medium text-gray-700 dark:text-gray-200 
@@ -19,12 +15,12 @@ const SocialButton = ({ href, children, ...props }) => {
                 hover:border-orange-500 hover:text-orange-600 
                 dark:hover:border-orange-500 dark:hover:text-orange-400 
                 hover:shadow-md hover:shadow-orange-500/10 
-                transition-colors duration-200 
+                transition-all duration-200 hover:-translate-y-0.5 hover:scale-105 active:scale-95
             "
             {...props}
         >
             {children}
-        </motion.a>
+        </a>
     );
 };
 

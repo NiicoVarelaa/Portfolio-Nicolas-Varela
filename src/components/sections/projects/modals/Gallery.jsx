@@ -62,6 +62,8 @@ export function Gallery({
           onLoad={onImageLoad}
           loading="lazy"
           draggable={false}
+          width={1600}
+          height={1000}
         />
       </AnimatePresence>
       <button

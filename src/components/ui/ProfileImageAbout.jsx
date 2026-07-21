@@ -10,6 +10,8 @@ const ProfileImageAbout = ({
       src={src}
       alt={alt}
       className="w-full h-full object-cover hover:scale-110 transition-transform duration-700 ease-in-out"
+      width={400}
+      height={400}
     />
   </figure>
 );

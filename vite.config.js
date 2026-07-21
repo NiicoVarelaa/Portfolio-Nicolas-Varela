@@ -31,6 +31,8 @@ export default defineConfig({
           'vendor-react': ['react', 'react-dom'],
           'vendor-motion': ['framer-motion'],
           'vendor-icons': ['react-icons'],
+          'vendor-lucide': ['lucide-react'],
+          'vendor-form': ['react-hook-form', 'sonner', 'zod'],
         },
       },
     },
