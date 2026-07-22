@@ -28,6 +28,7 @@ import pixelG12 from "@assets/projects/pixel/pixel-g12.webp";
 import pixelG13 from "@assets/projects/pixel/pixel-g13.webp";
 import pixelG14 from "@assets/projects/pixel/pixel-g14.webp";
 import pixelG15 from "@assets/projects/pixel/pixel-g15.webp";
+import pixelG16 from "@assets/projects/pixel/pixel-g16.webp";
 
 import stockflowImg1 from "@assets/projects/stockflow/1.webp";
 import stockflowImg2 from "@assets/projects/stockflow/2.webp";
@@ -111,6 +112,7 @@ export const projects = [
       pixelG13,
       pixelG14,
       pixelG15,
+      pixelG16,
     ],
   },
   {
