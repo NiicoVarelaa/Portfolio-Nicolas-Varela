@@ -10,7 +10,6 @@ import gesclubImg9 from "@assets/projects/gesclub/9.webp";
 import gesclubImg10 from "@assets/projects/gesclub/10.webp";
 import gesclubImg11 from "@assets/projects/gesclub/11.webp";
 import gesclubImg12 from "@assets/projects/gesclub/12.webp";
-import gesclubImg13 from "@assets/projects/gesclub/13.webp";
 
 import pixelCard from "@assets/projects/pixel/pixel-card.webp";
 import pixelG1 from "@assets/projects/pixel/pixel-g1.webp";
@@ -75,7 +74,6 @@ export const projects = [
       gesclubImg10,
       gesclubImg11,
       gesclubImg12,
-      gesclubImg13,
     ],
   },
   {
