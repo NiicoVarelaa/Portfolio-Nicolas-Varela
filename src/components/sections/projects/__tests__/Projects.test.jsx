@@ -12,7 +12,7 @@ const mockT = {
     projectList: [
       { title: 'GesClub', description: 'Sistema de gestión deportiva' },
       { title: 'Pixel Salud', description: 'E-commerce y gestión farmacéutica' },
-      { title: 'StockFlow', description: 'Sistema de stock y proveedores' },
+      { title: 'Flow Stock', description: 'Sistema de stock y proveedores' },
     ],
   },
   skills: { sectionTitle: 'Habilidades', technologiesCount: 'tecnologías' },

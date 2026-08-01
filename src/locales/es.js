@@ -34,7 +34,7 @@ export default {
           "Plataforma de e-commerce y gestión farmacéutica con roles de administrador, empleado (POS) y cliente. Integra carrito de compras, pagos con Mercado Pago, campañas de descuento, cupones, reportes exportables y trail de auditoría.",
       },
       {
-        title: "StockFlow",
+        title: "Flow Stock",
         description:
           "Sistema de gestión de stock y proveedores para tiendas de electrónica. Panel con gráficos interactivos, alertas de stock bajo, movimientos con transacciones ACID, subida de imágenes a Cloudinary y recuperación de contraseña por email.",
       },

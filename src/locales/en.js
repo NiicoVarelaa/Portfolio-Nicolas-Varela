@@ -34,7 +34,7 @@ export default {
           "E-commerce and pharmacy management platform with admin, employee (POS), and customer roles. Features shopping cart, Mercado Pago payments, discount campaigns, coupons, exportable reports, and audit trail.",
       },
       {
-        title: "StockFlow",
+        title: "Flow Stock",
         description:
           "Stock and supplier management system for electronics stores. Dashboard with interactive charts, low-stock alerts, ACID-transaction stock movements, Cloudinary image upload, and email password recovery.",
       },

@@ -41,6 +41,7 @@ import stockflowImg9 from "@assets/projects/stockflow/9.webp";
 import stockflowImg10 from "@assets/projects/stockflow/10.webp";
 import stockflowImg11 from "@assets/projects/stockflow/11.webp";
 import stockflowImg12 from "@assets/projects/stockflow/12.webp";
+import stockflowImg13 from "@assets/projects/stockflow/13.webp";
 
 export const projects = [
   {
@@ -116,7 +117,7 @@ export const projects = [
   {
     id: 3,
     image: stockflowImg1,
-    title: "StockFlow",
+    title: "Flow Stock",
     description:
       "Sistema de gestion de stock y proveedores para tiendas de electronica. Panel con graficos interactivos, alertas de stock bajo, movimientos con transacciones ACID, subida de imagenes a Cloudinary y recuperacion de contrasena por email.",
     link: "https://mini-erp-demo.vercel.app",
@@ -144,6 +145,7 @@ export const projects = [
       stockflowImg10,
       stockflowImg11,
       stockflowImg12,
+      stockflowImg13,
     ],
   },
 ];
