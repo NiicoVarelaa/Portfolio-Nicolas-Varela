@@ -11,23 +11,20 @@ import gesclubImg10 from "@assets/projects/gesclub/10.webp";
 import gesclubImg11 from "@assets/projects/gesclub/11.webp";
 import gesclubImg12 from "@assets/projects/gesclub/12.webp";
 
-import pixelCard from "@assets/projects/pixel/pixel-card.webp";
-import pixelG1 from "@assets/projects/pixel/pixel-g1.webp";
-import pixelG2 from "@assets/projects/pixel/pixel-g2.webp";
-import pixelG3 from "@assets/projects/pixel/pixel-g3.webp";
-import pixelG4 from "@assets/projects/pixel/pixel-g4.webp";
-import pixelG5 from "@assets/projects/pixel/pixel-g5.webp";
-import pixelG6 from "@assets/projects/pixel/pixel-g6.webp";
-import pixelG7 from "@assets/projects/pixel/pixel-g7.webp";
-import pixelG8 from "@assets/projects/pixel/pixel-g8.webp";
-import pixelG9 from "@assets/projects/pixel/pixel-g9.webp";
-import pixelG10 from "@assets/projects/pixel/pixel-g10.webp";
-import pixelG11 from "@assets/projects/pixel/pixel-g11.webp";
-import pixelG12 from "@assets/projects/pixel/pixel-g12.webp";
-import pixelG13 from "@assets/projects/pixel/pixel-g13.webp";
-import pixelG14 from "@assets/projects/pixel/pixel-g14.webp";
-import pixelG15 from "@assets/projects/pixel/pixel-g15.webp";
-import pixelG16 from "@assets/projects/pixel/pixel-g16.webp";
+import pixelImg1 from "@assets/projects/pixel/1.webp";
+import pixelImg2 from "@assets/projects/pixel/2.webp";
+import pixelImg3 from "@assets/projects/pixel/3.webp";
+import pixelImg4 from "@assets/projects/pixel/4.webp";
+import pixelImg5 from "@assets/projects/pixel/5.webp";
+import pixelImg6 from "@assets/projects/pixel/6.webp";
+import pixelImg7 from "@assets/projects/pixel/7.webp";
+import pixelImg8 from "@assets/projects/pixel/8.webp";
+import pixelImg9 from "@assets/projects/pixel/9.webp";
+import pixelImg10 from "@assets/projects/pixel/10.webp";
+import pixelImg11 from "@assets/projects/pixel/11.webp";
+import pixelImg12 from "@assets/projects/pixel/12.webp";
+import pixelImg13 from "@assets/projects/pixel/13.webp";
+import pixelImg14 from "@assets/projects/pixel/14.webp";
 
 import stockflowImg1 from "@assets/projects/stockflow/1.webp";
 import stockflowImg2 from "@assets/projects/stockflow/2.webp";
@@ -77,14 +74,15 @@ export const projects = [
       gesclubImg12,
     ],
   },
-  {
+{
     id: 2,
-    image: pixelCard,
+    image: pixelImg1,
     title: "Pixel Salud",
     description:
       "Plataforma de e-commerce y gestion farmaceutica con roles de administrador, empleado (POS) y cliente. Integra carrito de compras, pagos con Mercado Pago, campanas de descuento, cupones, reportes exportables y trail de auditoria.",
     link: "https://www.pixelsalud.com",
     githubLink: "https://github.com/NiicoVarelaa/PixelSalud",
+    demoVideo: "51mfH78vcQM",
     technologies: [
       "React",
       "Express",
@@ -95,23 +93,20 @@ export const projects = [
       "Cloudinary",
     ],
     galleryImages: [
-      pixelCard,
-      pixelG1,
-      pixelG2,
-      pixelG3,
-      pixelG4,
-      pixelG5,
-      pixelG6,
-      pixelG7,
-      pixelG8,
-      pixelG9,
-      pixelG10,
-      pixelG11,
-      pixelG12,
-      pixelG13,
-      pixelG14,
-      pixelG15,
-      pixelG16,
+      pixelImg1,
+      pixelImg2,
+      pixelImg3,
+      pixelImg4,
+      pixelImg5,
+      pixelImg6,
+      pixelImg7,
+      pixelImg8,
+      pixelImg9,
+      pixelImg10,
+      pixelImg11,
+      pixelImg12,
+      pixelImg13,
+      pixelImg14,
     ],
   },
   {
