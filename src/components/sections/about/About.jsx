@@ -1,5 +1,3 @@
-import ProfileImageAbout from "@components/ui/ProfileImageAbout.jsx";
-import nico2 from "@assets/nico2.webp";
 import useLanguage from "@hooks/useLanguage.js";
 import { useAboutTimeline } from "@hooks/useAboutTimeline.js";
 import AboutHeader from "./AboutHeader.jsx";
@@ -24,11 +22,7 @@ const AboutMe = () => {
     >
       <AboutHeader title={t.sectionTitle} />
 
-      <div className="flex flex-col gap-10 items-center lg:flex-row-reverse lg:gap-16">
-        <ProfileImageAbout
-          src={nico2}
-          alt="Nicolás Varela - Desarrollador Full Stack"
-        />
+      <div className="w-full flex flex-col items-center">
         <AboutTimeline timeline={timeline} />
       </div>
     </section>

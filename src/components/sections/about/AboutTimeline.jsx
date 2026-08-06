@@ -3,7 +3,10 @@ import PropTypes from "prop-types";
 import TimelineItem from "./TimelineItem";
 
 const AboutTimeline = memo(({ timeline }) => (
-  <ol className="w-full lg:w-1/2 space-y-8 sm:space-y-10" role="list">
+  <ol
+    className="w-full max-w-2xl space-y-8 sm:space-y-10"
+    role="list"
+  >
     {timeline.map((item, index) => (
       <TimelineItem
         key={item.icon || index}
