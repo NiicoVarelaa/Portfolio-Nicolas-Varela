@@ -12,7 +12,6 @@ import {
   SiPrisma,
   SiSupabase,
 } from "react-icons/si";
-import { FaJava } from "react-icons/fa";
 
 export const skillData = {
   frontend: {
@@ -62,12 +61,6 @@ export const skillData = {
         name: "TypeScript",
         icon: SiTypescript,
         color: "from-blue-500 to-blue-700",
-      },
-      {
-        id: "java",
-        name: "Java",
-        icon: FaJava,
-        color: "from-orange-500 to-red-500",
       },
     ],
   },
