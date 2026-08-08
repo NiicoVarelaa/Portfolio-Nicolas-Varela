@@ -1,17 +1,22 @@
 # Portfolio Nicolás Varela
 
-Portfolio personal desarrollado con **React** y **Vite**, diseñado para mostrar proyectos, habilidades y experiencia profesional como desarrollador.
+Portfolio personal desarrollado con **React** y **Vite**, diseñado para mostrar proyectos, habilidades y experiencia profesional como desarrollador Full Stack.
+
+🔗 **Sitio en vivo:** https://niicovarelaa.github.io/Portfolio-Nicolas-Varela
 
 ## ✨ Características
 
 - **Diseño moderno** con Tailwind CSS y animaciones fluidas con Framer Motion
 - **Dark mode** con persistencia de preferencia
 - **Internacionalización (i18n)** con soporte para Español e Inglés
-- **Formulario de contacto** con validación usando React Hook Form y Zod
-- **Notificaciones** con Sonner y React Hot Toast
-- **Testing** con Vitest y React Testing Library
+- **Galería de imágenes** por proyecto (GesClub, Flow Stock y Pixel Salud) con vistas desktop/mobile y zoom
+- **Video demo integrado**: Pixel Salud reproduce su demo de YouTube en un modal desde la card y la galería
+- **Formulario de contacto** protegido con Cloudflare Turnstile, enviado mediante Cloudflare Worker
+- **Validación de formularios** con React Hook Form y Zod
+- **Notificaciones** con Sonner
+- **SEO**: meta tags Open Graph, Twitter Cards, JSON-LD, sitemap y robots.txt
+- **Testing** con Vitest y React Testing Library (97 tests)
 - **Deploy automatizado** a GitHub Pages
-- **Responsive** y optimizado para todos los dispositivos
 
 ## 🛠️ Tecnologías
 
@@ -20,27 +25,29 @@ Portfolio personal desarrollado con **React** y **Vite**, diseñado para mostrar
 | **Frontend** | React 18, Vite 5 |
 | **Estilos** | Tailwind CSS 3, PostCSS, Autoprefixer |
 | **Animaciones** | Framer Motion 12 |
-| **Iconos** | Lucide React |
+| **Iconos** | Lucide React, React Icons |
 | **Forms** | React Hook Form, Zod (validación) |
 | **Notificaciones** | Sonner |
+| **Seguridad** | Cloudflare Turnstile |
 | **Testing** | Vitest, React Testing Library, JSDOM |
 | **Linting** | ESLint 9 |
-| **Deploy** | Vercel |
+| **Deploy** | GitHub Pages |
 | **Estado** | Context API (Theme + Language) |
+| **Imágenes** | Sharp (optimización de assets) |
 
 ## 📁 Estructura del proyecto
 
 ```
 src/
-├── assets/         # Imágenes y archivos estáticos
+├── assets/         # Imágenes de proyectos y archivos estáticos
 ├── components/     # Componentes reutilizables
 │   ├── common/     # Componentes compartidos
 │   ├── layout/     # Estructura de layout
-│   ├── sections/   # Secciones del portfolio
+│   ├── sections/   # Secciones del portfolio (home, projects, about, skills, contact)
 │   └── ui/         # Componentes UI base
 ├── constants/      # Constantes y configuraciones
 ├── context/        # Contextos de React (Theme, Language)
-├── data/           # Datos estáticos (proyectos, experiencia, etc.)
+├── data/           # Datos estáticos (proyectos, skills)
 ├── hooks/          # Custom hooks
 ├── locales/        # Archivos de internacionalización (es.js, en.js)
 ├── test/           # Configuración y archivos de test
@@ -60,8 +67,8 @@ src/
 
 1. **Clona el repositorio:**
    ```bash
-   git clone https://github.com/tu-usuario/tu-repo-portfolio.git
-   cd tu-repo-portfolio
+   git clone https://github.com/NiicoVarelaa/Portfolio-Nicolas-Varela.git
+   cd Portfolio-Nicolas-Varela
    ```
 
 2. **Instala las dependencias:**
@@ -73,6 +80,7 @@ src/
    ```bash
    cp .env.example .env
    ```
+   Se necesitan `VITE_API_URL` (Worker de Cloudflare que envía los mensajes del formulario) y `VITE_TURNSTILE_SITE_KEY` (Cloudflare Turnstile).
 
 4. **Inicia el servidor de desarrollo:**
    ```bash
@@ -89,35 +97,37 @@ src/
 | `npm run build` | Construye la app para producción |
 | `npm run preview` | Previsualiza el build de producción |
 | `npm run lint` | Ejecuta ESLint para analizar el código |
-| `npm run typecheck` | Verifica tipos con TypeScript |
 | `npm run test` | Ejecuta tests en modo watch |
 | `npm run test:run` | Ejecuta tests una vez |
 | `npm run test:coverage` | Ejecuta tests con cobertura |
-| `npm run deploy` | Construye y despliega a GitHub Pages |
+| `npm run deploy` | Prebuild y despliegue a GitHub Pages (`gh-pages -d dist`) |
 
 ## 🌐 Deploy
 
-### Vercel
+El sitio se publica en **GitHub Pages**:
 
 ```bash
 npm run deploy
 ```
 
-### Build manual
+También puede desplegarse en cualquier servidor estático (Vercel, Netlify, etc.) construyendo el proyecto:
 
 ```bash
 npm run build
 ```
 
-Los archivos generados en `dist/` pueden ser desplegados en cualquier servidor estático (Vercel, Netlify, etc.).
+Los archivos generados en `dist/` pueden servirse desde cualquier hosting estático.
 
 ## 🧪 Testing
 
-El proyecto utiliza **Vitest** y **React Testing Library** para tests unitarios y de componentes.
+El proyecto utiliza **Vitest** y **React Testing Library** para tests unitarios y de componentes (97 tests).
 
 ```bash
-# Ejecutar tests
+# Ejecutar tests en modo watch
 npm run test
+
+# Ejecutar tests una vez
+npm run test:run
 
 # Ejecutar con cobertura
 npm run test:coverage
@@ -133,7 +143,7 @@ npm run test:coverage
 
 ## 📄 Licencia
 
-Este proyecto es de código abierto y está disponible bajo la licencia [MIT](LICENSE).
+Este proyecto está disponible bajo la licencia [MIT](LICENSE).
 
 ---
 
