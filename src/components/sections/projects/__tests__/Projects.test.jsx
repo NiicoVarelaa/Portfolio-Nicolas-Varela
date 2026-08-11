@@ -18,7 +18,6 @@ const mockT = {
   skills: { sectionTitle: 'Habilidades', technologiesCount: 'tecnologías' },
   about: { sectionTitle: 'Sobre mí', timeline: [] },
   contact: { sectionTitle: 'Contacto', name: 'Nombre', email: 'Email', subject: 'Asunto', message: 'Mensaje', send: 'Enviar', sending: 'Enviando', validations: { nameRequired: 'Req', emailRequired: 'Req', emailInvalid: 'Invalid', subjectRequired: 'Req', messageRequired: 'Req' } },
-  floatingBadge: { specialty: 'Esp', frontend: 'Frontend' },
   footer: { copyright: 'Copyright', projects: 'Proyectos', aboutMe: 'Sobre mí', contact: 'Contacto', madeWith: 'Hecho con', andReact: 'y React' },
 }
 

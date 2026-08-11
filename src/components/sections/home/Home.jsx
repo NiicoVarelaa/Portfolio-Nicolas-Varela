@@ -1,7 +1,6 @@
 import nico from "@assets/nico.webp";
 import cvPdf from "@assets/cv.pdf";
 import ScrollToTop from "@components/layout/ScrollToTop.jsx";
-import FloatingBadge from "@components/ui/FloatingBadge.jsx";
 import ProfileImageHome from "@components/ui/ProfileImageHome.jsx";
 import useLanguage from "@hooks/useLanguage.js";
 import useDownloadCV from "@hooks/useDownloadCV.js";
@@ -30,9 +29,7 @@ const Home = () => {
         <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-20">
           <HeroContent t={t} onDownloadCV={handleDownloadCV} />
 
-          <ProfileImageHome src={nico}>
-            <FloatingBadge />
-          </ProfileImageHome>
+          <ProfileImageHome src={nico} />
         </div>
       </div>
 

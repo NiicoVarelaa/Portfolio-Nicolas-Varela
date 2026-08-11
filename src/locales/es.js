@@ -16,10 +16,6 @@ export default {
       "Enfocado en crear productos digitales que impulsan negocios y mejoran la experiencia de usuario.",
     downloadCV: "Descargar CV",
   },
-  floatingBadge: {
-    specialty: "Especialidad",
-    frontend: "Full Stack",
-  },
   projects: {
     sectionTitle: "Proyectos",
     projectList: [

@@ -47,7 +47,6 @@ const mockT = {
       messageRequired: "El mensaje es requerido",
     },
   },
-  floatingBadge: { specialty: "Especialidad", frontend: "Frontend" },
   footer: {
     copyright: "Todos los derechos reservados",
     projects: "Proyectos",

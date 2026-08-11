@@ -16,10 +16,6 @@ export default {
       "Focused on building digital products that drive business growth and enhance user experience.",
     downloadCV: "Download CV",
   },
-  floatingBadge: {
-    specialty: "Specialty",
-    frontend: "Full Stack",
-  },
   projects: {
     sectionTitle: "Projects",
     projectList: [
