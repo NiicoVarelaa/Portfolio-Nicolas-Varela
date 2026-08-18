@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
+import TechBadge from "@components/common/TechBadge";
 
 export function ProjectInfo({ project, t }) {
   return (
@@ -37,9 +38,8 @@ export function ProjectInfo({ project, t }) {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.25 + i * 0.05 }}
-              className="px-3 py-1.5 bg-gradient-to-br from-orange-50 to-orange-100 text-orange-800 dark:from-orange-900/40 dark:to-orange-900/60 dark:text-orange-200 rounded-lg text-xs sm:text-sm font-medium shadow-sm hover:shadow-md transition-all"
             >
-              {tech}
+              <TechBadge tech={tech} />
             </motion.span>
           ))}
         </div>
