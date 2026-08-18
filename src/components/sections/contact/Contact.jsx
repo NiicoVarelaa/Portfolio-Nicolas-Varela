@@ -39,7 +39,7 @@ const Contact = () => {
 
   return (
     <section
-      className="relative w-full min-h-screen py-16 md:py-20 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center overflow-hidden"
+      className="relative w-full min-h-screen py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center overflow-hidden"
       id="contacto"
       aria-labelledby="contact-heading"
     >
