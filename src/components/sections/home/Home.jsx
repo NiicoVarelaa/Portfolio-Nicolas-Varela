@@ -1,5 +1,5 @@
 import nico from "@assets/nico.webp";
-import cvPdf from "@assets/cv.pdf";
+import cvPdf from "@assets/CV-Nicolas-Varela.pdf";
 import ScrollToTop from "@components/layout/ScrollToTop.jsx";
 import ProfileImageHome from "@components/ui/ProfileImageHome.jsx";
 import useLanguage from "@hooks/useLanguage.js";
@@ -15,7 +15,7 @@ const Home = () => {
   const { lang } = useLanguage();
   const t = languages[lang].home;
 
-  const handleDownloadCV = useDownloadCV(cvPdf, "CV_Nicolas_Varela.pdf");
+  const handleDownloadCV = useDownloadCV(cvPdf, "CV-Nicolas-Varela.pdf");
 
   return (
     <section
