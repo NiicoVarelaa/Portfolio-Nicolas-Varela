@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 
 const FormTextarea = memo(
-  ({ label, name, icon: Icon, register, required, error }) => (
+  ({ label, name, icon: Icon, register, required, error, placeholder }) => (
     <div className="space-y-2">
       <label
         htmlFor={name}
@@ -18,6 +18,7 @@ const FormTextarea = memo(
         <textarea
           id={name}
           rows="5"
+          placeholder={placeholder}
           className={`w-full pl-11 pr-4 py-3 bg-gray-50 dark:bg-gray-800/50 border ${
             error
               ? "border-red-500 focus:ring-red-500"
@@ -54,6 +55,7 @@ FormTextarea.propTypes = {
   error: PropTypes.shape({
     message: PropTypes.string,
   }),
+  placeholder: PropTypes.string,
 };
 
 export default FormTextarea;

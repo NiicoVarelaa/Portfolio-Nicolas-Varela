@@ -76,6 +76,12 @@ export default {
     message: "Message",
     send: "Send Message",
     sending: "Sending...",
+    placeholders: {
+      name: "Your name",
+      email: "you@example.com",
+      subject: "Message subject",
+      message: "Write your message here...",
+    },
     successTitle: "Message sent!",
     successText: "Thanks for reaching out. I'll get back to you soon.",
     errorTitle: "Oops! Something went wrong",

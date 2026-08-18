@@ -38,6 +38,12 @@ const mockT = {
     subject: "Asunto",
     message: "Mensaje",
     send: "Enviar mensaje",
+    placeholders: {
+      name: "Tu nombre",
+      email: "tucorreo@ejemplo.com",
+      subject: "Asunto del mensaje",
+      message: "Escribí tu mensaje aquí...",
+    },
     sending: "Enviando...",
     validations: {
       nameRequired: "El nombre es requerido",

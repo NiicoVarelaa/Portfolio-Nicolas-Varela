@@ -76,6 +76,7 @@ const Contact = () => {
                 icon={User}
                 register={register}
                 required={t.validations.nameRequired}
+                placeholder={t.placeholders.name}
                 error={errors.name}
               />
 
@@ -86,6 +87,7 @@ const Contact = () => {
                 icon={Mail}
                 register={register}
                 required={t.validations.emailRequired}
+                placeholder={t.placeholders.email}
                 pattern={{
                   value: /^\S+@\S+$/i,
                   message: t.validations.emailInvalid,
@@ -100,6 +102,7 @@ const Contact = () => {
               icon={FileText}
               register={register}
               required={t.validations.subjectRequired}
+              placeholder={t.placeholders.subject}
               error={errors.subject}
             />
 
@@ -109,6 +112,7 @@ const Contact = () => {
               icon={MessageSquare}
               register={register}
               required={t.validations.messageRequired}
+              placeholder={t.placeholders.message}
               error={errors.message}
             />
 

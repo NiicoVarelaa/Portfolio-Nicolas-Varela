@@ -12,6 +12,7 @@ const FormInput = memo(
     required,
     pattern,
     error,
+    placeholder,
   }) => (
     <div className="space-y-2">
       <label
@@ -27,6 +28,7 @@ const FormInput = memo(
         <input
           type={type}
           id={name}
+          placeholder={placeholder}
           className={`w-full pl-11 pr-4 py-3 bg-gray-50 dark:bg-gray-800/50 border ${
             error
               ? "border-red-500 focus:ring-red-500"
@@ -65,6 +67,7 @@ FormInput.propTypes = {
   error: PropTypes.shape({
     message: PropTypes.string,
   }),
+  placeholder: PropTypes.string,
 };
 
 export default FormInput;
