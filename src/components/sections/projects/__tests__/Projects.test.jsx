@@ -7,6 +7,7 @@ import ThemeContext from '@context/ThemeContext'
 const mockT = {
   navbar: { projects: 'Proyectos', skills: 'Skills', about: 'Sobre mí', contact: 'Contacto' },
   home: { availableForWork: 'Disponible', greeting: 'Hola', iAm: '', fullStackDeveloper: 'Dev', homeDescription: 'Desc', downloadCV: 'CV' },
+  exported_keys: [],
   projects: {
     sectionTitle: 'Proyectos',
     projectList: [
@@ -14,6 +15,14 @@ const mockT = {
       { title: 'Pixel Salud', description: 'E-commerce y gestión farmacéutica' },
       { title: 'Flow Stock', description: 'Sistema de stock y proveedores' },
     ],
+    code: 'Código',
+    demo: 'Demo',
+    website: 'Sitio Web',
+    tooltips: {
+      code: 'Ver código fuente en GitHub',
+      video: 'Ver video demostrativo del proyecto',
+      website: 'Visitar sitio web en vivo',
+    },
   },
   skills: { sectionTitle: 'Habilidades', technologiesCount: 'tecnologías' },
   about: { sectionTitle: 'Sobre mí', timeline: [] },

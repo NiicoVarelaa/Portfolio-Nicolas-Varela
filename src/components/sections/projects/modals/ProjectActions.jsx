@@ -3,7 +3,18 @@ import PropTypes from "prop-types";
 import { FaGithub, FaYoutube } from "react-icons/fa";
 import { ExternalLink } from "lucide-react";
 
+const BUTTON_MOTION = {
+  hover: { scale: 1.06, boxShadow: "0 6px 24px 0 rgba(0,0,0,0.12)" },
+  tap: { scale: 0.98 },
+  transition: { duration: 0.25, ease: "easeOut" },
+};
+
+const BASE_CLASSES =
+  "flex items-center justify-center gap-2.5 px-4 py-3 text-sm font-semibold rounded-xl transition-all duration-300 ease-out flex-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500";
+
 export function ProjectActions({ project, t, lang, onOpenVideo }) {
+  const hasVideo = Boolean(project.demoVideo && onOpenVideo);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -13,36 +24,27 @@ export function ProjectActions({ project, t, lang, onOpenVideo }) {
     >
       {project.githubLink && (
         <motion.a
-          whileHover={{
-            scale: 1.06,
-            boxShadow: "0 6px 24px 0 rgba(0,0,0,0.12)",
-          }}
-          whileTap={{ scale: 0.98 }}
-          transition={{ duration: 0.25, ease: "easeOut" }}
+          {...BUTTON_MOTION}
           href={project.githubLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2.5 px-4 py-3 text-sm font-semibold text-white bg-gray-800 hover:bg-gray-900 dark:bg-gray-700 dark:hover:bg-gray-600 rounded-xl transition-all duration-300 ease-out flex-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-500"
-          aria-label={
-            lang === "es" ? "Ver código en GitHub" : "View code on GitHub"
-          }
+          title={t.tooltips.code}
+          aria-label={t.tooltips.code}
+          className={`${BASE_CLASSES} text-white bg-gray-800 hover:bg-gray-900 dark:bg-gray-700 dark:hover:bg-gray-600 focus-visible:ring-gray-500`}
           tabIndex={0}
         >
           <FaGithub size={20} />
           <span>{t.code}</span>
         </motion.a>
       )}
-      {project.demoVideo && onOpenVideo ? (
+
+      {hasVideo ? (
         <motion.button
-          whileHover={{
-            scale: 1.06,
-            boxShadow: "0 6px 24px 0 rgba(0,0,0,0.12)",
-          }}
-          whileTap={{ scale: 0.98 }}
-          transition={{ duration: 0.25, ease: "easeOut" }}
+          {...BUTTON_MOTION}
           onClick={onOpenVideo}
-          className="flex items-center justify-center gap-2.5 px-4 py-3 text-sm font-semibold text-white bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 rounded-xl transition-all duration-300 ease-out flex-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
-          aria-label={lang === "es" ? "Ver video demo" : "View demo video"}
+          title={t.tooltips.video}
+          aria-label={t.tooltips.video}
+          className={`${BASE_CLASSES} text-white bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 focus-visible:ring-orange-500`}
           tabIndex={0}
         >
           <FaYoutube size={20} />
@@ -50,36 +52,33 @@ export function ProjectActions({ project, t, lang, onOpenVideo }) {
         </motion.button>
       ) : (
         <motion.a
-          whileHover={{
-            scale: 1.06,
-            boxShadow: "0 6px 24px 0 rgba(0,0,0,0.12)",
-          }}
-          whileTap={{ scale: 0.98 }}
-          transition={{ duration: 0.25, ease: "easeOut" }}
+          {...BUTTON_MOTION}
           href={project.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2.5 px-4 py-3 text-sm font-semibold text-white bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 rounded-xl transition-all duration-300 ease-out flex-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
-          aria-label={lang === "es" ? "Ver demo" : "View demo"}
+          title={t.tooltips.website}
+          aria-label={t.tooltips.website}
+          className={`${BASE_CLASSES} text-white bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 focus-visible:ring-orange-500`}
           tabIndex={0}
         >
           <ExternalLink size={20} />
           <span>{t.demo}</span>
         </motion.a>
       )}
-      {project.demoVideo && (
+
+      {hasVideo && (
         <motion.a
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ duration: 0.25, ease: "easeOut" }}
+          {...BUTTON_MOTION}
           href={project.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center w-12 h-12 flex-shrink-0 text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 hover:bg-orange-500 hover:text-white rounded-xl transition-all duration-300 ease-out focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
-          aria-label={lang === "es" ? "Visitar sitio en vivo" : "Visit live site"}
+          title={t.tooltips.website}
+          aria-label={t.tooltips.website}
+          className={`${BASE_CLASSES} text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 focus-visible:ring-orange-500`}
           tabIndex={0}
         >
           <ExternalLink size={20} />
+          <span>{t.website}</span>
         </motion.a>
       )}
     </motion.div>
@@ -95,6 +94,12 @@ ProjectActions.propTypes = {
   t: PropTypes.shape({
     code: PropTypes.string.isRequired,
     demo: PropTypes.string.isRequired,
+    website: PropTypes.string.isRequired,
+    tooltips: PropTypes.shape({
+      code: PropTypes.string.isRequired,
+      video: PropTypes.string.isRequired,
+      website: PropTypes.string.isRequired,
+    }).isRequired,
   }).isRequired,
   lang: PropTypes.string.isRequired,
   onOpenVideo: PropTypes.func,

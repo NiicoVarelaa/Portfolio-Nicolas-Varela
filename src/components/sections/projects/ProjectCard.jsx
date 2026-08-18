@@ -23,6 +23,7 @@ const ProjectCard = ({
 }) => {
   const reducedMotion = useReducedMotion();
   const [imageLoaded, setImageLoaded] = useState(false);
+  const tooltips = t.tooltips || {};
   return (
     <motion.article
     key={project.id}
@@ -84,6 +85,7 @@ const ProjectCard = ({
               label={
                 lang === "es" ? "Ver código en GitHub" : "View code on GitHub"
               }
+              title={tooltips.code}
               icon={FaGithub}
               onClick={(e) => e.stopPropagation()}
             />
@@ -91,6 +93,7 @@ const ProjectCard = ({
           <IconCircleButton
             href={project.link}
             label={lang === "es" ? "Ver demo en vivo" : "View live demo"}
+            title={tooltips.website}
             icon={ExternalLink}
             onClick={(e) => e.stopPropagation()}
           />
@@ -138,6 +141,7 @@ const ProjectCard = ({
               href={project.githubLink}
               label={lang === "es" ? "Código" : "Code"}
               icon={FaGithub}
+              title={tooltips.code}
               onClick={(e) => e.stopPropagation()}
               className="min-h-[44px] text-sm sm:text-base"
               aria-label={
@@ -150,6 +154,7 @@ const ProjectCard = ({
           {project.demoVideo ? (
             <button
               type="button"
+              title={tooltips.video}
               className="flex-1 flex items-center justify-center gap-2 px-3 py-2.5 min-h-[44px] text-sm sm:text-base font-semibold rounded-lg bg-gradient-to-br from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 active:from-orange-700 active:to-orange-800 text-white focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900 transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.98]"
               aria-label={
                 lang === "es"
@@ -166,6 +171,7 @@ const ProjectCard = ({
               href={project.link}
               label={lang === "es" ? "Ver Demo" : "View Demo"}
               icon={ExternalLink}
+              title={tooltips.website}
               onClick={(e) => e.stopPropagation()}
               className="bg-gradient-to-br from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 active:from-orange-700 active:to-orange-800 text-white focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900 min-h-[44px] text-sm sm:text-base transition-all duration-200"
               aria-label={

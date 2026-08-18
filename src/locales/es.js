@@ -37,6 +37,12 @@ export default {
     ],
     code: "Código",
     demo: "Demo",
+    website: "Sitio Web",
+    tooltips: {
+      code: "Ver código fuente en GitHub",
+      video: "Ver video demostrativo del proyecto",
+      website: "Visitar sitio web en vivo",
+    },
   },
   skills: {
     sectionTitle: "Habilidades",

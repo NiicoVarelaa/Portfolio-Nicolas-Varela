@@ -31,6 +31,7 @@ IconCircleButton.propTypes = {
   icon: PropTypes.elementType.isRequired,
   className: PropTypes.string,
   iconSize: PropTypes.number,
+  title: PropTypes.string,
 };
 
 export default IconCircleButton;

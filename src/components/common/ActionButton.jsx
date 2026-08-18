@@ -26,6 +26,7 @@ ActionButton.propTypes = {
   label: PropTypes.string.isRequired,
   icon: PropTypes.elementType.isRequired,
   className: PropTypes.string,
+  title: PropTypes.string,
 };
 
 export default ActionButton;

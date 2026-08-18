@@ -29,6 +29,12 @@ vi.mock('@hooks/useTranslation', () => ({
       technologiesTitle: 'Tecnologías',
       code: 'Código',
       demo: 'Demo',
+      website: 'Sitio Web',
+      tooltips: {
+        code: 'Ver código fuente en GitHub',
+        video: 'Ver video demostrativo del proyecto',
+        website: 'Visitar sitio web en vivo',
+      },
     },
   }),
   useLang: () => 'es',
@@ -117,8 +123,8 @@ describe('ProjectModal', () => {
 
   it('renders live demo and code links', () => {
     render(<ProjectModal project={mockProject} onClose={mockOnClose} />, { wrapper })
-    expect(screen.getByRole('link', { name: /código/i })).toHaveAttribute('href', 'https://github.com')
-    expect(screen.getByRole('link', { name: /demo/i })).toHaveAttribute('href', 'https://example.com')
+    expect(screen.getByRole('link', { name: /github/i })).toHaveAttribute('href', 'https://github.com')
+    expect(screen.getByRole('link', { name: /visitar/i })).toHaveAttribute('href', 'https://example.com')
   })
 
   it('does not render gallery navigation for single image', () => {
