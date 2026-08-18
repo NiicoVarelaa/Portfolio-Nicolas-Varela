@@ -34,7 +34,7 @@ const Skills = () => {
       <div className="relative w-full max-w-6xl">
         <SectionHeader title={t.sectionTitle} />
 
-        <div className="space-y-16">
+        <div className="space-y-10">
           {skillCategories.map(([key, category], categoryIndex) => (
             <motion.div
               key={category.id || key}
@@ -42,7 +42,7 @@ const Skills = () => {
               whileInView={reducedMotion ? {} : { opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={reducedMotion ? { duration: 0 } : { duration: 0.6, delay: categoryIndex * 0.1 }}
-              className="space-y-8"
+              className="space-y-6"
             >
               <CategoryHeader
                 icon={category.icon}
