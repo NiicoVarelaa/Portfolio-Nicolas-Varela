@@ -65,22 +65,6 @@ export function ProjectActions({ project, t, lang, onOpenVideo }) {
           <span>{t.demo}</span>
         </motion.a>
       )}
-
-      {hasVideo && (
-        <motion.a
-          {...BUTTON_MOTION}
-          href={project.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          title={t.tooltips.website}
-          aria-label={t.tooltips.website}
-          className={`${BASE_CLASSES} text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 focus-visible:ring-orange-500`}
-          tabIndex={0}
-        >
-          <ExternalLink size={20} />
-          <span>{t.website}</span>
-        </motion.a>
-      )}
     </motion.div>
   );
 }
