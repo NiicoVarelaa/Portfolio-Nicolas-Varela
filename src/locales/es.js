@@ -77,8 +77,8 @@ export default {
     send: "Enviar Mensaje",
     sending: "Enviando...",
     placeholders: {
-      name: "Tu nombre",
-      email: "tucorreo@ejemplo.com",
+      name: "Nombre",
+      email: "email@ejemplo.com",
       subject: "Asunto del mensaje",
       message: "Escribí tu mensaje aquí...",
     },
