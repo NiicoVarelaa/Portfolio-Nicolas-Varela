@@ -12,7 +12,7 @@ const ProjectsHeader = memo(({ title }) => {
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
       variants={getSafeVariants(reducedMotion, animationVariants.header)}
-    className="text-center mb-8 sm:mb-12 md:mb-16 px-4"
+    className="text-center mb-8 md:mb-10 px-4"
   >
     <h2
       id="projects-heading"
