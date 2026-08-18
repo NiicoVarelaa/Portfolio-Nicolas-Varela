@@ -37,6 +37,12 @@ export const skillData = {
         icon: SiTailwindcss,
         color: "from-cyan-400 to-blue-600",
       },
+      {
+        id: "typescript",
+        name: "TypeScript",
+        icon: SiTypescript,
+        color: "from-blue-500 to-blue-700",
+      },
     ],
   },
   backend: {
