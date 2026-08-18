@@ -81,14 +81,14 @@ export function Gallery({
       {images.length > 1 && (
         <>
           <button
-            onClick={onPrev}
+            onClick={(e) => { e.stopPropagation(); onPrev(); }}
             className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-gray-800/90 text-gray-800 dark:text-white p-2.5 rounded-full hover:bg-orange-500 hover:text-white transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
             aria-label={lang === "es" ? "Imagen anterior" : "Previous image"}
           >
             <ChevronLeft size={22} strokeWidth={2.2} />
           </button>
           <button
-            onClick={onNext}
+            onClick={(e) => { e.stopPropagation(); onNext(); }}
             className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 dark:bg-gray-800/90 text-gray-800 dark:text-white p-2.5 rounded-full hover:bg-orange-500 hover:text-white transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
             aria-label={lang === "es" ? "Imagen siguiente" : "Next image"}
           >
