@@ -12,7 +12,7 @@ const AboutHeader = memo(({ title }) => {
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
       variants={getSafeVariants(reducedMotion, animationVariants.header)}
-    className="text-center mb-6 sm:mb-8 md:mb-12"
+    className="text-center mb-6 md:mb-8"
   >
     <h2 className="text-5xl sm:text-6xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">
       {title}
