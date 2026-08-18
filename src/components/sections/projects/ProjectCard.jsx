@@ -6,7 +6,6 @@ import { FaGithub, FaYoutube } from "react-icons/fa";
 import TechBadge from "@components/common/TechBadge";
 import ActionButton from "@components/common/ActionButton";
 import IconCircleButton from "@components/common/IconCircleButton";
-import ProjectVideoModal from "@components/sections/projects/modals/ProjectVideoModal.jsx";
 import { animationVariants, getSafeVariants } from "@constants/animations";
 import useReducedMotion from "@hooks/useReducedMotion.js";
 
@@ -24,12 +23,6 @@ const ProjectCard = ({
 }) => {
   const reducedMotion = useReducedMotion();
   const [imageLoaded, setImageLoaded] = useState(false);
-  const [videoOpen, setVideoOpen] = useState(false);
-  const openVideo = (e) => {
-    e.stopPropagation();
-    e.preventDefault();
-    setVideoOpen(true);
-  };
   return (
     <motion.article
     key={project.id}
@@ -156,12 +149,12 @@ const ProjectCard = ({
           )}
           {project.demoVideo ? (
             <button
-              onClick={openVideo}
+              type="button"
               className="flex-1 flex items-center justify-center gap-2 px-3 py-2.5 min-h-[44px] text-sm sm:text-base font-semibold rounded-lg bg-gradient-to-br from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 active:from-orange-700 active:to-orange-800 text-white focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-900 transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.98]"
               aria-label={
                 lang === "es"
-                  ? `Ver video demo de ${project.title}`
-                  : `View live demo of ${project.title}`
+                  ? `Ver detalles de ${project.title}`
+                  : `View details of ${project.title}`
               }
               tabIndex={0}
             >
@@ -185,9 +178,6 @@ const ProjectCard = ({
         </div>
       </div>
     </div>
-    {videoOpen && project.demoVideo && (
-      <ProjectVideoModal video={project.demoVideo} lang={lang} onClose={() => setVideoOpen(false)} />
-    )}
   </motion.article>
   );
 };
