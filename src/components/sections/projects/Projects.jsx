@@ -39,7 +39,7 @@ const Projects = () => {
   return (
     <section
       id="proyectos"
-      className="relative w-full min-h-screen py-10 sm:py-14 md:py-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-center"
+      className="relative w-full py-10 sm:py-14 md:py-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center items-center"
       aria-labelledby="projects-heading"
       role="region"
     >

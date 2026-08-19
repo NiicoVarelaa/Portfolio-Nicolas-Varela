@@ -17,7 +17,7 @@ const AboutMe = () => {
     <section
       id="sobremí"
       aria-label={t.sectionTitle}
-      className="mx-auto w-full min-h-screen flex flex-col justify-center overflow-hidden px-4 py-12 md:py-16 sm:px-6 lg:px-8 max-w-6xl"
+      className="mx-auto w-full flex flex-col justify-center overflow-hidden px-4 py-12 md:py-16 sm:px-6 lg:px-8 max-w-6xl"
       role="region"
     >
       <AboutHeader title={t.sectionTitle} />
