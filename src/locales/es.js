@@ -57,7 +57,7 @@ export default {
   about: {
     sectionTitle: "Sobre Mí",
     intro:
-      "Desarrollador Full Stack con 3+ años creando aplicaciones web modernas y escalables. Especialista en React, Node.js y bases de datos; disfruto trabajar en equipos donde la innovación es prioridad.",
+      "Técnico Universitario en Programación (UTN – FRT) y Desarrollador Full Stack. Me especializo en construir aplicaciones web modernas, modulares y escalables utilizando React, JavaScript/TypeScript, Node.js y bases de datos SQL/NoSQL. Enfocado en la calidad de código, validación estricta de esquemas, testing automatizado y diseño de arquitecturas listas para producción.",
     educationTitle: "Educación",
     educationText:
       "Graduado de la Tecnicatura Universitaria en Programación en la Universidad Tecnológica Nacional - Facultad Regional Tucumán (UTN-FRT).",

@@ -57,7 +57,7 @@ export default {
   about: {
     sectionTitle: "About Me",
     intro:
-      "Full Stack Developer with 3+ years building modern, scalable web apps. Specialist in React, Node.js, and databases; I enjoy working in teams where innovation is key.",
+      "Computer Programming Graduate (UTN – FRT) and Full Stack Developer. I specialize in building modern, modular, and scalable web applications using React, JavaScript/TypeScript, Node.js, and SQL/NoSQL databases. Focused on code quality, strict schema validation, automated testing, and production-ready software architectures.",
     educationTitle: "Education",
     educationText:
       "Graduate of the University Technician in Programming at the National Technological University - Tucumán Regional Faculty (UTN-FRT).",
