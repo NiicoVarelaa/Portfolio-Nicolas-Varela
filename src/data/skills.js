@@ -1,5 +1,14 @@
 import { Code2, Database, Wrench } from "lucide-react";
 import {
+  SiJavascript,
+  SiReact,
+  SiTailwindcss,
+  SiNodedotjs,
+  SiExpress,
+  SiMongodb,
+  SiMysql,
+  SiTypescript,
+  SiPostgresql,
   SiPrisma,
   SiSupabase,
   SiGit,
