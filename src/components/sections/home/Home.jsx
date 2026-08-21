@@ -1,4 +1,4 @@
-import nico from "@assets/nico.webp";
+import nico from "@assets/Nicolas-Varela.webp";
 import cvPdf from "@assets/CV-José-Nicolás-Varela.pdf";
 import ScrollToTop from "@components/layout/ScrollToTop.jsx";
 import ProfileImageHome from "@components/ui/ProfileImageHome.jsx";
