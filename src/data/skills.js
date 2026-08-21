@@ -1,16 +1,9 @@
 import { Code2, Database, Wrench } from "lucide-react";
 import {
-  SiJavascript,
-  SiReact,
-  SiTailwindcss,
-  SiNodedotjs,
-  SiExpress,
-  SiMongodb,
-  SiMysql,
-  SiTypescript,
-  SiPostgresql,
   SiPrisma,
   SiSupabase,
+  SiGit,
+  SiGithub,
 } from "react-icons/si";
 
 export const skillData = {
@@ -101,6 +94,18 @@ export const skillData = {
     categoryName: "Tools",
     skills: [
       {
+        id: "git",
+        name: "Git",
+        icon: SiGit,
+        color: "from-orange-500 to-red-600",
+      },
+      {
+        id: "github",
+        name: "GitHub",
+        icon: SiGithub,
+        color: "from-gray-600 to-gray-900",
+      },
+      {
         id: "prisma",
         name: "Prisma",
         icon: SiPrisma,
@@ -112,7 +117,6 @@ export const skillData = {
         icon: SiSupabase,
         color: "from-emerald-500 to-green-600",
       },
-
     ],
   },
 };
