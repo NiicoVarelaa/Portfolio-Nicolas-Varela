@@ -46,7 +46,7 @@ const Skills = () => {
             >
               <CategoryHeader
                 icon={category.icon}
-                title={category.categoryName}
+                title={t.categories[key] || category.categoryName}
                 skillsCount={category.skills.length}
                 technologiesLabel={t.technologiesCount}
               />
