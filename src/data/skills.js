@@ -22,28 +22,28 @@ export const skillData = {
     categoryName: "Frontend",
     skills: [
       {
-        id: "javascript",
-        name: "JavaScript",
-        icon: SiJavascript,
-        color: "from-yellow-400 to-yellow-500",
-      },
-      {
         id: "react",
         name: "React",
         icon: SiReact,
         color: "from-cyan-400 to-blue-500",
       },
       {
-        id: "tailwind",
-        name: "Tailwind CSS",
-        icon: SiTailwindcss,
-        color: "from-cyan-400 to-blue-600",
+        id: "javascript",
+        name: "JavaScript",
+        icon: SiJavascript,
+        color: "from-yellow-400 to-yellow-500",
       },
       {
         id: "typescript",
         name: "TypeScript",
         icon: SiTypescript,
         color: "from-blue-500 to-blue-700",
+      },
+      {
+        id: "tailwind",
+        name: "Tailwind CSS",
+        icon: SiTailwindcss,
+        color: "from-cyan-400 to-blue-600",
       },
     ],
   },
@@ -72,12 +72,6 @@ export const skillData = {
     categoryName: "Bases de Datos",
     skills: [
       {
-        id: "mongodb",
-        name: "MongoDB",
-        icon: SiMongodb,
-        color: "from-green-500 to-emerald-600",
-      },
-      {
         id: "mysql",
         name: "MySQL",
         icon: SiMysql,
@@ -88,6 +82,12 @@ export const skillData = {
         name: "PostgreSQL",
         icon: SiPostgresql,
         color: "from-indigo-500 to-blue-600",
+      },
+      {
+        id: "mongodb",
+        name: "MongoDB",
+        icon: SiMongodb,
+        color: "from-green-500 to-emerald-600",
       },
     ],
   },
