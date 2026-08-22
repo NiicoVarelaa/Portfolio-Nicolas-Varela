@@ -64,12 +64,6 @@ export const skillData = {
         icon: SiExpress,
         color: "from-gray-500 to-gray-700",
       },
-      {
-        id: "typescript",
-        name: "TypeScript",
-        icon: SiTypescript,
-        color: "from-blue-500 to-blue-700",
-      },
     ],
   },
   databases: {
